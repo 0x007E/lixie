@@ -1,0 +1,34 @@
+#usage "<b>Schaltet Polygon_Ratsnest aus. (Version 1.0) </b>\n"
+       "<p>"
+       "<p>"
+       "<author>Autor: leopold.moosbrugger@htlr.snv.at</author><br>"
+       "<br>"
+
+#require 7.0300
+       
+real VERSION   = 1.0;
+
+/*
+ * CHANGELOG================================================
+ *
+ */
+
+if (board)
+{  
+   board(B) 
+   {
+      string cmd = "";
+      string sub_cmd;
+
+      cmd += "SET POLYGON_RATSNEST OFF; ";
+      cmd += "RIPUP @; ";
+      cmd += "MOVE";
+   
+      // dlgMessageBox(cmd); 
+      exit (cmd);
+   }
+} else 
+{
+   dlgMessageBox("_HTL_Polygon_OFF.ulp kann nur im Layout-Editor ausgeführt werden!", "&OK");
+   exit ("MOVE");
+}

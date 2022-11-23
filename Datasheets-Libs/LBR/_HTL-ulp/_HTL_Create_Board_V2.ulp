@@ -1,0 +1,352 @@
+#usage "<b>Erzeugt den Board-Umriss, die Schneidkreuze und die Memassung (Version 1.0) </b>\n"
+       "<p>"
+       "<author>Autor: leopold.moosbrugger@htlr.snv.at</author><br>"
+       "<br>"
+
+#require 7.0300
+       
+real VERSION   = 2.0;
+
+/*
+ * CHANGELOG================================================
+ *
+ */  
+
+string line;
+
+int draw_Measures;
+int draw_Dimension;
+int clear_Dimension;
+int draw_Cross_bot;
+int draw_Cross_top;
+int draw_Poly_bot;
+int draw_Poly_top;
+int draw_pos;
+
+real pxo;
+real pyo;
+
+real xo = 100;
+real yo = 100;
+
+real x = 0;
+real y = 0;
+
+string cmd = "";
+string sub_cmd;
+
+if (board)
+{
+  board(B)
+  {
+    xo = trunc(u2mm(B.area.x2)) + 10;
+    yo = trunc(u2mm(B.area.y1));
+  }
+
+  int Result = dlgDialog("Platinen Kontur") 
+  {
+    draw_Dimension = 1;
+    clear_Dimension = 0;
+    draw_Cross_bot = 0;
+    draw_Cross_top = 0;
+    draw_Poly_bot = 0;
+    draw_Poly_top = 0;
+    draw_Measures = 0;
+    draw_pos = 0;
+
+    x = 0.0;
+    dlgHBoxLayout 
+    {
+      dlgLabel("X");
+      dlgRealEdit(x, 0.0, 500.0);
+      dlgLabel("mm");
+    }
+
+    y = 0.0;
+    dlgHBoxLayout 
+    {
+      dlgLabel("Y");
+      dlgRealEdit(y, 0.0, 500.0);
+      dlgLabel("mm");
+    }
+
+    dlgGroup("Auswahl") 
+    {
+      dlgCheckBox("Platinen Kontur", draw_Dimension);
+      dlgCheckBox("alte Platinen Kontur löschen", clear_Dimension);
+      dlgCheckBox("Bemaßung", draw_Measures);
+	  dlgSpacing(20); 
+      dlgCheckBox("Schneidkreuze (Bottom)", draw_Cross_bot);
+      dlgCheckBox("Polygon (Bottom)", draw_Poly_bot);
+	  dlgSpacing(20); 
+      dlgCheckBox("Schneidkreuze (Top)", draw_Cross_top);
+      dlgCheckBox("Polygon (Top)", draw_Poly_top);
+    }
+
+    dlgGroup("Position") 
+    {
+      pxo = 0.0;
+      dlgHBoxLayout 
+      {
+        dlgLabel("xo");
+        dlgRealEdit(pxo, -500.0, 500.0);
+        dlgLabel("mm");
+      }
+
+      pyo = 0.0;
+      dlgHBoxLayout 
+      {
+        dlgLabel("yo");
+        dlgRealEdit(pyo, -500.0, 500.0);
+        dlgLabel("mm");
+      }
+
+      dlgRadioButton("(0 0)", draw_pos);
+      dlgRadioButton("(-x/2 0)", draw_pos);
+      dlgRadioButton("(xo yo)", draw_pos);
+    }
+
+    dlgHBoxLayout
+    {
+      dlgStretch(1);
+      dlgPushButton("+OK")    dlgAccept(1);
+      dlgPushButton("Cancel") dlgReject();
+    }
+  };
+
+  if ((Result == 1) && (x > 0.0) && (y > 0.0))
+  {
+    if (draw_pos == 0)
+    {
+      xo = 0;
+      yo = 0;
+    } else if (draw_pos == 1)
+    {
+      xo = -x/2;
+      yo = 0;
+    } else if (draw_pos == 2)
+    {
+      xo = pxo;
+      yo = pyo;
+    } else
+    {
+      xo = 0;
+      yo = 0;
+    }
+    cmd += "GRID MM FINEST; ";
+    cmd += "CHANGE WIDTH 0.013inch; ";
+    cmd += "DISPLAY NONE; ";
+
+	
+    // Bemassung
+    if (draw_Measures == 1)
+    {
+      // Vorbereitung fuer den WIRE-Befehl
+      cmd += "SET WIRE_BEND 2; ";
+      cmd += "CHANGE LAYER MEASURES; ";
+      cmd += "CHANGE SIZE 0.07inch; ";
+      cmd += "CHANGE RATIO 8; ";
+      cmd += "CHANGE FONT VECTOR; ";
+      cmd += "Change Dunit mm on 2; ";
+      cmd += "Change Dline 0.13 0 0 0; ";
+
+      // Pfeile und Linien fuer x-Bemassung
+      sprintf (sub_cmd, "DIMENSION PARALLEL (C%f %f) (%f %f) (%f %f); ",
+               xo, yo+y, xo+x, yo+y, xo+x/2, yo+y+10);
+      cmd += sub_cmd;
+
+      // Pfeile und Linien fuer y-Bemassung
+      sprintf (sub_cmd, "DIMENSION PARALLEL (C%f %f) (%f %f) (%f %f); ",
+               xo+x, yo, xo+x, yo+y, xo+x+10, yo+y/2);
+      cmd += sub_cmd;
+    }
+	
+    if (clear_Dimension == 1)
+    {
+      cmd += "DISPLAY NONE DIMENSION; ";
+      cmd += "GROUP ALL; ";
+      cmd += "DELETE (> 0 0); ";
+    }
+
+    // Dimension
+    if (draw_Dimension == 1)
+    {
+      // Vorbereitung fuer den WIRE-Befehl
+      cmd += "CHANGE LAYER DIMENSION; ";
+      cmd += "SET WIRE_BEND 2; ";
+ 
+      sprintf (sub_cmd, "WIRE (%f %f) (%f %f) (%f %f) (%f %f) (%f %f); ", 
+             xo, yo, xo, yo+y, xo+x, yo+y, xo+x, yo, xo, yo);
+      cmd += sub_cmd;
+    }
+
+    // Schneidkreuze bottom
+    if (draw_Cross_bot == 1)
+    {
+      // Vorbereitung fuer den WIRE-Befehl
+      cmd += "CHANGE LAYER BOTTOM; ";
+ 
+      sprintf (sub_cmd, "RECT (%f %f) (%f %f); ", xo-4, yo-2, xo+5, yo);
+      cmd += sub_cmd;
+      sprintf (sub_cmd, "RECT (%f %f) (%f %f); ", xo-2, yo-4, xo, yo+5);
+      cmd += sub_cmd;
+
+      sprintf (sub_cmd, "RECT (%f %f) (%f %f); ", xo-4, yo+y, xo+5, yo+y+2);
+      cmd += sub_cmd;
+      sprintf (sub_cmd, "RECT (%f %f) (%f %f); ", xo-2, yo+y-5, xo, yo+y+4);
+      cmd += sub_cmd;
+
+      sprintf (sub_cmd, "RECT (%f %f) (%f %f); ", xo+x-5, yo-2, xo+x+4, yo);
+      cmd += sub_cmd;
+      sprintf (sub_cmd, "RECT (%f %f) (%f %f); ", xo+x, yo-4, xo+x+2, yo+5);
+      cmd += sub_cmd;
+
+      sprintf (sub_cmd, "RECT (%f %f) (%f %f); ", xo+x-5, yo+y, xo+x+4, yo+y+2);
+      cmd += sub_cmd;
+      sprintf (sub_cmd, "RECT (%f %f) (%f %f); ", xo+x, yo+y-5, xo+x+2, yo+y+5);
+      cmd += sub_cmd;
+
+      // Beschriftung
+      cmd += "CHANGE SIZE 0.1inch; ";
+      cmd += "CHANGE RATIO 16; ";
+      cmd += "CHANGE FONT VECTOR; ";
+
+      // Beschriftung Bemassung
+      sprintf (sub_cmd, "TEXT '%.1f x %.1f mm' MR0 (%f %f); ", x, y, xo+x/2, yo+y+15);
+      cmd += sub_cmd;
+
+      // Beschriftung Drawing
+      sprintf (sub_cmd, "TEXT '>DRAWING_NAME' MR0 (%f %f); ", xo+x/2, yo+y+20);
+      cmd += sub_cmd;
+
+      // Beschriftung Account_Name
+      sprintf (sub_cmd, "TEXT '>ACCOUNT_NAME' MR0 (%f %f); ", xo+x/2, yo+y+25);
+      cmd += sub_cmd;
+
+      // Beschriftung User_Name
+      sprintf (sub_cmd, "TEXT '>USER_NAME' MR0 (%f %f); ", xo+x/2, yo+y+30);
+      cmd += sub_cmd;
+
+      // Beschriftung Projekt_Name
+      sprintf (sub_cmd, "TEXT '>PROJEKT_NAME' MR0 (%f %f); ", xo+x/2, yo+y+35);
+      cmd += sub_cmd;
+
+      // Beschriftung bot
+      sprintf (sub_cmd, "TEXT 'bot' MR0 (%f %f); ", xo+x/2, yo+y+40);
+      cmd += sub_cmd;
+    }
+
+    // Schneidkreuze top
+    if (draw_Cross_top == 1)
+    {
+      // Vorbereitung fuer den WIRE-Befehl
+      cmd += "CHANGE LAYER TOP; ";
+ 
+      sprintf (sub_cmd, "RECT (%f %f) (%f %f); ", xo-4, yo-2, xo+5, yo);
+      cmd += sub_cmd;
+      sprintf (sub_cmd, "RECT (%f %f) (%f %f); ", xo-2, yo-4, xo, yo+5);
+      cmd += sub_cmd;
+
+      sprintf (sub_cmd, "RECT (%f %f) (%f %f); ", xo-4, yo+y, xo+5, yo+y+2);
+      cmd += sub_cmd;
+      sprintf (sub_cmd, "RECT (%f %f) (%f %f); ", xo-2, yo+y-5, xo, yo+y+4);
+      cmd += sub_cmd;
+
+      sprintf (sub_cmd, "RECT (%f %f) (%f %f); ", xo+x-5, yo-2, xo+x+4, yo);
+      cmd += sub_cmd;
+      sprintf (sub_cmd, "RECT (%f %f) (%f %f); ", xo+x, yo-4, xo+x+2, yo+5);
+      cmd += sub_cmd;
+
+      sprintf (sub_cmd, "RECT (%f %f) (%f %f); ", xo+x-5, yo+y, xo+x+4, yo+y+2);
+      cmd += sub_cmd;
+      sprintf (sub_cmd, "RECT (%f %f) (%f %f); ", xo+x, yo+y-5, xo+x+2, yo+y+5);
+      cmd += sub_cmd;
+
+      // Beschriftung
+      cmd += "CHANGE SIZE 0.1inch; ";
+      cmd += "CHANGE RATIO 16; ";
+      cmd += "CHANGE FONT VECTOR; ";
+
+      // Beschriftung Bemassung
+      sprintf (sub_cmd, "TEXT '%.1f x %.1f mm' R0 (%f %f); ", x, y, xo+x/2, yo+y+15);
+      cmd += sub_cmd;
+
+      // Beschriftung Drawing
+      sprintf (sub_cmd, "TEXT '>DRAWING_NAME' R0 (%f %f); ", xo+x/2, yo+y+20);
+      cmd += sub_cmd;
+
+      // Beschriftung Account_Name
+      sprintf (sub_cmd, "TEXT '>ACCOUNT_NAME' R0 (%f %f); ", xo+x/2, yo+y+25);
+      cmd += sub_cmd;
+
+      // Beschriftung User_Name
+      sprintf (sub_cmd, "TEXT '>USER_NAME' R0 (%f %f); ", xo+x/2, yo+y+30);
+      cmd += sub_cmd;
+
+      // Beschriftung Projekt_Name
+      sprintf (sub_cmd, "TEXT '>PROJEKT_NAME' R0 (%f %f); ", xo+x/2, yo+y+35);
+      cmd += sub_cmd;
+
+      // Beschriftung top
+      sprintf (sub_cmd, "TEXT 'top' R0 (%f %f); ", xo+x/2, yo+y+40);
+      cmd += sub_cmd;
+    }
+    
+	// Polygon Bottom
+    if (draw_Poly_bot == 1)
+    {
+      // Vorbereitung fuer den WIRE-Befehl
+      cmd += "SET WIRE_BEND 2; ";
+      cmd += "CHANGE LAYER BOTTOM; ";
+      cmd += "CHANGE WIDTH 0.016inch; ";
+      cmd += "CHANGE ISOLATE 0.024inch; ";
+      cmd += "CHANGE SPACING 0.005inch; ";
+      cmd += "CHANGE POUR SOLID; ";
+      cmd += "CHANGE THERMALS ON; ";
+      cmd += "CHANGE ORPHANS ON; ";
+      cmd += "CHANGE RANK 1; ";
+
+      sprintf (sub_cmd, "POLYGON GND (%f %f) (%f %f) (%f %f) (%f %f) (%f %f); ", 
+             xo, yo, xo, yo+y, xo+x, yo+y, xo+x, yo, xo, yo);
+      cmd += sub_cmd;
+      cmd += "SET POLYGON_RATSNEST ON; ";
+      cmd += "RATSNEST; ";
+    }
+
+	// Polygon Top
+    if (draw_Poly_bot == 1)
+    {
+      // Vorbereitung fuer den WIRE-Befehl
+      cmd += "SET WIRE_BEND 2; ";
+      cmd += "CHANGE LAYER TOP; ";
+      cmd += "CHANGE WIDTH 0.016inch; ";
+      cmd += "CHANGE ISOLATE 0.024inch; ";
+      cmd += "CHANGE SPACING 0.005inch; ";
+      cmd += "CHANGE POUR SOLID; ";
+      cmd += "CHANGE THERMALS ON; ";
+      cmd += "CHANGE ORPHANS ON; ";
+      cmd += "CHANGE RANK 1; ";
+
+      sprintf (sub_cmd, "POLYGON GND (%f %f) (%f %f) (%f %f) (%f %f) (%f %f); ", 
+             xo, yo, xo, yo+y, xo+x, yo+y, xo+x, yo, xo, yo);
+      cmd += sub_cmd;
+      cmd += "SET POLYGON_RATSNEST ON; ";
+      cmd += "RATSNEST; ";
+    }
+
+    if ((draw_Poly_bot == 0) && (draw_Poly_top == 0))
+    {
+      cmd += "SET POLYGON_RATSNEST OFF; ";
+      cmd += "RIPUP @; ";
+	}
+	
+    cmd += "DISPLAY NONE 1 16 17 18 19 20 21 22 23 24 25 26 27 28 47 51 52 101; ";
+    cmd += "GRID LAST; ";
+    cmd += "WINDOW FIT; ";
+    cmd += "MOVE";
+ 
+    exit(cmd);
+  }
+} else
+    dlgMessageBox("HTL_Create_Board.ulp arbeitet nur im BOARD!", "&OK");
+

@@ -1,0 +1,4 @@
+SET Cmd.Copy.ClassicEagleMode 1;
+SET ControlPanel.View.AutoOpenProjectFolder 0;
+SET Option.AutoLoadMatchingDrawingFile 1;
+SET Interface.ClassicIcons 1;

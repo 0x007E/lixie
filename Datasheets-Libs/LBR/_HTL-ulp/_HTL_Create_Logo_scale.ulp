@@ -1,0 +1,164 @@
+#usage "<b>Erzeugt das neue HTL-Logo auf einem Board (Version 1.0) </b>\n"
+       "<p>"
+       "<author>Autor: leopold.moosbrugger@htlr.snv.at</author><br>"
+       "<br>"
+
+#require 7.0300
+       
+real VERSION   = 1.0;
+
+/*
+ * CHANGELOG================================================
+ *
+ */  
+
+real s = 0.0;
+real xo = 0.0;
+real yo = 0.0;
+
+string cmd = "";
+string sub_cmd;
+
+if (board)
+{
+  int Result = dlgDialog("Erzeugt ein skaliertes HTL Logo") 
+  {
+    s = 100.0;
+    dlgHBoxLayout 
+    {
+      dlgLabel("(21.6mm X 10mm) * X");
+      dlgRealEdit(s, 1.0, 500.0);
+      dlgLabel("%");
+    }
+    dlgGroup("Position") 
+    {
+      xo = 0.0;
+      dlgHBoxLayout 
+      {
+        dlgLabel("xo");
+        dlgRealEdit(xo, -500.0, 500.0);
+        dlgLabel("mm");
+      }
+
+      yo = 0.0;
+      dlgHBoxLayout 
+
+      {
+        dlgLabel("yo");
+        dlgRealEdit(yo, -500.0, 500.0);
+        dlgLabel("mm");
+      }
+    }
+    dlgHBoxLayout
+    {
+      dlgStretch(1);
+      dlgPushButton("+OK")    dlgAccept(1);
+      dlgPushButton("Cancel") dlgReject();
+    }
+  };
+
+  if ((Result == 1) && (s > 0.0))
+  {
+      s = s / 100.0;
+ 
+      cmd += "Set Wire_Bend 2; ";
+      cmd += "Grid mm; ";
+      cmd += "Layer   1 Top; ";
+      cmd += "Layer 1; ";
+      sprintf (sub_cmd, "Rect R0 (%f %f) (%f %f); ", 
+	           0.00*s+xo, 4.55*s+yo, 1.50*s+xo, 7.00*s+yo);
+      cmd += sub_cmd;
+      sprintf (sub_cmd, "Rect R0 (%f %f) (%f %f); ", 
+               0.00*s+xo, 2.75*s+yo, 5.00*s+xo, 4.25*s+yo);
+      cmd += sub_cmd;
+      sprintf (sub_cmd, "Rect R0 (%f %f) (%f %f); ", 
+	           0.00*s+xo, 0.00*s+yo, 1.50*s+xo, 2.45*s+yo);
+      cmd += sub_cmd;
+      sprintf (sub_cmd, "Rect R0 (%f %f) (%f %f); ", 
+               5.30*s+xo, 0.00*s+yo, 6.80*s+xo, 7.00*s+yo);
+      cmd += sub_cmd;
+      sprintf (sub_cmd, "Rect R0 (%f %f) (%f %f); ", 
+	           8.10*s+xo, 5.50*s+yo, 10.80*s+xo, 7.00*s+yo);
+      cmd += sub_cmd;
+      sprintf (sub_cmd, "Rect R0 (%f %f) (%f %f); ", 
+	           10.80*s+xo, 0.00*s+yo, 12.30*s+xo, 7.00*s+yo);
+      cmd += sub_cmd;
+      sprintf (sub_cmd, "Rect R0 (%f %f) (%f %f); ", 
+	           12.60*s+xo, 5.50*s+yo, 15.00*s+xo, 7.00*s+yo);
+      cmd += sub_cmd;
+      sprintf (sub_cmd, "Rect R0 (%f %f) (%f %f); ", 
+	           16.30*s+xo, 0.00*s+yo, 17.80*s+xo, 7.00*s+yo);
+      cmd += sub_cmd;
+      sprintf (sub_cmd, "Rect R0 (%f %f) (%f %f); ", 
+	           18.10*s+xo, 0.00*s+yo, 21.60*s+xo, 1.50*s+yo);
+      cmd += sub_cmd;
+      cmd += "Change Style continuous; ";
+	  // R
+	  sprintf (sub_cmd, "WIRE  %f (%f %f) (%f %f) (%f %f) (%f %f) -180  (%f %f) (%f %f); ",
+	                     0.30480*s, 11.00*s+xo, -3.00*s+yo, 11.00*s+xo, -2.30*s+yo, 
+						            11.00*s+xo, -1.30*s+yo, 11.70*s+xo, -1.30*s+yo, 
+									11.70*s+xo, -2.30*s+yo, 11.00*s+xo, -2.30*s+yo);
+      cmd += sub_cmd;
+      sprintf (sub_cmd, "WIRE  %f (%f %f) (%f %f); ",
+	                     0.30480*s, 11.70*s+xo, -2.30*s+yo, 12.20*s+xo, -3.00*s+yo);
+      cmd += sub_cmd;
+	  // a					 
+      sprintf (sub_cmd, "WIRE  %f (%f %f) (%f %f) +90 (%f %f) (%f %f); ",
+	                     0.30480*s, 13.60*s+xo, -3.00*s+yo, 13.60*s+xo, -2.00*s+yo, 
+						            13.40*s+xo, -1.75*s+yo, 12.80*s+xo, -1.75*s+yo);
+      cmd += sub_cmd;
+      sprintf (sub_cmd, "WIRE  %f (%f %f) (%f %f) +180 (%f %f) +25 (%f %f); ",
+	                     0.30480*s, 13.60*s+xo, -2.40*s+yo, 13.10*s+xo, -2.40*s+yo, 
+						            13.10*s+xo, -3.00*s+yo, 13.60*s+xo, -2.90*s+yo);
+	  cmd += sub_cmd;
+      // n
+      sprintf (sub_cmd, "WIRE  %f (%f %f) (%f %f); ",
+	                     0.30480*s, 14.30*s+xo, -3.00*s+yo, 14.30*s+xo, -1.750*s+yo);
+      cmd += sub_cmd;
+      sprintf (sub_cmd, "WIRE  %f (%f %f) -140  (%f %f)(%f %f); ",
+	                     0.30480*s, 14.30*s+xo, -2.00*s+yo, 15.10*s+xo, -2.00*s+yo, 
+						            15.10*s+xo, -3.00*s+yo);
+	  cmd += sub_cmd;
+      // k
+      sprintf (sub_cmd, "WIRE  %f (%f %f) (%f %f); ",
+	                     0.30480*s, 15.80*s+xo, -3.00*s+yo, 15.80*s+xo, -1.30*s+yo);
+      cmd += sub_cmd;
+      sprintf (sub_cmd, "WIRE  %f (%f %f) (%f %f); ",
+	                     0.30480*s, 16.70*s+xo, -1.75*s+yo, 16.10*s+xo, -2.40*s+yo);
+      cmd += sub_cmd;
+      sprintf (sub_cmd, "WIRE  %f (%f %f) (%f %f); ",
+	                     0.30480*s, 16.70*s+xo, -3.00*s+yo, 16.10*s+xo, -2.40*s+yo);
+	  cmd += sub_cmd;
+      // w
+      sprintf (sub_cmd, "WIRE  %f (%f %f) (%f %f) (%f %f) (%f %f) (%f %f); ",
+	                     0.30480*s, 17.20*s+xo, -1.75*s+yo, 17.50*s+xo, -3.00*s+yo, 
+						            18.00*s+xo, -1.75*s+yo, 18.50*s+xo, -3.00*s+yo, 
+									18.80*s+xo, -1.75*s+yo);
+      cmd += sub_cmd;
+      // e
+      sprintf (sub_cmd, "WIRE  %f (%f %f) (%f %f) (%f %f) +180 (%f %f) (%f %f) (%f %f) +85.3557 (%f %f) (%f %f); ",
+	                     0.30480*s, 19.30*s+xo, -2.40*s+yo, 20.20*s+xo, -2.40*s+yo, 
+						            20.20*s+xo, -2.20*s+yo, 19.30*s+xo, -2.20*s+yo, 
+						            19.30*s+xo, -2.40*s+yo, 19.30*s+xo, -2.80*s+yo, 
+									19.60*s+xo, -3.00*s+yo, 20.20*s+xo, -3.00*s+yo);
+	  cmd += sub_cmd;
+      // i
+	  sprintf (sub_cmd, "WIRE  %f (%f %f) (%f %f); ",
+	                     0.30480*s, 20.80*s+xo, -3.00*s+yo, 20.80*s+xo, -1.80*s+yo);
+      cmd += sub_cmd;
+      sprintf (sub_cmd, "WIRE  %f (%f %f) (%f %f); ",
+	                     0.30480*s, 20.80*s+xo, -1.450*s+yo, 20.80*s+xo, -1.30*s+yo);
+      cmd += sub_cmd;
+      // l
+      sprintf (sub_cmd, "WIRE  %f (%f %f) (%f %f); ",
+	                     0.3048*s, 21.5*s+xo, -1.3*s+yo, 21.5*s+xo, -3.0*s+yo);
+      cmd += sub_cmd;
+
+      cmd += "Grid inch; ";
+      cmd += "Edit ; " ;
+ 
+    exit(cmd);
+  }
+} else
+    dlgMessageBox("HTL_Create_Logo.ulp arbeitet nur im BOARD!", "&OK");
+

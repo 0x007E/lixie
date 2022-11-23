@@ -1,0 +1,1316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE eagle SYSTEM "eagle.dtd">
+<eagle version="7.5.0">
+<drawing>
+<settings>
+<setting alwaysvectorfont="no"/>
+<setting verticaltext="up"/>
+</settings>
+<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
+<layers>
+<layer number="1" name="Top" color="4" fill="1" visible="no" active="yes"/>
+<layer number="2" name="Route2" color="1" fill="3" visible="no" active="yes"/>
+<layer number="3" name="Route3" color="4" fill="3" visible="no" active="yes"/>
+<layer number="4" name="Route4" color="1" fill="4" visible="no" active="yes"/>
+<layer number="5" name="Route5" color="4" fill="4" visible="no" active="yes"/>
+<layer number="6" name="Route6" color="1" fill="8" visible="no" active="yes"/>
+<layer number="7" name="Route7" color="4" fill="8" visible="no" active="yes"/>
+<layer number="8" name="Route8" color="1" fill="2" visible="no" active="yes"/>
+<layer number="9" name="Route9" color="4" fill="2" visible="no" active="yes"/>
+<layer number="10" name="Route10" color="1" fill="7" visible="no" active="yes"/>
+<layer number="11" name="Route11" color="4" fill="7" visible="no" active="yes"/>
+<layer number="12" name="Route12" color="1" fill="5" visible="no" active="yes"/>
+<layer number="13" name="Route13" color="4" fill="5" visible="no" active="yes"/>
+<layer number="14" name="Route14" color="1" fill="6" visible="no" active="yes"/>
+<layer number="15" name="Route15" color="4" fill="6" visible="no" active="yes"/>
+<layer number="16" name="Bottom" color="1" fill="1" visible="no" active="yes"/>
+<layer number="17" name="Pads" color="2" fill="1" visible="no" active="yes"/>
+<layer number="18" name="Vias" color="2" fill="1" visible="no" active="yes"/>
+<layer number="19" name="Unrouted" color="6" fill="1" visible="no" active="yes"/>
+<layer number="20" name="Dimension" color="15" fill="1" visible="no" active="yes"/>
+<layer number="21" name="tPlace" color="7" fill="1" visible="no" active="yes"/>
+<layer number="22" name="bPlace" color="7" fill="1" visible="no" active="yes"/>
+<layer number="23" name="tOrigins" color="15" fill="1" visible="no" active="yes"/>
+<layer number="24" name="bOrigins" color="15" fill="1" visible="no" active="yes"/>
+<layer number="25" name="tNames" color="7" fill="1" visible="no" active="yes"/>
+<layer number="26" name="bNames" color="7" fill="1" visible="no" active="yes"/>
+<layer number="27" name="tValues" color="7" fill="1" visible="no" active="yes"/>
+<layer number="28" name="bValues" color="7" fill="1" visible="no" active="yes"/>
+<layer number="29" name="tStop" color="7" fill="3" visible="no" active="yes"/>
+<layer number="30" name="bStop" color="7" fill="6" visible="no" active="yes"/>
+<layer number="31" name="tCream" color="7" fill="4" visible="no" active="yes"/>
+<layer number="32" name="bCream" color="7" fill="5" visible="no" active="yes"/>
+<layer number="33" name="tFinish" color="6" fill="3" visible="no" active="yes"/>
+<layer number="34" name="bFinish" color="6" fill="6" visible="no" active="yes"/>
+<layer number="35" name="tGlue" color="7" fill="4" visible="no" active="yes"/>
+<layer number="36" name="bGlue" color="7" fill="5" visible="no" active="yes"/>
+<layer number="37" name="tTest" color="7" fill="1" visible="no" active="yes"/>
+<layer number="38" name="bTest" color="7" fill="1" visible="no" active="yes"/>
+<layer number="39" name="tKeepout" color="4" fill="11" visible="no" active="yes"/>
+<layer number="40" name="bKeepout" color="1" fill="11" visible="no" active="yes"/>
+<layer number="41" name="tRestrict" color="4" fill="10" visible="no" active="yes"/>
+<layer number="42" name="bRestrict" color="1" fill="10" visible="no" active="yes"/>
+<layer number="43" name="vRestrict" color="2" fill="10" visible="no" active="yes"/>
+<layer number="44" name="Drills" color="7" fill="1" visible="no" active="yes"/>
+<layer number="45" name="Holes" color="7" fill="1" visible="no" active="yes"/>
+<layer number="46" name="Milling" color="3" fill="1" visible="no" active="yes"/>
+<layer number="47" name="Measures" color="7" fill="1" visible="no" active="yes"/>
+<layer number="48" name="Document" color="7" fill="1" visible="no" active="yes"/>
+<layer number="49" name="Reference" color="7" fill="1" visible="no" active="yes"/>
+<layer number="51" name="tDocu" color="7" fill="1" visible="no" active="yes"/>
+<layer number="52" name="bDocu" color="7" fill="1" visible="no" active="yes"/>
+<layer number="90" name="Modules" color="5" fill="1" visible="no" active="no"/>
+<layer number="91" name="Nets" color="2" fill="1" visible="yes" active="yes"/>
+<layer number="92" name="Busses" color="1" fill="1" visible="yes" active="yes"/>
+<layer number="93" name="Pins" color="2" fill="1" visible="yes" active="yes"/>
+<layer number="94" name="Symbols" color="4" fill="1" visible="yes" active="yes"/>
+<layer number="95" name="Names" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="96" name="Values" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="97" name="Info" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="98" name="Guide" color="6" fill="1" visible="yes" active="yes"/>
+<layer number="100" name="frame" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="101" name="tframe" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="102" name="bframe" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="143" name="tDrill" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="144" name="bDrill" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="200" name="200bmp" color="1" fill="10" visible="no" active="no"/>
+<layer number="201" name="201bmp" color="2" fill="10" visible="no" active="no"/>
+</layers>
+<library>
+<description>HTL Rankweil&lt;br&gt;&lt;br&gt;
+Rahmen für die Zeichenblätter (neues Logo)</description>
+<packages>
+<package name="HTL-A3-H">
+<description>Arbeitsblatt der HTL Rankweil für Boards DIN-A3 Landscape</description>
+<wire x1="389.89" y1="0" x2="389.89" y2="5.08" width="0.4064" layer="101"/>
+<wire x1="389.89" y1="5.08" x2="389.89" y2="10.16" width="0.4064" layer="101"/>
+<wire x1="389.89" y1="10.16" x2="389.89" y2="20.32" width="0.4064" layer="101"/>
+<wire x1="389.89" y1="20.32" x2="389.89" y2="25.4" width="0.4064" layer="101"/>
+<wire x1="389.89" y1="25.4" x2="389.89" y2="256.54" width="0.4064" layer="101"/>
+<wire x1="389.89" y1="256.54" x2="0" y2="256.54" width="0.4064" layer="101"/>
+<wire x1="0" y1="256.54" x2="0" y2="0" width="0.4064" layer="101"/>
+<wire x1="0" y1="0" x2="208.28" y2="0" width="0.4064" layer="101"/>
+<wire x1="208.28" y1="0" x2="255.27" y2="0" width="0.4064" layer="101"/>
+<wire x1="255.27" y1="0" x2="351.79" y2="0" width="0.4064" layer="101"/>
+<wire x1="351.79" y1="0" x2="389.89" y2="0" width="0.4064" layer="101"/>
+<wire x1="208.28" y1="25.4" x2="255.27" y2="25.4" width="0.127" layer="101"/>
+<wire x1="255.27" y1="25.4" x2="389.89" y2="25.4" width="0.127" layer="101"/>
+<wire x1="255.27" y1="25.4" x2="255.27" y2="20.32" width="0.127" layer="101"/>
+<wire x1="255.27" y1="20.32" x2="255.27" y2="10.16" width="0.127" layer="101"/>
+<wire x1="255.27" y1="10.16" x2="255.27" y2="5.08" width="0.127" layer="101"/>
+<wire x1="255.27" y1="5.08" x2="255.27" y2="0" width="0.127" layer="101"/>
+<wire x1="255.27" y1="5.08" x2="389.89" y2="5.08" width="0.127" layer="101"/>
+<wire x1="255.27" y1="10.16" x2="270.51" y2="10.16" width="0.127" layer="101"/>
+<wire x1="270.51" y1="10.16" x2="351.79" y2="10.16" width="0.127" layer="101"/>
+<wire x1="351.79" y1="10.16" x2="389.89" y2="10.16" width="0.127" layer="101"/>
+<wire x1="255.27" y1="20.32" x2="270.51" y2="20.32" width="0.127" layer="101"/>
+<wire x1="270.51" y1="20.32" x2="389.89" y2="20.32" width="0.127" layer="101"/>
+<wire x1="270.51" y1="20.32" x2="270.51" y2="10.16" width="0.127" layer="101"/>
+<wire x1="351.79" y1="10.16" x2="351.79" y2="0" width="0.127" layer="101"/>
+<wire x1="389.89" y1="0" x2="180.34" y2="0" width="0.4064" layer="102"/>
+<wire x1="180.34" y1="0" x2="134.62" y2="0" width="0.4064" layer="102"/>
+<wire x1="134.62" y1="0" x2="38.1" y2="0" width="0.4064" layer="102"/>
+<wire x1="38.1" y1="0" x2="0" y2="0" width="0.4064" layer="102"/>
+<wire x1="0" y1="0" x2="0" y2="5.08" width="0.4064" layer="102"/>
+<wire x1="0" y1="5.08" x2="0" y2="10.16" width="0.4064" layer="102"/>
+<wire x1="0" y1="10.16" x2="0" y2="20.32" width="0.4064" layer="102"/>
+<wire x1="0" y1="20.32" x2="0" y2="25.4" width="0.4064" layer="102"/>
+<wire x1="0" y1="25.4" x2="134.62" y2="25.4" width="0.127" layer="102"/>
+<wire x1="134.62" y1="25.4" x2="180.34" y2="25.4" width="0.127" layer="102"/>
+<wire x1="134.62" y1="25.4" x2="134.62" y2="20.32" width="0.127" layer="102"/>
+<wire x1="134.62" y1="20.32" x2="134.62" y2="10.16" width="0.127" layer="102"/>
+<wire x1="134.62" y1="10.16" x2="134.62" y2="5.08" width="0.127" layer="102"/>
+<wire x1="134.62" y1="5.08" x2="134.62" y2="0" width="0.127" layer="102"/>
+<wire x1="134.62" y1="5.08" x2="0" y2="5.08" width="0.127" layer="102"/>
+<wire x1="134.62" y1="10.16" x2="119.38" y2="10.16" width="0.127" layer="102"/>
+<wire x1="119.38" y1="10.16" x2="38.1" y2="10.16" width="0.127" layer="102"/>
+<wire x1="38.1" y1="10.16" x2="0" y2="10.16" width="0.127" layer="102"/>
+<wire x1="134.62" y1="20.32" x2="119.38" y2="20.32" width="0.127" layer="102"/>
+<wire x1="119.38" y1="20.32" x2="0" y2="20.32" width="0.127" layer="102"/>
+<wire x1="38.1" y1="10.16" x2="38.1" y2="0" width="0.127" layer="102"/>
+<wire x1="119.38" y1="20.32" x2="119.38" y2="10.16" width="0.127" layer="102"/>
+<wire x1="180.34" y1="25.4" x2="180.34" y2="0" width="0.127" layer="102"/>
+<wire x1="208.28" y1="25.4" x2="208.28" y2="0" width="0.127" layer="101"/>
+<wire x1="0" y1="256.54" x2="0" y2="25.4" width="0.4064" layer="102"/>
+<wire x1="389.89" y1="256.54" x2="0" y2="256.54" width="0.4064" layer="102"/>
+<wire x1="389.89" y1="0" x2="389.89" y2="256.54" width="0.4064" layer="102"/>
+<text x="257.81" y="1.27" size="2.54" layer="101" font="vector">Date:</text>
+<text x="273.05" y="1.27" size="2.54" layer="101" font="vector">&gt;LAST_DATE_TIME</text>
+<text x="354.33" y="1.27" size="2.54" layer="101" font="vector">Sheet: 1/1</text>
+<text x="257.81" y="21.59" size="2.54" layer="101" font="vector">TITLE:</text>
+<text x="273.05" y="21.59" size="2.54" layer="101" font="vector">&gt;DRAWING_NAME</text>
+<text x="257.81" y="6.35" size="2.54" layer="101" font="vector">Name:</text>
+<text x="354.33" y="6.35" size="2.54" layer="101" font="vector">REV:</text>
+<text x="259.08" y="12.7" size="5.08" layer="101" font="vector">A3</text>
+<text x="132.08" y="21.59" size="2.54" layer="102" font="vector" rot="MR0">TITLE: </text>
+<text x="132.08" y="6.35" size="2.54" layer="102" font="vector" rot="MR0">Name:</text>
+<text x="132.08" y="1.27" size="2.54" layer="102" font="vector" rot="MR0">Date:</text>
+<text x="35.56" y="6.35" size="2.54" layer="102" font="vector" rot="MR0">REV:</text>
+<text x="35.56" y="1.27" size="2.54" layer="102" font="vector" rot="MR0">Sheet: 1/1</text>
+<text x="130.81" y="12.7" size="5.08" layer="102" font="vector" rot="MR0">A3</text>
+<text x="116.84" y="21.59" size="2.54" layer="102" font="vector" rot="MR0">&gt;DRAWING_NAME</text>
+<text x="116.84" y="1.27" size="2.54" layer="102" font="vector" rot="MR0">&gt;LAST_DATE_TIME</text>
+<text x="116.84" y="12.7" size="5.08" layer="102" font="vector" rot="MR0">&gt;BRD_SHEET_NAME</text>
+<text x="273.05" y="12.7" size="5.08" layer="101" font="vector">&gt;BRD_SHEET_NAME</text>
+<text x="116.84" y="6.35" size="2.54" layer="102" font="vector" rot="MR0">&gt;USER_NAME</text>
+<text x="273.05" y="6.35" size="2.54" layer="101" font="vector">&gt;USER_NAME</text>
+<text x="388.62" y="24.13" size="2.54" layer="101" font="vector" rot="R180">&gt;PROJEKT_NAME</text>
+<text x="1.27" y="24.13" size="2.54" layer="102" font="vector" rot="MR180">&gt;PROJEKT_NAME</text>
+<text x="25.4" y="6.35" size="2.54" layer="102" font="vector" rot="MR0">&gt;REVISION</text>
+<text x="364.49" y="6.35" size="2.54" layer="101" font="vector">&gt;REVISION</text>
+<rectangle x1="214.63" y1="16.0335" x2="216.985" y2="19.88" layer="101"/>
+<rectangle x1="214.63" y1="13.2075" x2="222.48" y2="15.5625" layer="101"/>
+<rectangle x1="214.63" y1="8.89" x2="216.985" y2="12.7365" layer="101"/>
+<rectangle x1="222.951" y1="8.89" x2="225.306" y2="19.88" layer="101"/>
+<rectangle x1="227.347" y1="17.525" x2="231.586" y2="19.88" layer="101"/>
+<rectangle x1="231.586" y1="8.89" x2="233.941" y2="19.88" layer="101"/>
+<rectangle x1="234.412" y1="17.525" x2="238.18" y2="19.88" layer="101"/>
+<rectangle x1="240.221" y1="8.89" x2="242.576" y2="19.88" layer="101"/>
+<rectangle x1="243.047" y1="8.89" x2="248.542" y2="11.245" layer="101"/>
+<wire x1="231.9" y1="4.18" x2="231.9" y2="5.279" width="0.254" layer="101"/>
+<wire x1="231.9" y1="5.279" x2="231.9" y2="6.849" width="0.254" layer="101"/>
+<wire x1="231.9" y1="6.849" x2="232.999" y2="6.849" width="0.254" layer="101"/>
+<wire x1="232.999" y1="6.849" x2="232.999" y2="5.279" width="0.254" layer="101" curve="-180"/>
+<wire x1="232.999" y1="5.279" x2="231.9" y2="5.279" width="0.254" layer="101"/>
+<wire x1="232.999" y1="5.279" x2="233.784" y2="4.18" width="0.254" layer="101"/>
+<wire x1="235.982" y1="4.18" x2="235.982" y2="4.337" width="0.254" layer="101"/>
+<wire x1="235.982" y1="4.337" x2="235.982" y2="5.122" width="0.254" layer="101"/>
+<wire x1="235.982" y1="5.122" x2="235.982" y2="5.75" width="0.254" layer="101"/>
+<wire x1="235.982" y1="5.75" x2="235.668" y2="6.1425" width="0.254" layer="101" curve="90"/>
+<wire x1="235.668" y1="6.1425" x2="234.726" y2="6.1425" width="0.254" layer="101"/>
+<wire x1="235.982" y1="5.122" x2="235.197" y2="5.122" width="0.254" layer="101"/>
+<wire x1="235.197" y1="5.122" x2="235.197" y2="4.18" width="0.254" layer="101" curve="180"/>
+<wire x1="235.197" y1="4.18" x2="235.982" y2="4.337" width="0.254" layer="101" curve="25"/>
+<wire x1="238.337" y1="4.18" x2="238.337" y2="5.75" width="0.254" layer="101"/>
+<wire x1="237.081" y1="4.18" x2="237.081" y2="5.75" width="0.254" layer="101"/>
+<wire x1="237.081" y1="5.75" x2="237.081" y2="6.1425" width="0.254" layer="101"/>
+<wire x1="238.337" y1="5.75" x2="237.081" y2="5.75" width="0.254" layer="101" curve="140"/>
+<wire x1="239.436" y1="4.18" x2="239.436" y2="6.849" width="0.254" layer="101"/>
+<wire x1="240.849" y1="6.1425" x2="239.907" y2="5.122" width="0.254" layer="101"/>
+<wire x1="240.849" y1="4.18" x2="239.907" y2="5.122" width="0.254" layer="101"/>
+<wire x1="241.634" y1="6.1425" x2="242.105" y2="4.18" width="0.254" layer="101"/>
+<wire x1="242.105" y1="4.18" x2="242.89" y2="6.1425" width="0.254" layer="101"/>
+<wire x1="242.89" y1="6.1425" x2="243.675" y2="4.18" width="0.254" layer="101"/>
+<wire x1="243.675" y1="4.18" x2="244.146" y2="6.1425" width="0.254" layer="101"/>
+<wire x1="247.286" y1="4.18" x2="247.286" y2="6.064" width="0.254" layer="101"/>
+<wire x1="247.286" y1="6.6135" x2="247.286" y2="6.849" width="0.254" layer="101"/>
+<wire x1="244.931" y1="5.122" x2="246.344" y2="5.122" width="0.254" layer="101"/>
+<wire x1="246.344" y1="5.122" x2="246.344" y2="5.436" width="0.254" layer="101"/>
+<wire x1="246.344" y1="5.436" x2="244.931" y2="5.436" width="0.254" layer="101" curve="180"/>
+<wire x1="244.931" y1="5.436" x2="244.931" y2="5.122" width="0.254" layer="101"/>
+<wire x1="244.931" y1="5.122" x2="244.931" y2="4.494" width="0.254" layer="101"/>
+<wire x1="244.931" y1="4.494" x2="245.402" y2="4.18" width="0.254" layer="101" curve="85.3557"/>
+<wire x1="245.402" y1="4.18" x2="246.344" y2="4.18" width="0.254" layer="101"/>
+<wire x1="248.385" y1="6.849" x2="248.385" y2="4.18" width="0.254" layer="101"/>
+<rectangle x1="171.635" y1="16.0335" x2="173.99" y2="19.88" layer="102" rot="R180"/>
+<rectangle x1="166.14" y1="13.2075" x2="173.99" y2="15.5625" layer="102" rot="R180"/>
+<rectangle x1="171.635" y1="8.89" x2="173.99" y2="12.7365" layer="102" rot="R180"/>
+<rectangle x1="163.314" y1="8.89" x2="165.669" y2="19.88" layer="102" rot="R180"/>
+<rectangle x1="157.034" y1="17.525" x2="161.273" y2="19.88" layer="102" rot="R180"/>
+<rectangle x1="154.679" y1="8.89" x2="157.034" y2="19.88" layer="102" rot="R180"/>
+<rectangle x1="150.44" y1="17.525" x2="154.208" y2="19.88" layer="102" rot="R180"/>
+<rectangle x1="146.044" y1="8.89" x2="148.399" y2="19.88" layer="102" rot="R180"/>
+<rectangle x1="140.078" y1="8.89" x2="145.573" y2="11.245" layer="102" rot="R180"/>
+<wire x1="156.72" y1="4.18" x2="156.72" y2="5.279" width="0.254" layer="102"/>
+<wire x1="156.72" y1="5.279" x2="156.72" y2="6.849" width="0.254" layer="102"/>
+<wire x1="156.72" y1="6.849" x2="155.621" y2="6.849" width="0.254" layer="102"/>
+<wire x1="155.621" y1="6.849" x2="155.621" y2="5.279" width="0.254" layer="102" curve="180"/>
+<wire x1="155.621" y1="5.279" x2="156.72" y2="5.279" width="0.254" layer="102"/>
+<wire x1="155.621" y1="5.279" x2="154.836" y2="4.18" width="0.254" layer="102"/>
+<wire x1="152.638" y1="4.18" x2="152.638" y2="4.337" width="0.254" layer="102"/>
+<wire x1="152.638" y1="4.337" x2="152.638" y2="5.122" width="0.254" layer="102"/>
+<wire x1="152.638" y1="5.122" x2="152.638" y2="5.75" width="0.254" layer="102"/>
+<wire x1="152.638" y1="5.75" x2="152.952" y2="6.1425" width="0.254" layer="102" curve="-90"/>
+<wire x1="152.952" y1="6.1425" x2="153.894" y2="6.1425" width="0.254" layer="102"/>
+<wire x1="152.638" y1="5.122" x2="153.423" y2="5.122" width="0.254" layer="102"/>
+<wire x1="153.423" y1="5.122" x2="153.423" y2="4.18" width="0.254" layer="102" curve="-180"/>
+<wire x1="153.423" y1="4.18" x2="152.638" y2="4.337" width="0.254" layer="102" curve="-25"/>
+<wire x1="150.283" y1="4.18" x2="150.283" y2="5.75" width="0.254" layer="102"/>
+<wire x1="151.539" y1="4.18" x2="151.539" y2="5.75" width="0.254" layer="102"/>
+<wire x1="151.539" y1="5.75" x2="151.539" y2="6.1425" width="0.254" layer="102"/>
+<wire x1="150.283" y1="5.75" x2="151.539" y2="5.75" width="0.254" layer="102" curve="-140"/>
+<wire x1="149.184" y1="4.18" x2="149.184" y2="6.849" width="0.254" layer="102"/>
+<wire x1="147.771" y1="6.1425" x2="148.713" y2="5.122" width="0.254" layer="102"/>
+<wire x1="147.771" y1="4.18" x2="148.713" y2="5.122" width="0.254" layer="102"/>
+<wire x1="146.986" y1="6.1425" x2="146.515" y2="4.18" width="0.254" layer="102"/>
+<wire x1="146.515" y1="4.18" x2="145.73" y2="6.1425" width="0.254" layer="102"/>
+<wire x1="145.73" y1="6.1425" x2="144.945" y2="4.18" width="0.254" layer="102"/>
+<wire x1="144.945" y1="4.18" x2="144.474" y2="6.1425" width="0.254" layer="102"/>
+<wire x1="141.334" y1="4.18" x2="141.334" y2="6.064" width="0.254" layer="102"/>
+<wire x1="141.334" y1="6.6135" x2="141.334" y2="6.849" width="0.254" layer="102"/>
+<wire x1="143.689" y1="5.122" x2="142.276" y2="5.122" width="0.254" layer="102"/>
+<wire x1="142.276" y1="5.122" x2="142.276" y2="5.436" width="0.254" layer="102"/>
+<wire x1="142.276" y1="5.436" x2="143.689" y2="5.436" width="0.254" layer="102" curve="-180"/>
+<wire x1="143.689" y1="5.436" x2="143.689" y2="5.122" width="0.254" layer="102"/>
+<wire x1="143.689" y1="5.122" x2="143.689" y2="4.494" width="0.254" layer="102"/>
+<wire x1="143.689" y1="4.494" x2="143.218" y2="4.18" width="0.254" layer="102" curve="-85.3557"/>
+<wire x1="143.218" y1="4.18" x2="142.276" y2="4.18" width="0.254" layer="102"/>
+<wire x1="140.235" y1="6.849" x2="140.235" y2="4.18" width="0.254" layer="102"/>
+</package>
+<package name="HTL-A3-V">
+<description>Arbeitsblatt der HTL Rankweil für Boards DIN-A3 Portrait</description>
+<wire x1="269.24" y1="0" x2="269.24" y2="5.08" width="0.4064" layer="101"/>
+<wire x1="269.24" y1="5.08" x2="269.24" y2="10.16" width="0.4064" layer="101"/>
+<wire x1="269.24" y1="10.16" x2="269.24" y2="20.32" width="0.4064" layer="101"/>
+<wire x1="269.24" y1="20.32" x2="269.24" y2="25.4" width="0.4064" layer="101"/>
+<wire x1="269.24" y1="25.4" x2="269.24" y2="389.89" width="0.4064" layer="101"/>
+<wire x1="269.24" y1="389.89" x2="0" y2="389.89" width="0.4064" layer="101"/>
+<wire x1="0" y1="389.89" x2="0" y2="0" width="0.4064" layer="101"/>
+<wire x1="0" y1="0" x2="87.63" y2="0" width="0.4064" layer="101"/>
+<wire x1="87.63" y1="0" x2="134.62" y2="0" width="0.4064" layer="101"/>
+<wire x1="134.62" y1="0" x2="231.14" y2="0" width="0.4064" layer="101"/>
+<wire x1="231.14" y1="0" x2="269.24" y2="0" width="0.4064" layer="101"/>
+<wire x1="87.63" y1="25.4" x2="134.62" y2="25.4" width="0.127" layer="101"/>
+<wire x1="134.62" y1="25.4" x2="269.24" y2="25.4" width="0.127" layer="101"/>
+<wire x1="134.62" y1="25.4" x2="134.62" y2="20.32" width="0.127" layer="101"/>
+<wire x1="134.62" y1="20.32" x2="134.62" y2="10.16" width="0.127" layer="101"/>
+<wire x1="134.62" y1="10.16" x2="134.62" y2="5.08" width="0.127" layer="101"/>
+<wire x1="134.62" y1="5.08" x2="134.62" y2="0" width="0.127" layer="101"/>
+<wire x1="134.62" y1="5.08" x2="269.24" y2="5.08" width="0.127" layer="101"/>
+<wire x1="134.62" y1="10.16" x2="149.86" y2="10.16" width="0.127" layer="101"/>
+<wire x1="149.86" y1="10.16" x2="231.14" y2="10.16" width="0.127" layer="101"/>
+<wire x1="231.14" y1="10.16" x2="269.24" y2="10.16" width="0.127" layer="101"/>
+<wire x1="134.62" y1="20.32" x2="149.86" y2="20.32" width="0.127" layer="101"/>
+<wire x1="149.86" y1="20.32" x2="269.24" y2="20.32" width="0.127" layer="101"/>
+<wire x1="149.86" y1="20.32" x2="149.86" y2="10.16" width="0.127" layer="101"/>
+<wire x1="231.14" y1="10.16" x2="231.14" y2="0" width="0.127" layer="101"/>
+<wire x1="269.24" y1="0" x2="180.34" y2="0" width="0.4064" layer="102"/>
+<wire x1="180.34" y1="0" x2="134.62" y2="0" width="0.4064" layer="102"/>
+<wire x1="134.62" y1="0" x2="38.1" y2="0" width="0.4064" layer="102"/>
+<wire x1="38.1" y1="0" x2="0" y2="0" width="0.4064" layer="102"/>
+<wire x1="0" y1="0" x2="0" y2="5.08" width="0.4064" layer="102"/>
+<wire x1="0" y1="5.08" x2="0" y2="10.16" width="0.4064" layer="102"/>
+<wire x1="0" y1="10.16" x2="0" y2="20.32" width="0.4064" layer="102"/>
+<wire x1="0" y1="20.32" x2="0" y2="25.4" width="0.4064" layer="102"/>
+<wire x1="0" y1="25.4" x2="134.62" y2="25.4" width="0.127" layer="102"/>
+<wire x1="134.62" y1="25.4" x2="180.34" y2="25.4" width="0.127" layer="102"/>
+<wire x1="134.62" y1="25.4" x2="134.62" y2="20.32" width="0.127" layer="102"/>
+<wire x1="134.62" y1="20.32" x2="134.62" y2="10.16" width="0.127" layer="102"/>
+<wire x1="134.62" y1="10.16" x2="134.62" y2="5.08" width="0.127" layer="102"/>
+<wire x1="134.62" y1="5.08" x2="134.62" y2="0" width="0.127" layer="102"/>
+<wire x1="134.62" y1="5.08" x2="0" y2="5.08" width="0.127" layer="102"/>
+<wire x1="134.62" y1="10.16" x2="119.38" y2="10.16" width="0.127" layer="102"/>
+<wire x1="119.38" y1="10.16" x2="38.1" y2="10.16" width="0.127" layer="102"/>
+<wire x1="38.1" y1="10.16" x2="0" y2="10.16" width="0.127" layer="102"/>
+<wire x1="134.62" y1="20.32" x2="119.38" y2="20.32" width="0.127" layer="102"/>
+<wire x1="119.38" y1="20.32" x2="0" y2="20.32" width="0.127" layer="102"/>
+<wire x1="38.1" y1="10.16" x2="38.1" y2="0" width="0.127" layer="102"/>
+<wire x1="119.38" y1="20.32" x2="119.38" y2="10.16" width="0.127" layer="102"/>
+<wire x1="180.34" y1="25.4" x2="180.34" y2="0" width="0.127" layer="102"/>
+<wire x1="87.63" y1="25.4" x2="87.63" y2="0" width="0.127" layer="101"/>
+<wire x1="0" y1="389.89" x2="0" y2="25.4" width="0.4064" layer="102"/>
+<wire x1="269.24" y1="389.89" x2="0" y2="389.89" width="0.4064" layer="102"/>
+<wire x1="269.24" y1="0" x2="269.24" y2="389.89" width="0.4064" layer="102"/>
+<text x="137.16" y="1.27" size="2.54" layer="101" font="vector">Date:</text>
+<text x="152.4" y="1.27" size="2.54" layer="101" font="vector">&gt;LAST_DATE_TIME</text>
+<text x="233.68" y="1.27" size="2.54" layer="101" font="vector">Sheet: 1/1</text>
+<text x="137.16" y="21.59" size="2.54" layer="101" font="vector">TITLE:</text>
+<text x="152.4" y="21.59" size="2.54" layer="101" font="vector">&gt;DRAWING_NAME</text>
+<text x="137.16" y="6.35" size="2.54" layer="101" font="vector">Name:</text>
+<text x="233.68" y="6.35" size="2.54" layer="101" font="vector">REV:</text>
+<text x="138.43" y="12.7" size="5.08" layer="101" font="vector">A3</text>
+<text x="132.08" y="21.59" size="2.54" layer="102" font="vector" rot="MR0">TITLE: </text>
+<text x="132.08" y="6.35" size="2.54" layer="102" font="vector" rot="MR0">Name:</text>
+<text x="132.08" y="1.27" size="2.54" layer="102" font="vector" rot="MR0">Date:</text>
+<text x="35.56" y="6.35" size="2.54" layer="102" font="vector" rot="MR0">REV:</text>
+<text x="35.56" y="1.27" size="2.54" layer="102" font="vector" rot="MR0">Sheet: 1/1</text>
+<text x="130.81" y="12.7" size="5.08" layer="102" font="vector" rot="MR0">A3</text>
+<text x="115.57" y="21.59" size="2.54" layer="102" font="vector" rot="MR0">&gt;DRAWING_NAME</text>
+<text x="116.84" y="1.27" size="2.54" layer="102" font="vector" rot="MR0">&gt;LAST_DATE_TIME</text>
+<text x="152.4" y="12.7" size="5.08" layer="101" font="vector">&gt;BRD_SHEET_NAME</text>
+<text x="116.84" y="12.7" size="5.08" layer="102" font="vector" rot="MR0">&gt;BRD_SHEET_NAME</text>
+<text x="152.4" y="6.35" size="2.54" layer="101" font="vector">&gt;USER_NAME</text>
+<text x="116.84" y="6.35" size="2.54" layer="102" font="vector" rot="MR0">&gt;USER_NAME</text>
+<text x="1.27" y="24.13" size="2.54" layer="102" font="vector" rot="MR180">&gt;PROJEKT_NAME</text>
+<text x="267.97" y="24.13" size="2.54" layer="101" font="vector" rot="R180">&gt;PROJEKT_NAME</text>
+<text x="25.4" y="6.35" size="2.54" layer="102" font="vector" rot="MR0">&gt;REVISION</text>
+<text x="243.84" y="6.35" size="2.54" layer="101" font="vector">&gt;REVISION</text>
+<rectangle x1="93.98" y1="16.0335" x2="96.335" y2="19.88" layer="101"/>
+<rectangle x1="93.98" y1="13.2075" x2="101.83" y2="15.5625" layer="101"/>
+<rectangle x1="93.98" y1="8.89" x2="96.335" y2="12.7365" layer="101"/>
+<rectangle x1="102.301" y1="8.89" x2="104.656" y2="19.88" layer="101"/>
+<rectangle x1="106.697" y1="17.525" x2="110.936" y2="19.88" layer="101"/>
+<rectangle x1="110.936" y1="8.89" x2="113.291" y2="19.88" layer="101"/>
+<rectangle x1="113.762" y1="17.525" x2="117.53" y2="19.88" layer="101"/>
+<rectangle x1="119.571" y1="8.89" x2="121.926" y2="19.88" layer="101"/>
+<rectangle x1="122.397" y1="8.89" x2="127.892" y2="11.245" layer="101"/>
+<wire x1="111.25" y1="4.18" x2="111.25" y2="5.279" width="0.254" layer="101"/>
+<wire x1="111.25" y1="5.279" x2="111.25" y2="6.849" width="0.254" layer="101"/>
+<wire x1="111.25" y1="6.849" x2="112.349" y2="6.849" width="0.254" layer="101"/>
+<wire x1="112.349" y1="6.849" x2="112.349" y2="5.279" width="0.254" layer="101" curve="-180"/>
+<wire x1="112.349" y1="5.279" x2="111.25" y2="5.279" width="0.254" layer="101"/>
+<wire x1="112.349" y1="5.279" x2="113.134" y2="4.18" width="0.254" layer="101"/>
+<wire x1="115.332" y1="4.18" x2="115.332" y2="4.337" width="0.254" layer="101"/>
+<wire x1="115.332" y1="4.337" x2="115.332" y2="5.122" width="0.254" layer="101"/>
+<wire x1="115.332" y1="5.122" x2="115.332" y2="5.75" width="0.254" layer="101"/>
+<wire x1="115.332" y1="5.75" x2="115.018" y2="6.1425" width="0.254" layer="101" curve="90"/>
+<wire x1="115.018" y1="6.1425" x2="114.076" y2="6.1425" width="0.254" layer="101"/>
+<wire x1="115.332" y1="5.122" x2="114.547" y2="5.122" width="0.254" layer="101"/>
+<wire x1="114.547" y1="5.122" x2="114.547" y2="4.18" width="0.254" layer="101" curve="180"/>
+<wire x1="114.547" y1="4.18" x2="115.332" y2="4.337" width="0.254" layer="101" curve="25"/>
+<wire x1="117.687" y1="4.18" x2="117.687" y2="5.75" width="0.254" layer="101"/>
+<wire x1="116.431" y1="4.18" x2="116.431" y2="5.75" width="0.254" layer="101"/>
+<wire x1="116.431" y1="5.75" x2="116.431" y2="6.1425" width="0.254" layer="101"/>
+<wire x1="117.687" y1="5.75" x2="116.431" y2="5.75" width="0.254" layer="101" curve="140"/>
+<wire x1="118.786" y1="4.18" x2="118.786" y2="6.849" width="0.254" layer="101"/>
+<wire x1="120.199" y1="6.1425" x2="119.257" y2="5.122" width="0.254" layer="101"/>
+<wire x1="120.199" y1="4.18" x2="119.257" y2="5.122" width="0.254" layer="101"/>
+<wire x1="120.984" y1="6.1425" x2="121.455" y2="4.18" width="0.254" layer="101"/>
+<wire x1="121.455" y1="4.18" x2="122.24" y2="6.1425" width="0.254" layer="101"/>
+<wire x1="122.24" y1="6.1425" x2="123.025" y2="4.18" width="0.254" layer="101"/>
+<wire x1="123.025" y1="4.18" x2="123.496" y2="6.1425" width="0.254" layer="101"/>
+<wire x1="126.636" y1="4.18" x2="126.636" y2="6.064" width="0.254" layer="101"/>
+<wire x1="126.636" y1="6.6135" x2="126.636" y2="6.849" width="0.254" layer="101"/>
+<wire x1="124.281" y1="5.122" x2="125.694" y2="5.122" width="0.254" layer="101"/>
+<wire x1="125.694" y1="5.122" x2="125.694" y2="5.436" width="0.254" layer="101"/>
+<wire x1="125.694" y1="5.436" x2="124.281" y2="5.436" width="0.254" layer="101" curve="180"/>
+<wire x1="124.281" y1="5.436" x2="124.281" y2="5.122" width="0.254" layer="101"/>
+<wire x1="124.281" y1="5.122" x2="124.281" y2="4.494" width="0.254" layer="101"/>
+<wire x1="124.281" y1="4.494" x2="124.752" y2="4.18" width="0.254" layer="101" curve="85.3557"/>
+<wire x1="124.752" y1="4.18" x2="125.694" y2="4.18" width="0.254" layer="101"/>
+<wire x1="127.735" y1="6.849" x2="127.735" y2="4.18" width="0.254" layer="101"/>
+<rectangle x1="171.635" y1="16.0335" x2="173.99" y2="19.88" layer="102" rot="R180"/>
+<rectangle x1="166.14" y1="13.2075" x2="173.99" y2="15.5625" layer="102" rot="R180"/>
+<rectangle x1="171.635" y1="8.89" x2="173.99" y2="12.7365" layer="102" rot="R180"/>
+<rectangle x1="163.314" y1="8.89" x2="165.669" y2="19.88" layer="102" rot="R180"/>
+<rectangle x1="157.034" y1="17.525" x2="161.273" y2="19.88" layer="102" rot="R180"/>
+<rectangle x1="154.679" y1="8.89" x2="157.034" y2="19.88" layer="102" rot="R180"/>
+<rectangle x1="150.44" y1="17.525" x2="154.208" y2="19.88" layer="102" rot="R180"/>
+<rectangle x1="146.044" y1="8.89" x2="148.399" y2="19.88" layer="102" rot="R180"/>
+<rectangle x1="140.078" y1="8.89" x2="145.573" y2="11.245" layer="102" rot="R180"/>
+<wire x1="156.72" y1="4.18" x2="156.72" y2="5.279" width="0.254" layer="102"/>
+<wire x1="156.72" y1="5.279" x2="156.72" y2="6.849" width="0.254" layer="102"/>
+<wire x1="156.72" y1="6.849" x2="155.621" y2="6.849" width="0.254" layer="102"/>
+<wire x1="155.621" y1="6.849" x2="155.621" y2="5.279" width="0.254" layer="102" curve="180"/>
+<wire x1="155.621" y1="5.279" x2="156.72" y2="5.279" width="0.254" layer="102"/>
+<wire x1="155.621" y1="5.279" x2="154.836" y2="4.18" width="0.254" layer="102"/>
+<wire x1="152.638" y1="4.18" x2="152.638" y2="4.337" width="0.254" layer="102"/>
+<wire x1="152.638" y1="4.337" x2="152.638" y2="5.122" width="0.254" layer="102"/>
+<wire x1="152.638" y1="5.122" x2="152.638" y2="5.75" width="0.254" layer="102"/>
+<wire x1="152.638" y1="5.75" x2="152.952" y2="6.1425" width="0.254" layer="102" curve="-90"/>
+<wire x1="152.952" y1="6.1425" x2="153.894" y2="6.1425" width="0.254" layer="102"/>
+<wire x1="152.638" y1="5.122" x2="153.423" y2="5.122" width="0.254" layer="102"/>
+<wire x1="153.423" y1="5.122" x2="153.423" y2="4.18" width="0.254" layer="102" curve="-180"/>
+<wire x1="153.423" y1="4.18" x2="152.638" y2="4.337" width="0.254" layer="102" curve="-25"/>
+<wire x1="150.283" y1="4.18" x2="150.283" y2="5.75" width="0.254" layer="102"/>
+<wire x1="151.539" y1="4.18" x2="151.539" y2="5.75" width="0.254" layer="102"/>
+<wire x1="151.539" y1="5.75" x2="151.539" y2="6.1425" width="0.254" layer="102"/>
+<wire x1="150.283" y1="5.75" x2="151.539" y2="5.75" width="0.254" layer="102" curve="-140"/>
+<wire x1="149.184" y1="4.18" x2="149.184" y2="6.849" width="0.254" layer="102"/>
+<wire x1="147.771" y1="6.1425" x2="148.713" y2="5.122" width="0.254" layer="102"/>
+<wire x1="147.771" y1="4.18" x2="148.713" y2="5.122" width="0.254" layer="102"/>
+<wire x1="146.986" y1="6.1425" x2="146.515" y2="4.18" width="0.254" layer="102"/>
+<wire x1="146.515" y1="4.18" x2="145.73" y2="6.1425" width="0.254" layer="102"/>
+<wire x1="145.73" y1="6.1425" x2="144.945" y2="4.18" width="0.254" layer="102"/>
+<wire x1="144.945" y1="4.18" x2="144.474" y2="6.1425" width="0.254" layer="102"/>
+<wire x1="141.334" y1="4.18" x2="141.334" y2="6.064" width="0.254" layer="102"/>
+<wire x1="141.334" y1="6.6135" x2="141.334" y2="6.849" width="0.254" layer="102"/>
+<wire x1="143.689" y1="5.122" x2="142.276" y2="5.122" width="0.254" layer="102"/>
+<wire x1="142.276" y1="5.122" x2="142.276" y2="5.436" width="0.254" layer="102"/>
+<wire x1="142.276" y1="5.436" x2="143.689" y2="5.436" width="0.254" layer="102" curve="-180"/>
+<wire x1="143.689" y1="5.436" x2="143.689" y2="5.122" width="0.254" layer="102"/>
+<wire x1="143.689" y1="5.122" x2="143.689" y2="4.494" width="0.254" layer="102"/>
+<wire x1="143.689" y1="4.494" x2="143.218" y2="4.18" width="0.254" layer="102" curve="-85.3557"/>
+<wire x1="143.218" y1="4.18" x2="142.276" y2="4.18" width="0.254" layer="102"/>
+<wire x1="140.235" y1="6.849" x2="140.235" y2="4.18" width="0.254" layer="102"/>
+</package>
+<package name="HTL-A4-H">
+<description>Arbeitsblatt der HTL Rankweil für Boards DIN-A4 Landscape</description>
+<wire x1="269.24" y1="0" x2="269.24" y2="5.08" width="0.4064" layer="101"/>
+<wire x1="269.24" y1="5.08" x2="269.24" y2="10.16" width="0.4064" layer="101"/>
+<wire x1="269.24" y1="10.16" x2="269.24" y2="20.32" width="0.4064" layer="101"/>
+<wire x1="269.24" y1="20.32" x2="269.24" y2="25.4" width="0.4064" layer="101"/>
+<wire x1="0" y1="0" x2="87.63" y2="0" width="0.4064" layer="101"/>
+<wire x1="87.63" y1="0" x2="134.62" y2="0" width="0.4064" layer="101"/>
+<wire x1="134.62" y1="0" x2="231.14" y2="0" width="0.4064" layer="101"/>
+<wire x1="231.14" y1="0" x2="269.24" y2="0" width="0.4064" layer="101"/>
+<wire x1="87.63" y1="25.4" x2="134.62" y2="25.4" width="0.127" layer="101"/>
+<wire x1="134.62" y1="25.4" x2="269.24" y2="25.4" width="0.127" layer="101"/>
+<wire x1="134.62" y1="25.4" x2="134.62" y2="20.32" width="0.127" layer="101"/>
+<wire x1="134.62" y1="20.32" x2="134.62" y2="10.16" width="0.127" layer="101"/>
+<wire x1="134.62" y1="10.16" x2="134.62" y2="5.08" width="0.127" layer="101"/>
+<wire x1="134.62" y1="5.08" x2="134.62" y2="0" width="0.127" layer="101"/>
+<wire x1="134.62" y1="5.08" x2="269.24" y2="5.08" width="0.127" layer="101"/>
+<wire x1="134.62" y1="10.16" x2="149.86" y2="10.16" width="0.127" layer="101"/>
+<wire x1="149.86" y1="10.16" x2="231.14" y2="10.16" width="0.127" layer="101"/>
+<wire x1="231.14" y1="10.16" x2="269.24" y2="10.16" width="0.127" layer="101"/>
+<wire x1="134.62" y1="20.32" x2="149.86" y2="20.32" width="0.127" layer="101"/>
+<wire x1="149.86" y1="20.32" x2="269.24" y2="20.32" width="0.127" layer="101"/>
+<wire x1="149.86" y1="20.32" x2="149.86" y2="10.16" width="0.127" layer="101"/>
+<wire x1="231.14" y1="10.16" x2="231.14" y2="0" width="0.127" layer="101"/>
+<wire x1="0" y1="180.34" x2="269.24" y2="180.34" width="0.4064" layer="102"/>
+<wire x1="269.24" y1="180.34" x2="269.24" y2="0" width="0.4064" layer="102"/>
+<wire x1="269.24" y1="0" x2="180.34" y2="0" width="0.4064" layer="102"/>
+<wire x1="180.34" y1="0" x2="134.62" y2="0" width="0.4064" layer="102"/>
+<wire x1="134.62" y1="0" x2="38.1" y2="0" width="0.4064" layer="102"/>
+<wire x1="38.1" y1="0" x2="0" y2="0" width="0.4064" layer="102"/>
+<wire x1="0" y1="0" x2="0" y2="5.08" width="0.4064" layer="102"/>
+<wire x1="0" y1="5.08" x2="0" y2="10.16" width="0.4064" layer="102"/>
+<wire x1="0" y1="10.16" x2="0" y2="20.32" width="0.4064" layer="102"/>
+<wire x1="0" y1="20.32" x2="0" y2="25.4" width="0.4064" layer="102"/>
+<wire x1="0" y1="25.4" x2="0" y2="180.34" width="0.4064" layer="102"/>
+<wire x1="0" y1="25.4" x2="134.62" y2="25.4" width="0.127" layer="102"/>
+<wire x1="134.62" y1="25.4" x2="180.34" y2="25.4" width="0.127" layer="102"/>
+<wire x1="134.62" y1="25.4" x2="134.62" y2="20.32" width="0.127" layer="102"/>
+<wire x1="134.62" y1="20.32" x2="134.62" y2="10.16" width="0.127" layer="102"/>
+<wire x1="134.62" y1="10.16" x2="134.62" y2="5.08" width="0.127" layer="102"/>
+<wire x1="134.62" y1="5.08" x2="134.62" y2="0" width="0.127" layer="102"/>
+<wire x1="134.62" y1="5.08" x2="0" y2="5.08" width="0.127" layer="102"/>
+<wire x1="134.62" y1="10.16" x2="119.38" y2="10.16" width="0.127" layer="102"/>
+<wire x1="119.38" y1="10.16" x2="38.1" y2="10.16" width="0.127" layer="102"/>
+<wire x1="38.1" y1="10.16" x2="0" y2="10.16" width="0.127" layer="102"/>
+<wire x1="134.62" y1="20.32" x2="119.38" y2="20.32" width="0.127" layer="102"/>
+<wire x1="119.38" y1="20.32" x2="0" y2="20.32" width="0.127" layer="102"/>
+<wire x1="38.1" y1="10.16" x2="38.1" y2="0" width="0.127" layer="102"/>
+<wire x1="119.38" y1="20.32" x2="119.38" y2="10.16" width="0.127" layer="102"/>
+<wire x1="180.34" y1="25.4" x2="180.34" y2="0" width="0.127" layer="102"/>
+<wire x1="87.63" y1="25.4" x2="87.63" y2="0" width="0.127" layer="101"/>
+<wire x1="0" y1="0" x2="0" y2="180.34" width="0.4064" layer="101"/>
+<wire x1="269.24" y1="25.4" x2="269.24" y2="180.34" width="0.4064" layer="101"/>
+<wire x1="269.24" y1="180.34" x2="0" y2="180.34" width="0.4064" layer="101"/>
+<text x="137.16" y="1.27" size="2.54" layer="101" font="vector">Date:</text>
+<text x="152.4" y="1.27" size="2.54" layer="101" font="vector">&gt;LAST_DATE_TIME</text>
+<text x="233.68" y="1.27" size="2.54" layer="101" font="vector">Sheet: 1/1</text>
+<text x="137.16" y="21.59" size="2.54" layer="101" font="vector">TITLE:</text>
+<text x="152.4" y="21.59" size="2.54" layer="101" font="vector">&gt;DRAWING_NAME</text>
+<text x="137.16" y="6.35" size="2.54" layer="101" font="vector">Name:</text>
+<text x="233.68" y="6.35" size="2.54" layer="101" font="vector">REV:</text>
+<text x="138.43" y="12.7" size="5.08" layer="101" font="vector">A4</text>
+<text x="132.08" y="21.59" size="2.54" layer="102" font="vector" rot="MR0">TITLE: </text>
+<text x="132.08" y="6.35" size="2.54" layer="102" font="vector" rot="MR0">Name:</text>
+<text x="132.08" y="1.27" size="2.54" layer="102" font="vector" rot="MR0">Date:</text>
+<text x="35.56" y="6.35" size="2.54" layer="102" font="vector" rot="MR0">REV:</text>
+<text x="35.56" y="1.27" size="2.54" layer="102" font="vector" rot="MR0">Sheet: 1/1</text>
+<text x="130.81" y="12.7" size="5.08" layer="102" font="vector" rot="MR0">A4</text>
+<text x="115.57" y="21.59" size="2.54" layer="102" font="vector" rot="MR0">&gt;DRAWING_NAME</text>
+<text x="116.84" y="1.27" size="2.54" layer="102" font="vector" rot="MR0">&gt;LAST_DATE_TIME</text>
+<text x="116.84" y="12.7" size="5.08" layer="102" font="vector" rot="MR0">&gt;BRD_SHEET_NAME</text>
+<text x="152.4" y="12.7" size="5.08" layer="101" font="vector">&gt;BRD_SHEET_NAME</text>
+<text x="116.84" y="6.35" size="2.54" layer="102" font="vector" rot="MR0">&gt;USER_NAME</text>
+<text x="152.4" y="6.35" size="2.54" layer="101" font="vector">&gt;USER_NAME</text>
+<text x="267.97" y="24.13" size="2.54" layer="101" font="vector" rot="R180">&gt;PROJEKT_NAME</text>
+<text x="1.27" y="24.13" size="2.54" layer="102" font="vector" rot="MR180">&gt;PROJEKT_NAME</text>
+<text x="25.4" y="6.35" size="2.54" layer="102" font="vector" rot="MR0">&gt;REVISION</text>
+<text x="243.84" y="6.35" size="2.54" layer="101" font="vector">&gt;REVISION</text>
+<rectangle x1="93.98" y1="16.0335" x2="96.335" y2="19.88" layer="101"/>
+<rectangle x1="93.98" y1="13.2075" x2="101.83" y2="15.5625" layer="101"/>
+<rectangle x1="93.98" y1="8.89" x2="96.335" y2="12.7365" layer="101"/>
+<rectangle x1="102.301" y1="8.89" x2="104.656" y2="19.88" layer="101"/>
+<rectangle x1="106.697" y1="17.525" x2="110.936" y2="19.88" layer="101"/>
+<rectangle x1="110.936" y1="8.89" x2="113.291" y2="19.88" layer="101"/>
+<rectangle x1="113.762" y1="17.525" x2="117.53" y2="19.88" layer="101"/>
+<rectangle x1="119.571" y1="8.89" x2="121.926" y2="19.88" layer="101"/>
+<rectangle x1="122.397" y1="8.89" x2="127.892" y2="11.245" layer="101"/>
+<wire x1="111.25" y1="4.18" x2="111.25" y2="5.279" width="0.254" layer="101"/>
+<wire x1="111.25" y1="5.279" x2="111.25" y2="6.849" width="0.254" layer="101"/>
+<wire x1="111.25" y1="6.849" x2="112.349" y2="6.849" width="0.254" layer="101"/>
+<wire x1="112.349" y1="6.849" x2="112.349" y2="5.279" width="0.254" layer="101" curve="-180"/>
+<wire x1="112.349" y1="5.279" x2="111.25" y2="5.279" width="0.254" layer="101"/>
+<wire x1="112.349" y1="5.279" x2="113.134" y2="4.18" width="0.254" layer="101"/>
+<wire x1="115.332" y1="4.18" x2="115.332" y2="4.337" width="0.254" layer="101"/>
+<wire x1="115.332" y1="4.337" x2="115.332" y2="5.122" width="0.254" layer="101"/>
+<wire x1="115.332" y1="5.122" x2="115.332" y2="5.75" width="0.254" layer="101"/>
+<wire x1="115.332" y1="5.75" x2="115.018" y2="6.1425" width="0.254" layer="101" curve="90"/>
+<wire x1="115.018" y1="6.1425" x2="114.076" y2="6.1425" width="0.254" layer="101"/>
+<wire x1="115.332" y1="5.122" x2="114.547" y2="5.122" width="0.254" layer="101"/>
+<wire x1="114.547" y1="5.122" x2="114.547" y2="4.18" width="0.254" layer="101" curve="180"/>
+<wire x1="114.547" y1="4.18" x2="115.332" y2="4.337" width="0.254" layer="101" curve="25"/>
+<wire x1="117.687" y1="4.18" x2="117.687" y2="5.75" width="0.254" layer="101"/>
+<wire x1="116.431" y1="4.18" x2="116.431" y2="5.75" width="0.254" layer="101"/>
+<wire x1="116.431" y1="5.75" x2="116.431" y2="6.1425" width="0.254" layer="101"/>
+<wire x1="117.687" y1="5.75" x2="116.431" y2="5.75" width="0.254" layer="101" curve="140"/>
+<wire x1="118.786" y1="4.18" x2="118.786" y2="6.849" width="0.254" layer="101"/>
+<wire x1="120.199" y1="6.1425" x2="119.257" y2="5.122" width="0.254" layer="101"/>
+<wire x1="120.199" y1="4.18" x2="119.257" y2="5.122" width="0.254" layer="101"/>
+<wire x1="120.984" y1="6.1425" x2="121.455" y2="4.18" width="0.254" layer="101"/>
+<wire x1="121.455" y1="4.18" x2="122.24" y2="6.1425" width="0.254" layer="101"/>
+<wire x1="122.24" y1="6.1425" x2="123.025" y2="4.18" width="0.254" layer="101"/>
+<wire x1="123.025" y1="4.18" x2="123.496" y2="6.1425" width="0.254" layer="101"/>
+<wire x1="126.636" y1="4.18" x2="126.636" y2="6.064" width="0.254" layer="101"/>
+<wire x1="126.636" y1="6.6135" x2="126.636" y2="6.849" width="0.254" layer="101"/>
+<wire x1="124.281" y1="5.122" x2="125.694" y2="5.122" width="0.254" layer="101"/>
+<wire x1="125.694" y1="5.122" x2="125.694" y2="5.436" width="0.254" layer="101"/>
+<wire x1="125.694" y1="5.436" x2="124.281" y2="5.436" width="0.254" layer="101" curve="180"/>
+<wire x1="124.281" y1="5.436" x2="124.281" y2="5.122" width="0.254" layer="101"/>
+<wire x1="124.281" y1="5.122" x2="124.281" y2="4.494" width="0.254" layer="101"/>
+<wire x1="124.281" y1="4.494" x2="124.752" y2="4.18" width="0.254" layer="101" curve="85.3557"/>
+<wire x1="124.752" y1="4.18" x2="125.694" y2="4.18" width="0.254" layer="101"/>
+<wire x1="127.735" y1="6.849" x2="127.735" y2="4.18" width="0.254" layer="101"/>
+<rectangle x1="171.635" y1="16.0335" x2="173.99" y2="19.88" layer="102" rot="R180"/>
+<rectangle x1="166.14" y1="13.2075" x2="173.99" y2="15.5625" layer="102" rot="R180"/>
+<rectangle x1="171.635" y1="8.89" x2="173.99" y2="12.7365" layer="102"/>
+<rectangle x1="163.314" y1="8.89" x2="165.669" y2="19.88" layer="102" rot="R180"/>
+<rectangle x1="157.034" y1="17.525" x2="161.273" y2="19.88" layer="102" rot="R180"/>
+<rectangle x1="154.679" y1="8.89" x2="157.034" y2="19.88" layer="102" rot="R180"/>
+<rectangle x1="150.44" y1="17.525" x2="154.208" y2="19.88" layer="102" rot="R180"/>
+<rectangle x1="146.044" y1="8.89" x2="148.399" y2="19.88" layer="102" rot="R180"/>
+<rectangle x1="140.078" y1="8.89" x2="145.573" y2="11.245" layer="102" rot="R180"/>
+<wire x1="156.72" y1="4.18" x2="156.72" y2="5.279" width="0.254" layer="102"/>
+<wire x1="156.72" y1="5.279" x2="156.72" y2="6.849" width="0.254" layer="102"/>
+<wire x1="156.72" y1="6.849" x2="155.621" y2="6.849" width="0.254" layer="102"/>
+<wire x1="155.621" y1="6.849" x2="155.621" y2="5.279" width="0.254" layer="102" curve="180"/>
+<wire x1="155.621" y1="5.279" x2="156.72" y2="5.279" width="0.254" layer="102"/>
+<wire x1="155.621" y1="5.279" x2="154.836" y2="4.18" width="0.254" layer="102"/>
+<wire x1="152.638" y1="4.18" x2="152.638" y2="4.337" width="0.254" layer="102"/>
+<wire x1="152.638" y1="4.337" x2="152.638" y2="5.122" width="0.254" layer="102"/>
+<wire x1="152.638" y1="5.122" x2="152.638" y2="5.75" width="0.254" layer="102"/>
+<wire x1="152.638" y1="5.75" x2="152.952" y2="6.1425" width="0.254" layer="102" curve="-90"/>
+<wire x1="152.952" y1="6.1425" x2="153.894" y2="6.1425" width="0.254" layer="102"/>
+<wire x1="152.638" y1="5.122" x2="153.423" y2="5.122" width="0.254" layer="102"/>
+<wire x1="153.423" y1="5.122" x2="153.423" y2="4.18" width="0.254" layer="102" curve="-180"/>
+<wire x1="153.423" y1="4.18" x2="152.638" y2="4.337" width="0.254" layer="102" curve="-25"/>
+<wire x1="150.283" y1="4.18" x2="150.283" y2="5.75" width="0.254" layer="102"/>
+<wire x1="151.539" y1="4.18" x2="151.539" y2="5.75" width="0.254" layer="102"/>
+<wire x1="151.539" y1="5.75" x2="151.539" y2="6.1425" width="0.254" layer="102"/>
+<wire x1="150.283" y1="5.75" x2="151.539" y2="5.75" width="0.254" layer="102" curve="-140"/>
+<wire x1="149.184" y1="4.18" x2="149.184" y2="6.849" width="0.254" layer="102"/>
+<wire x1="147.771" y1="6.1425" x2="148.713" y2="5.122" width="0.254" layer="102"/>
+<wire x1="147.771" y1="4.18" x2="148.713" y2="5.122" width="0.254" layer="102"/>
+<wire x1="146.986" y1="6.1425" x2="146.515" y2="4.18" width="0.254" layer="102"/>
+<wire x1="146.515" y1="4.18" x2="145.73" y2="6.1425" width="0.254" layer="102"/>
+<wire x1="145.73" y1="6.1425" x2="144.945" y2="4.18" width="0.254" layer="102"/>
+<wire x1="144.945" y1="4.18" x2="144.474" y2="6.1425" width="0.254" layer="102"/>
+<wire x1="141.334" y1="4.18" x2="141.334" y2="6.064" width="0.254" layer="102"/>
+<wire x1="141.334" y1="6.6135" x2="141.334" y2="6.849" width="0.254" layer="102"/>
+<wire x1="143.689" y1="5.122" x2="142.276" y2="5.122" width="0.254" layer="102"/>
+<wire x1="142.276" y1="5.122" x2="142.276" y2="5.436" width="0.254" layer="102"/>
+<wire x1="142.276" y1="5.436" x2="143.689" y2="5.436" width="0.254" layer="102" curve="-180"/>
+<wire x1="143.689" y1="5.436" x2="143.689" y2="5.122" width="0.254" layer="102"/>
+<wire x1="143.689" y1="5.122" x2="143.689" y2="4.494" width="0.254" layer="102"/>
+<wire x1="143.689" y1="4.494" x2="143.218" y2="4.18" width="0.254" layer="102" curve="-85.3557"/>
+<wire x1="143.218" y1="4.18" x2="142.276" y2="4.18" width="0.254" layer="102"/>
+<wire x1="140.235" y1="6.849" x2="140.235" y2="4.18" width="0.254" layer="102"/>
+</package>
+<package name="HTL-A4-V">
+<description>Arbeitsblatt der HTL Rankweil für Boards DIN-A4 Portrait</description>
+<wire x1="0" y1="0" x2="45.72" y2="0" width="0.4064" layer="101"/>
+<wire x1="45.72" y1="0" x2="142.24" y2="0" width="0.4064" layer="101"/>
+<wire x1="142.24" y1="0" x2="180.34" y2="0" width="0.4064" layer="101"/>
+<wire x1="180.34" y1="0" x2="180.34" y2="5.08" width="0.4064" layer="101"/>
+<wire x1="180.34" y1="5.08" x2="180.34" y2="10.16" width="0.4064" layer="101"/>
+<wire x1="180.34" y1="10.16" x2="180.34" y2="20.32" width="0.4064" layer="101"/>
+<wire x1="180.34" y1="20.32" x2="180.34" y2="25.4" width="0.4064" layer="101"/>
+<wire x1="180.34" y1="25.4" x2="180.34" y2="264.16" width="0.4064" layer="101"/>
+<wire x1="180.34" y1="264.16" x2="0" y2="264.16" width="0.4064" layer="101"/>
+<wire x1="0" y1="264.16" x2="0" y2="25.4" width="0.4064" layer="101"/>
+<wire x1="0" y1="25.4" x2="0" y2="0" width="0.4064" layer="101"/>
+<wire x1="0" y1="25.4" x2="45.72" y2="25.4" width="0.127" layer="101"/>
+<wire x1="45.72" y1="25.4" x2="180.34" y2="25.4" width="0.127" layer="101"/>
+<wire x1="45.72" y1="25.4" x2="45.72" y2="20.32" width="0.127" layer="101"/>
+<wire x1="45.72" y1="20.32" x2="45.72" y2="10.16" width="0.127" layer="101"/>
+<wire x1="45.72" y1="10.16" x2="45.72" y2="5.08" width="0.127" layer="101"/>
+<wire x1="45.72" y1="5.08" x2="45.72" y2="0" width="0.127" layer="101"/>
+<wire x1="45.72" y1="5.08" x2="180.34" y2="5.08" width="0.127" layer="101"/>
+<wire x1="45.72" y1="10.16" x2="60.96" y2="10.16" width="0.127" layer="101"/>
+<wire x1="60.96" y1="10.16" x2="142.24" y2="10.16" width="0.127" layer="101"/>
+<wire x1="142.24" y1="10.16" x2="180.34" y2="10.16" width="0.127" layer="101"/>
+<wire x1="45.72" y1="20.32" x2="60.96" y2="20.32" width="0.127" layer="101"/>
+<wire x1="60.96" y1="20.32" x2="180.34" y2="20.32" width="0.127" layer="101"/>
+<wire x1="60.96" y1="20.32" x2="60.96" y2="10.16" width="0.127" layer="101"/>
+<wire x1="142.24" y1="10.16" x2="142.24" y2="0" width="0.127" layer="101"/>
+<wire x1="0" y1="264.16" x2="180.34" y2="264.16" width="0.4064" layer="102"/>
+<wire x1="180.34" y1="264.16" x2="180.34" y2="25.4" width="0.4064" layer="102"/>
+<wire x1="180.34" y1="25.4" x2="180.34" y2="0" width="0.4064" layer="102"/>
+<wire x1="180.34" y1="0" x2="134.62" y2="0" width="0.4064" layer="102"/>
+<wire x1="134.62" y1="0" x2="38.1" y2="0" width="0.4064" layer="102"/>
+<wire x1="38.1" y1="0" x2="0" y2="0" width="0.4064" layer="102"/>
+<wire x1="0" y1="0" x2="0" y2="5.08" width="0.4064" layer="102"/>
+<wire x1="0" y1="5.08" x2="0" y2="10.16" width="0.4064" layer="102"/>
+<wire x1="0" y1="10.16" x2="0" y2="20.32" width="0.4064" layer="102"/>
+<wire x1="0" y1="20.32" x2="0" y2="25.4" width="0.4064" layer="102"/>
+<wire x1="0" y1="25.4" x2="0" y2="264.16" width="0.4064" layer="102"/>
+<wire x1="0" y1="25.4" x2="134.62" y2="25.4" width="0.127" layer="102"/>
+<wire x1="134.62" y1="25.4" x2="180.34" y2="25.4" width="0.127" layer="102"/>
+<wire x1="134.62" y1="25.4" x2="134.62" y2="20.32" width="0.127" layer="102"/>
+<wire x1="134.62" y1="20.32" x2="134.62" y2="10.16" width="0.127" layer="102"/>
+<wire x1="134.62" y1="10.16" x2="134.62" y2="5.08" width="0.127" layer="102"/>
+<wire x1="134.62" y1="5.08" x2="134.62" y2="0" width="0.127" layer="102"/>
+<wire x1="134.62" y1="5.08" x2="0" y2="5.08" width="0.127" layer="102"/>
+<wire x1="134.62" y1="10.16" x2="119.38" y2="10.16" width="0.127" layer="102"/>
+<wire x1="119.38" y1="10.16" x2="38.1" y2="10.16" width="0.127" layer="102"/>
+<wire x1="38.1" y1="10.16" x2="0" y2="10.16" width="0.127" layer="102"/>
+<wire x1="134.62" y1="20.32" x2="119.38" y2="20.32" width="0.127" layer="102"/>
+<wire x1="119.38" y1="20.32" x2="0" y2="20.32" width="0.127" layer="102"/>
+<wire x1="38.1" y1="10.16" x2="38.1" y2="0" width="0.127" layer="102"/>
+<wire x1="119.38" y1="20.32" x2="119.38" y2="10.16" width="0.127" layer="102"/>
+<text x="48.26" y="1.27" size="2.54" layer="101" font="vector">Date:</text>
+<text x="63.5" y="1.27" size="2.54" layer="101" font="vector">&gt;LAST_DATE_TIME</text>
+<text x="144.78" y="1.27" size="2.54" layer="101" font="vector">Sheet: 1/1</text>
+<text x="48.26" y="21.59" size="2.54" layer="101" font="vector">TITLE:</text>
+<text x="63.5" y="21.59" size="2.54" layer="101" font="vector">&gt;DRAWING_NAME</text>
+<text x="48.26" y="6.35" size="2.54" layer="101" font="vector">Name:</text>
+<text x="144.78" y="6.35" size="2.54" layer="101" font="vector">REV:</text>
+<text x="49.53" y="12.7" size="5.08" layer="101" font="vector">A4</text>
+<text x="132.08" y="21.59" size="2.54" layer="102" font="vector" rot="MR0">TITLE: </text>
+<text x="132.08" y="6.35" size="2.54" layer="102" font="vector" rot="MR0">Name:</text>
+<text x="132.08" y="1.27" size="2.54" layer="102" font="vector" rot="MR0">Date:</text>
+<text x="35.56" y="6.35" size="2.54" layer="102" font="vector" rot="MR0">REV:</text>
+<text x="35.56" y="1.27" size="2.54" layer="102" font="vector" rot="MR0">Sheet: 1/1</text>
+<text x="130.81" y="12.7" size="5.08" layer="102" font="vector" rot="MR0">A4</text>
+<text x="116.84" y="21.59" size="2.54" layer="102" font="vector" rot="MR0">&gt;DRAWING_NAME</text>
+<text x="116.84" y="1.27" size="2.54" layer="102" font="vector" rot="MR0">&gt;LAST_DATE_TIME</text>
+<text x="63.5" y="12.7" size="5.08" layer="101" font="vector">&gt;BRD_SHEET_NAME</text>
+<text x="116.84" y="12.7" size="5.08" layer="102" font="vector" rot="MR0">&gt;BRD_SHEET_NAME</text>
+<text x="63.5" y="6.35" size="2.54" layer="101" font="vector">&gt;USER_NAME</text>
+<text x="116.84" y="6.35" size="2.54" layer="102" font="vector" rot="MR0">&gt;USER_NAME</text>
+<text x="1.27" y="24.13" size="2.54" layer="102" font="vector" rot="MR180">&gt;PROJEKT_NAME</text>
+<text x="179.07" y="24.13" size="2.54" layer="101" font="vector" rot="R180">&gt;PROJEKT_NAME</text>
+<text x="25.4" y="6.35" size="2.54" layer="102" font="vector" rot="MR0">&gt;REVISION</text>
+<text x="154.94" y="6.35" size="2.54" layer="101" font="vector">&gt;REVISION</text>
+<rectangle x1="6.35" y1="16.0335" x2="8.705" y2="19.88" layer="101"/>
+<rectangle x1="6.35" y1="13.2075" x2="14.2" y2="15.5625" layer="101"/>
+<rectangle x1="6.35" y1="8.89" x2="8.705" y2="12.7365" layer="101"/>
+<rectangle x1="14.671" y1="8.89" x2="17.026" y2="19.88" layer="101"/>
+<rectangle x1="19.067" y1="17.525" x2="23.306" y2="19.88" layer="101"/>
+<rectangle x1="23.306" y1="8.89" x2="25.661" y2="19.88" layer="101"/>
+<rectangle x1="26.132" y1="17.525" x2="29.9" y2="19.88" layer="101"/>
+<rectangle x1="31.941" y1="8.89" x2="34.296" y2="19.88" layer="101"/>
+<rectangle x1="34.767" y1="8.89" x2="40.262" y2="11.245" layer="101"/>
+<wire x1="23.62" y1="4.18" x2="23.62" y2="5.279" width="0.254" layer="101"/>
+<wire x1="23.62" y1="5.279" x2="23.62" y2="6.849" width="0.254" layer="101"/>
+<wire x1="23.62" y1="6.849" x2="24.719" y2="6.849" width="0.254" layer="101"/>
+<wire x1="24.719" y1="6.849" x2="24.719" y2="5.279" width="0.254" layer="101" curve="-180"/>
+<wire x1="24.719" y1="5.279" x2="23.62" y2="5.279" width="0.254" layer="101"/>
+<wire x1="24.719" y1="5.279" x2="25.504" y2="4.18" width="0.254" layer="101"/>
+<wire x1="27.702" y1="4.18" x2="27.702" y2="4.337" width="0.254" layer="101"/>
+<wire x1="27.702" y1="4.337" x2="27.702" y2="5.122" width="0.254" layer="101"/>
+<wire x1="27.702" y1="5.122" x2="27.702" y2="5.75" width="0.254" layer="101"/>
+<wire x1="27.702" y1="5.75" x2="27.388" y2="6.1425" width="0.254" layer="101" curve="90"/>
+<wire x1="27.388" y1="6.1425" x2="26.446" y2="6.1425" width="0.254" layer="101"/>
+<wire x1="27.702" y1="5.122" x2="26.917" y2="5.122" width="0.254" layer="101"/>
+<wire x1="26.917" y1="5.122" x2="26.917" y2="4.18" width="0.254" layer="101" curve="180"/>
+<wire x1="26.917" y1="4.18" x2="27.702" y2="4.337" width="0.254" layer="101" curve="25"/>
+<wire x1="30.057" y1="4.18" x2="30.057" y2="5.75" width="0.254" layer="101"/>
+<wire x1="28.801" y1="4.18" x2="28.801" y2="5.75" width="0.254" layer="101"/>
+<wire x1="28.801" y1="5.75" x2="28.801" y2="6.1425" width="0.254" layer="101"/>
+<wire x1="30.057" y1="5.75" x2="28.801" y2="5.75" width="0.254" layer="101" curve="140"/>
+<wire x1="31.156" y1="4.18" x2="31.156" y2="6.849" width="0.254" layer="101"/>
+<wire x1="32.569" y1="6.1425" x2="31.627" y2="5.122" width="0.254" layer="101"/>
+<wire x1="32.569" y1="4.18" x2="31.627" y2="5.122" width="0.254" layer="101"/>
+<wire x1="33.354" y1="6.1425" x2="33.825" y2="4.18" width="0.254" layer="101"/>
+<wire x1="33.825" y1="4.18" x2="34.61" y2="6.1425" width="0.254" layer="101"/>
+<wire x1="34.61" y1="6.1425" x2="35.395" y2="4.18" width="0.254" layer="101"/>
+<wire x1="35.395" y1="4.18" x2="35.866" y2="6.1425" width="0.254" layer="101"/>
+<wire x1="39.006" y1="4.18" x2="39.006" y2="6.064" width="0.254" layer="101"/>
+<wire x1="39.006" y1="6.6135" x2="39.006" y2="6.849" width="0.254" layer="101"/>
+<wire x1="36.651" y1="5.122" x2="38.064" y2="5.122" width="0.254" layer="101"/>
+<wire x1="38.064" y1="5.122" x2="38.064" y2="5.436" width="0.254" layer="101"/>
+<wire x1="38.064" y1="5.436" x2="36.651" y2="5.436" width="0.254" layer="101" curve="180"/>
+<wire x1="36.651" y1="5.436" x2="36.651" y2="5.122" width="0.254" layer="101"/>
+<wire x1="36.651" y1="5.122" x2="36.651" y2="4.494" width="0.254" layer="101"/>
+<wire x1="36.651" y1="4.494" x2="37.122" y2="4.18" width="0.254" layer="101" curve="85.3557"/>
+<wire x1="37.122" y1="4.18" x2="38.064" y2="4.18" width="0.254" layer="101"/>
+<wire x1="40.105" y1="6.849" x2="40.105" y2="4.18" width="0.254" layer="101"/>
+<rectangle x1="171.635" y1="16.0335" x2="173.99" y2="19.88" layer="102" rot="R180"/>
+<rectangle x1="166.14" y1="13.2075" x2="173.99" y2="15.5625" layer="102" rot="R180"/>
+<rectangle x1="171.635" y1="8.89" x2="173.99" y2="12.7365" layer="102" rot="R180"/>
+<rectangle x1="163.314" y1="8.89" x2="165.669" y2="19.88" layer="102" rot="R180"/>
+<rectangle x1="157.034" y1="17.525" x2="161.273" y2="19.88" layer="102" rot="R180"/>
+<rectangle x1="154.679" y1="8.89" x2="157.034" y2="19.88" layer="102" rot="R180"/>
+<rectangle x1="150.44" y1="17.525" x2="154.208" y2="19.88" layer="102" rot="R180"/>
+<rectangle x1="146.044" y1="8.89" x2="148.399" y2="19.88" layer="102" rot="R180"/>
+<rectangle x1="140.078" y1="8.89" x2="145.573" y2="11.245" layer="102" rot="R180"/>
+<wire x1="156.72" y1="4.18" x2="156.72" y2="5.279" width="0.254" layer="102"/>
+<wire x1="156.72" y1="5.279" x2="156.72" y2="6.849" width="0.254" layer="102"/>
+<wire x1="156.72" y1="6.849" x2="155.621" y2="6.849" width="0.254" layer="102"/>
+<wire x1="155.621" y1="6.849" x2="155.621" y2="5.279" width="0.254" layer="102" curve="180"/>
+<wire x1="155.621" y1="5.279" x2="156.72" y2="5.279" width="0.254" layer="102"/>
+<wire x1="155.621" y1="5.279" x2="154.836" y2="4.18" width="0.254" layer="102"/>
+<wire x1="152.638" y1="4.18" x2="152.638" y2="4.337" width="0.254" layer="102"/>
+<wire x1="152.638" y1="4.337" x2="152.638" y2="5.122" width="0.254" layer="102"/>
+<wire x1="152.638" y1="5.122" x2="152.638" y2="5.75" width="0.254" layer="102"/>
+<wire x1="152.638" y1="5.75" x2="152.952" y2="6.1425" width="0.254" layer="102" curve="-90"/>
+<wire x1="152.952" y1="6.1425" x2="153.894" y2="6.1425" width="0.254" layer="102"/>
+<wire x1="152.638" y1="5.122" x2="153.423" y2="5.122" width="0.254" layer="102"/>
+<wire x1="153.423" y1="5.122" x2="153.423" y2="4.18" width="0.254" layer="102" curve="-180"/>
+<wire x1="153.423" y1="4.18" x2="152.638" y2="4.337" width="0.254" layer="102" curve="-25"/>
+<wire x1="150.283" y1="4.18" x2="150.283" y2="5.75" width="0.254" layer="102"/>
+<wire x1="151.539" y1="4.18" x2="151.539" y2="5.75" width="0.254" layer="102"/>
+<wire x1="151.539" y1="5.75" x2="151.539" y2="6.1425" width="0.254" layer="102"/>
+<wire x1="150.283" y1="5.75" x2="151.539" y2="5.75" width="0.254" layer="102" curve="-140"/>
+<wire x1="149.184" y1="4.18" x2="149.184" y2="6.849" width="0.254" layer="102"/>
+<wire x1="147.771" y1="6.1425" x2="148.713" y2="5.122" width="0.254" layer="102"/>
+<wire x1="147.771" y1="4.18" x2="148.713" y2="5.122" width="0.254" layer="102"/>
+<wire x1="146.986" y1="6.1425" x2="146.515" y2="4.18" width="0.254" layer="102"/>
+<wire x1="146.515" y1="4.18" x2="145.73" y2="6.1425" width="0.254" layer="102"/>
+<wire x1="145.73" y1="6.1425" x2="144.945" y2="4.18" width="0.254" layer="102"/>
+<wire x1="144.945" y1="4.18" x2="144.474" y2="6.1425" width="0.254" layer="102"/>
+<wire x1="141.334" y1="4.18" x2="141.334" y2="6.064" width="0.254" layer="102"/>
+<wire x1="141.334" y1="6.6135" x2="141.334" y2="6.849" width="0.254" layer="102"/>
+<wire x1="143.689" y1="5.122" x2="142.276" y2="5.122" width="0.254" layer="102"/>
+<wire x1="142.276" y1="5.122" x2="142.276" y2="5.436" width="0.254" layer="102"/>
+<wire x1="142.276" y1="5.436" x2="143.689" y2="5.436" width="0.254" layer="102" curve="-180"/>
+<wire x1="143.689" y1="5.436" x2="143.689" y2="5.122" width="0.254" layer="102"/>
+<wire x1="143.689" y1="5.122" x2="143.689" y2="4.494" width="0.254" layer="102"/>
+<wire x1="143.689" y1="4.494" x2="143.218" y2="4.18" width="0.254" layer="102" curve="-85.3557"/>
+<wire x1="143.218" y1="4.18" x2="142.276" y2="4.18" width="0.254" layer="102"/>
+<wire x1="140.235" y1="6.849" x2="140.235" y2="4.18" width="0.254" layer="102"/>
+</package>
+<package name="HTL-LEER">
+<description>Arbeitsblatt ohne Rahmen&lt;br&gt;
+(für Projekte mit mehreren Schaltplänen)</description>
+</package>
+</packages>
+<symbols>
+<symbol name="-VERSION">
+<description>Versionskennung</description>
+<text x="0" y="0" size="1.27" layer="94">Version 20.12.2015</text>
+</symbol>
+<symbol name="HTL-A3-H">
+<description>Arbeitsblatt der HTL Rankweil für Schaltpläne DIN-A3 Landscape</description>
+<wire x1="388.62" y1="0" x2="388.62" y2="5.08" width="0.4064" layer="100"/>
+<wire x1="388.62" y1="5.08" x2="388.62" y2="10.16" width="0.4064" layer="100"/>
+<wire x1="388.62" y1="10.16" x2="388.62" y2="20.32" width="0.4064" layer="100"/>
+<wire x1="388.62" y1="20.32" x2="388.62" y2="25.4" width="0.4064" layer="100"/>
+<wire x1="388.62" y1="25.4" x2="388.62" y2="269.24" width="0.4064" layer="100"/>
+<wire x1="388.62" y1="269.24" x2="0" y2="269.24" width="0.4064" layer="100"/>
+<wire x1="0" y1="269.24" x2="0" y2="0" width="0.4064" layer="100"/>
+<wire x1="208.28" y1="25.4" x2="254" y2="25.4" width="0.254" layer="100"/>
+<wire x1="254" y1="25.4" x2="388.62" y2="25.4" width="0.254" layer="100"/>
+<wire x1="0" y1="0" x2="208.28" y2="0" width="0.4064" layer="100"/>
+<wire x1="208.28" y1="0" x2="254" y2="0" width="0.4064" layer="100"/>
+<wire x1="254" y1="0" x2="350.52" y2="0" width="0.4064" layer="100"/>
+<wire x1="350.52" y1="0" x2="388.62" y2="0" width="0.4064" layer="100"/>
+<wire x1="254" y1="5.08" x2="388.62" y2="5.08" width="0.254" layer="100"/>
+<wire x1="254" y1="10.16" x2="269.24" y2="10.16" width="0.254" layer="100"/>
+<wire x1="269.24" y1="10.16" x2="350.52" y2="10.16" width="0.254" layer="100"/>
+<wire x1="350.52" y1="10.16" x2="388.62" y2="10.16" width="0.254" layer="100"/>
+<wire x1="254" y1="20.32" x2="269.24" y2="20.32" width="0.254" layer="100"/>
+<wire x1="269.24" y1="20.32" x2="388.62" y2="20.32" width="0.254" layer="100"/>
+<wire x1="269.24" y1="20.32" x2="269.24" y2="10.16" width="0.254" layer="100"/>
+<wire x1="350.52" y1="10.16" x2="350.52" y2="0" width="0.254" layer="100"/>
+<wire x1="254" y1="25.4" x2="254" y2="20.32" width="0.254" layer="100"/>
+<wire x1="254" y1="20.32" x2="254" y2="10.16" width="0.254" layer="100"/>
+<wire x1="254" y1="10.16" x2="254" y2="5.08" width="0.254" layer="100"/>
+<wire x1="254" y1="5.08" x2="254" y2="0" width="0.254" layer="100"/>
+<wire x1="208.28" y1="25.4" x2="208.28" y2="0" width="0.254" layer="100"/>
+<text x="256.54" y="1.016" size="2.54" layer="100" font="vector">Date:</text>
+<text x="270.51" y="1.27" size="2.54" layer="100" font="vector">&gt;LAST_DATE_TIME</text>
+<text x="353.06" y="1.27" size="2.54" layer="100" font="vector">Sheet:</text>
+<text x="367.03" y="1.27" size="2.54" layer="100" font="vector">&gt;SHEET</text>
+<text x="256.54" y="21.59" size="2.54" layer="100" font="vector">TITLE:</text>
+<text x="270.51" y="21.59" size="2.54" layer="100" font="vector">&gt;DRAWING_NAME</text>
+<text x="256.54" y="6.35" size="2.54" layer="100" font="vector">Name:</text>
+<text x="257.81" y="12.7" size="5.08" layer="100" font="vector">A3</text>
+<text x="353.06" y="6.35" size="2.54" layer="100" font="vector">REV:</text>
+<text x="273.05" y="12.7" size="5.08" layer="100" font="vector">&gt;SCH_SHEET_NAME</text>
+<text x="270.51" y="6.35" size="2.54" layer="100" font="vector">&gt;USER_NAME</text>
+<text x="387.35" y="24.13" size="2.54" layer="100" font="vector" rot="R180">&gt;PROJEKT_NAME</text>
+<text x="363.22" y="6.35" size="2.54" layer="100" font="vector">&gt;REVISION</text>
+<rectangle x1="214.63" y1="14.7635" x2="216.985" y2="18.61" layer="100"/>
+<rectangle x1="214.63" y1="11.9375" x2="222.48" y2="14.2925" layer="100"/>
+<rectangle x1="214.63" y1="7.62" x2="216.985" y2="11.4665" layer="100"/>
+<rectangle x1="222.951" y1="7.62" x2="225.306" y2="18.61" layer="100"/>
+<rectangle x1="227.347" y1="16.255" x2="231.586" y2="18.61" layer="100"/>
+<rectangle x1="231.586" y1="7.62" x2="233.941" y2="18.61" layer="100"/>
+<rectangle x1="234.412" y1="16.255" x2="238.18" y2="18.61" layer="100"/>
+<rectangle x1="240.221" y1="7.62" x2="242.576" y2="18.61" layer="100"/>
+<rectangle x1="243.047" y1="7.62" x2="248.542" y2="9.975" layer="100"/>
+<wire x1="231.9" y1="2.91" x2="231.9" y2="4.009" width="0.254" layer="100"/>
+<wire x1="231.9" y1="4.009" x2="231.9" y2="5.579" width="0.254" layer="100"/>
+<wire x1="231.9" y1="5.579" x2="232.999" y2="5.579" width="0.254" layer="100"/>
+<wire x1="232.999" y1="5.579" x2="232.999" y2="4.009" width="0.254" layer="100" curve="-180"/>
+<wire x1="232.999" y1="4.009" x2="231.9" y2="4.009" width="0.254" layer="100"/>
+<wire x1="232.999" y1="4.009" x2="233.784" y2="2.91" width="0.254" layer="100"/>
+<wire x1="235.982" y1="2.91" x2="235.982" y2="3.067" width="0.254" layer="100"/>
+<wire x1="235.982" y1="3.067" x2="235.982" y2="3.852" width="0.254" layer="100"/>
+<wire x1="235.982" y1="3.852" x2="235.982" y2="4.48" width="0.254" layer="100"/>
+<wire x1="235.982" y1="4.48" x2="235.668" y2="4.8725" width="0.254" layer="100" curve="90"/>
+<wire x1="235.668" y1="4.8725" x2="234.726" y2="4.8725" width="0.254" layer="100"/>
+<wire x1="235.982" y1="3.852" x2="235.197" y2="3.852" width="0.254" layer="100"/>
+<wire x1="235.197" y1="3.852" x2="235.197" y2="2.91" width="0.254" layer="100" curve="180"/>
+<wire x1="235.197" y1="2.91" x2="235.982" y2="3.067" width="0.254" layer="100" curve="25"/>
+<wire x1="238.337" y1="2.91" x2="238.337" y2="4.48" width="0.254" layer="100"/>
+<wire x1="237.081" y1="2.91" x2="237.081" y2="4.48" width="0.254" layer="100"/>
+<wire x1="237.081" y1="4.48" x2="237.081" y2="4.8725" width="0.254" layer="100"/>
+<wire x1="238.337" y1="4.48" x2="237.081" y2="4.48" width="0.254" layer="100" curve="140"/>
+<wire x1="239.436" y1="2.91" x2="239.436" y2="5.579" width="0.254" layer="100"/>
+<wire x1="240.849" y1="4.8725" x2="239.907" y2="3.852" width="0.254" layer="100"/>
+<wire x1="240.849" y1="2.91" x2="239.907" y2="3.852" width="0.254" layer="100"/>
+<wire x1="241.634" y1="4.8725" x2="242.105" y2="2.91" width="0.254" layer="100"/>
+<wire x1="242.105" y1="2.91" x2="242.89" y2="4.8725" width="0.254" layer="100"/>
+<wire x1="242.89" y1="4.8725" x2="243.675" y2="2.91" width="0.254" layer="100"/>
+<wire x1="243.675" y1="2.91" x2="244.146" y2="4.8725" width="0.254" layer="100"/>
+<wire x1="247.286" y1="2.91" x2="247.286" y2="4.794" width="0.254" layer="100"/>
+<wire x1="247.286" y1="5.3435" x2="247.286" y2="5.579" width="0.254" layer="100"/>
+<wire x1="244.931" y1="3.852" x2="246.344" y2="3.852" width="0.254" layer="100"/>
+<wire x1="246.344" y1="3.852" x2="246.344" y2="4.166" width="0.254" layer="100"/>
+<wire x1="246.344" y1="4.166" x2="244.931" y2="4.166" width="0.254" layer="100" curve="180"/>
+<wire x1="244.931" y1="4.166" x2="244.931" y2="3.852" width="0.254" layer="100"/>
+<wire x1="244.931" y1="3.852" x2="244.931" y2="3.224" width="0.254" layer="100"/>
+<wire x1="244.931" y1="3.224" x2="245.402" y2="2.91" width="0.254" layer="100" curve="85.3557"/>
+<wire x1="245.402" y1="2.91" x2="246.344" y2="2.91" width="0.254" layer="100"/>
+<wire x1="248.385" y1="5.579" x2="248.385" y2="2.91" width="0.254" layer="100"/>
+</symbol>
+<symbol name="HTL-A3-V">
+<description>Arbeitsblatt der HTL Rankweil für Schaltpläne DIN-A3 Portrait</description>
+<wire x1="88.9" y1="25.4" x2="134.62" y2="25.4" width="0.254" layer="100"/>
+<wire x1="134.62" y1="25.4" x2="269.24" y2="25.4" width="0.254" layer="100"/>
+<wire x1="269.24" y1="0" x2="269.24" y2="5.08" width="0.4064" layer="100"/>
+<wire x1="269.24" y1="5.08" x2="269.24" y2="10.16" width="0.4064" layer="100"/>
+<wire x1="269.24" y1="10.16" x2="269.24" y2="20.32" width="0.4064" layer="100"/>
+<wire x1="269.24" y1="20.32" x2="269.24" y2="25.4" width="0.4064" layer="100"/>
+<wire x1="269.24" y1="25.4" x2="269.24" y2="388.62" width="0.4064" layer="100"/>
+<wire x1="269.24" y1="388.62" x2="0" y2="388.62" width="0.4064" layer="100"/>
+<wire x1="0" y1="0" x2="88.9" y2="0" width="0.4064" layer="100"/>
+<wire x1="88.9" y1="0" x2="134.62" y2="0" width="0.4064" layer="100"/>
+<wire x1="134.62" y1="0" x2="231.14" y2="0" width="0.4064" layer="100"/>
+<wire x1="231.14" y1="0" x2="269.24" y2="0" width="0.4064" layer="100"/>
+<wire x1="134.62" y1="5.08" x2="269.24" y2="5.08" width="0.254" layer="100"/>
+<wire x1="134.62" y1="10.16" x2="149.86" y2="10.16" width="0.254" layer="100"/>
+<wire x1="149.86" y1="10.16" x2="231.14" y2="10.16" width="0.254" layer="100"/>
+<wire x1="231.14" y1="10.16" x2="269.24" y2="10.16" width="0.254" layer="100"/>
+<wire x1="134.62" y1="20.32" x2="149.86" y2="20.32" width="0.254" layer="100"/>
+<wire x1="149.86" y1="20.32" x2="269.24" y2="20.32" width="0.254" layer="100"/>
+<wire x1="149.86" y1="20.32" x2="149.86" y2="10.16" width="0.254" layer="100"/>
+<wire x1="231.14" y1="10.16" x2="231.14" y2="0" width="0.254" layer="100"/>
+<wire x1="134.62" y1="25.4" x2="134.62" y2="20.32" width="0.254" layer="100"/>
+<wire x1="134.62" y1="20.32" x2="134.62" y2="10.16" width="0.254" layer="100"/>
+<wire x1="134.62" y1="10.16" x2="134.62" y2="5.08" width="0.254" layer="100"/>
+<wire x1="134.62" y1="5.08" x2="134.62" y2="0" width="0.254" layer="100"/>
+<wire x1="0" y1="388.62" x2="0" y2="0" width="0.4064" layer="100"/>
+<wire x1="88.9" y1="25.4" x2="88.9" y2="0" width="0.254" layer="100"/>
+<text x="137.16" y="1.016" size="2.54" layer="100" font="vector">Date:</text>
+<text x="151.13" y="1.27" size="2.54" layer="100" font="vector">&gt;LAST_DATE_TIME</text>
+<text x="233.68" y="1.27" size="2.54" layer="100" font="vector">Sheet:</text>
+<text x="247.65" y="1.27" size="2.54" layer="100" font="vector">&gt;SHEET</text>
+<text x="137.16" y="21.59" size="2.54" layer="100" font="vector">TITLE:</text>
+<text x="151.13" y="21.59" size="2.54" layer="100" font="vector">&gt;DRAWING_NAME</text>
+<text x="137.16" y="6.35" size="2.54" layer="100" font="vector">Name:</text>
+<text x="138.43" y="12.7" size="5.08" layer="100" font="vector">A3</text>
+<text x="233.68" y="6.35" size="2.54" layer="100" font="vector">REV:</text>
+<text x="153.67" y="12.7" size="5.08" layer="100" font="vector">&gt;SCH_SHEET_NAME</text>
+<text x="151.13" y="6.35" size="2.54" layer="100" font="vector">&gt;USER_NAME</text>
+<text x="267.97" y="24.13" size="2.54" layer="100" font="vector" rot="R180">&gt;PROJEKT_NAME</text>
+<text x="243.84" y="6.35" size="2.54" layer="100" font="vector">&gt;REVISION</text>
+<rectangle x1="95.25" y1="14.7635" x2="97.605" y2="18.61" layer="100"/>
+<rectangle x1="95.25" y1="11.9375" x2="103.1" y2="14.2925" layer="100"/>
+<rectangle x1="95.25" y1="7.62" x2="97.605" y2="11.4665" layer="100"/>
+<rectangle x1="103.571" y1="7.62" x2="105.926" y2="18.61" layer="100"/>
+<rectangle x1="107.967" y1="16.255" x2="112.206" y2="18.61" layer="100"/>
+<rectangle x1="112.206" y1="7.62" x2="114.561" y2="18.61" layer="100"/>
+<rectangle x1="115.032" y1="16.255" x2="118.8" y2="18.61" layer="100"/>
+<rectangle x1="120.841" y1="7.62" x2="123.196" y2="18.61" layer="100"/>
+<rectangle x1="123.667" y1="7.62" x2="129.162" y2="9.975" layer="100"/>
+<wire x1="112.52" y1="2.91" x2="112.52" y2="4.009" width="0.254" layer="100"/>
+<wire x1="112.52" y1="4.009" x2="112.52" y2="5.579" width="0.254" layer="100"/>
+<wire x1="112.52" y1="5.579" x2="113.619" y2="5.579" width="0.254" layer="100"/>
+<wire x1="113.619" y1="5.579" x2="113.619" y2="4.009" width="0.254" layer="100" curve="-180"/>
+<wire x1="113.619" y1="4.009" x2="112.52" y2="4.009" width="0.254" layer="100"/>
+<wire x1="113.619" y1="4.009" x2="114.404" y2="2.91" width="0.254" layer="100"/>
+<wire x1="116.602" y1="2.91" x2="116.602" y2="3.067" width="0.254" layer="100"/>
+<wire x1="116.602" y1="3.067" x2="116.602" y2="3.852" width="0.254" layer="100"/>
+<wire x1="116.602" y1="3.852" x2="116.602" y2="4.48" width="0.254" layer="100"/>
+<wire x1="116.602" y1="4.48" x2="116.288" y2="4.8725" width="0.254" layer="100" curve="90"/>
+<wire x1="116.288" y1="4.8725" x2="115.346" y2="4.8725" width="0.254" layer="100"/>
+<wire x1="116.602" y1="3.852" x2="115.817" y2="3.852" width="0.254" layer="100"/>
+<wire x1="115.817" y1="3.852" x2="115.817" y2="2.91" width="0.254" layer="100" curve="180"/>
+<wire x1="115.817" y1="2.91" x2="116.602" y2="3.067" width="0.254" layer="100" curve="25"/>
+<wire x1="118.957" y1="2.91" x2="118.957" y2="4.48" width="0.254" layer="100"/>
+<wire x1="117.701" y1="2.91" x2="117.701" y2="4.48" width="0.254" layer="100"/>
+<wire x1="117.701" y1="4.48" x2="117.701" y2="4.8725" width="0.254" layer="100"/>
+<wire x1="118.957" y1="4.48" x2="117.701" y2="4.48" width="0.254" layer="100" curve="140"/>
+<wire x1="120.056" y1="2.91" x2="120.056" y2="5.579" width="0.254" layer="100"/>
+<wire x1="121.469" y1="4.8725" x2="120.527" y2="3.852" width="0.254" layer="100"/>
+<wire x1="121.469" y1="2.91" x2="120.527" y2="3.852" width="0.254" layer="100"/>
+<wire x1="122.254" y1="4.8725" x2="122.725" y2="2.91" width="0.254" layer="100"/>
+<wire x1="122.725" y1="2.91" x2="123.51" y2="4.8725" width="0.254" layer="100"/>
+<wire x1="123.51" y1="4.8725" x2="124.295" y2="2.91" width="0.254" layer="100"/>
+<wire x1="124.295" y1="2.91" x2="124.766" y2="4.8725" width="0.254" layer="100"/>
+<wire x1="127.906" y1="2.91" x2="127.906" y2="4.794" width="0.254" layer="100"/>
+<wire x1="127.906" y1="5.3435" x2="127.906" y2="5.579" width="0.254" layer="100"/>
+<wire x1="125.551" y1="3.852" x2="126.964" y2="3.852" width="0.254" layer="100"/>
+<wire x1="126.964" y1="3.852" x2="126.964" y2="4.166" width="0.254" layer="100"/>
+<wire x1="126.964" y1="4.166" x2="125.551" y2="4.166" width="0.254" layer="100" curve="180"/>
+<wire x1="125.551" y1="4.166" x2="125.551" y2="3.852" width="0.254" layer="100"/>
+<wire x1="125.551" y1="3.852" x2="125.551" y2="3.224" width="0.254" layer="100"/>
+<wire x1="125.551" y1="3.224" x2="126.022" y2="2.91" width="0.254" layer="100" curve="85.3557"/>
+<wire x1="126.022" y1="2.91" x2="126.964" y2="2.91" width="0.254" layer="100"/>
+<wire x1="129.005" y1="5.579" x2="129.005" y2="2.91" width="0.254" layer="100"/>
+</symbol>
+<symbol name="HTL-A4-H">
+<description>Arbeitsblatt der HTL Rankweil für Schaltpläne DIN-A4 Landscape</description>
+<wire x1="264.16" y1="0" x2="264.16" y2="5.08" width="0.4064" layer="100"/>
+<wire x1="264.16" y1="5.08" x2="264.16" y2="10.16" width="0.4064" layer="100"/>
+<wire x1="264.16" y1="10.16" x2="264.16" y2="20.32" width="0.4064" layer="100"/>
+<wire x1="264.16" y1="20.32" x2="264.16" y2="25.4" width="0.4064" layer="100"/>
+<wire x1="264.16" y1="25.4" x2="264.16" y2="180.34" width="0.4064" layer="100"/>
+<wire x1="264.16" y1="180.34" x2="0" y2="180.34" width="0.4064" layer="100"/>
+<wire x1="0" y1="180.34" x2="0" y2="0" width="0.4064" layer="100"/>
+<wire x1="83.82" y1="25.4" x2="129.54" y2="25.4" width="0.254" layer="100"/>
+<wire x1="129.54" y1="25.4" x2="264.16" y2="25.4" width="0.254" layer="100"/>
+<wire x1="0" y1="0" x2="83.82" y2="0" width="0.4064" layer="100"/>
+<wire x1="83.82" y1="0" x2="129.54" y2="0" width="0.4064" layer="100"/>
+<wire x1="129.54" y1="0" x2="226.06" y2="0" width="0.4064" layer="100"/>
+<wire x1="226.06" y1="0" x2="264.16" y2="0" width="0.4064" layer="100"/>
+<wire x1="129.54" y1="5.08" x2="264.16" y2="5.08" width="0.254" layer="100"/>
+<wire x1="129.54" y1="10.16" x2="143.002" y2="10.16" width="0.254" layer="100"/>
+<wire x1="143.002" y1="10.16" x2="226.06" y2="10.16" width="0.254" layer="100"/>
+<wire x1="226.06" y1="10.16" x2="264.16" y2="10.16" width="0.254" layer="100"/>
+<wire x1="129.54" y1="20.32" x2="143.002" y2="20.32" width="0.254" layer="100"/>
+<wire x1="143.002" y1="20.32" x2="264.16" y2="20.32" width="0.254" layer="100"/>
+<wire x1="143.002" y1="20.32" x2="143.002" y2="10.16" width="0.254" layer="100"/>
+<wire x1="226.06" y1="10.16" x2="226.06" y2="0" width="0.254" layer="100"/>
+<wire x1="129.54" y1="25.4" x2="129.54" y2="20.32" width="0.254" layer="100"/>
+<wire x1="129.54" y1="20.32" x2="129.54" y2="10.16" width="0.254" layer="100"/>
+<wire x1="129.54" y1="10.16" x2="129.54" y2="5.08" width="0.254" layer="100"/>
+<wire x1="129.54" y1="5.08" x2="129.54" y2="0" width="0.254" layer="100"/>
+<wire x1="83.82" y1="25.4" x2="83.82" y2="0" width="0.254" layer="100"/>
+<text x="132.08" y="1.27" size="2.54" layer="100" font="vector">Date:</text>
+<text x="146.05" y="1.27" size="2.54" layer="100" font="vector">&gt;LAST_DATE_TIME</text>
+<text x="228.6" y="1.27" size="2.54" layer="100" font="vector">Sheet:</text>
+<text x="242.57" y="1.27" size="2.54" layer="100" font="vector">&gt;SHEET</text>
+<text x="132.08" y="21.59" size="2.54" layer="100" font="vector">TITLE:</text>
+<text x="146.05" y="21.59" size="2.54" layer="100" font="vector">&gt;DRAWING_NAME</text>
+<text x="132.08" y="6.35" size="2.54" layer="100" font="vector">Name:</text>
+<text x="132.08" y="12.7" size="5.08" layer="100" font="vector">A4</text>
+<text x="228.6" y="6.35" size="2.54" layer="100" font="vector">REV:</text>
+<text x="145.796" y="12.7" size="5.08" layer="100" font="vector">&gt;SCH_SHEET_NAME</text>
+<text x="146.05" y="6.35" size="2.54" layer="100" font="vector">&gt;USER_NAME</text>
+<text x="262.89" y="24.13" size="2.54" layer="100" font="vector" rot="R180">&gt;PROJEKT_NAME</text>
+<text x="238.76" y="6.35" size="2.54" layer="100" font="vector">&gt;REVISION</text>
+<rectangle x1="90.17" y1="14.7635" x2="92.525" y2="18.61" layer="100"/>
+<rectangle x1="90.17" y1="11.9375" x2="98.02" y2="14.2925" layer="100"/>
+<rectangle x1="90.17" y1="7.62" x2="92.525" y2="11.4665" layer="100"/>
+<rectangle x1="98.491" y1="7.62" x2="100.846" y2="18.61" layer="100"/>
+<rectangle x1="102.887" y1="16.255" x2="107.126" y2="18.61" layer="100"/>
+<rectangle x1="107.126" y1="7.62" x2="109.481" y2="18.61" layer="100"/>
+<rectangle x1="109.952" y1="16.255" x2="113.72" y2="18.61" layer="100"/>
+<rectangle x1="115.761" y1="7.62" x2="118.116" y2="18.61" layer="100"/>
+<rectangle x1="118.587" y1="7.62" x2="124.082" y2="9.975" layer="100"/>
+<wire x1="107.44" y1="2.91" x2="107.44" y2="4.009" width="0.254" layer="100"/>
+<wire x1="107.44" y1="4.009" x2="107.44" y2="5.579" width="0.254" layer="100"/>
+<wire x1="107.44" y1="5.579" x2="108.539" y2="5.579" width="0.254" layer="100"/>
+<wire x1="108.539" y1="5.579" x2="108.539" y2="4.009" width="0.254" layer="100" curve="-180"/>
+<wire x1="108.539" y1="4.009" x2="107.44" y2="4.009" width="0.254" layer="100"/>
+<wire x1="108.539" y1="4.009" x2="109.324" y2="2.91" width="0.254" layer="100"/>
+<wire x1="111.522" y1="2.91" x2="111.522" y2="3.067" width="0.254" layer="100"/>
+<wire x1="111.522" y1="3.067" x2="111.522" y2="3.852" width="0.254" layer="100"/>
+<wire x1="111.522" y1="3.852" x2="111.522" y2="4.48" width="0.254" layer="100"/>
+<wire x1="111.522" y1="4.48" x2="111.208" y2="4.8725" width="0.254" layer="100" curve="90"/>
+<wire x1="111.208" y1="4.8725" x2="110.266" y2="4.8725" width="0.254" layer="100"/>
+<wire x1="111.522" y1="3.852" x2="110.737" y2="3.852" width="0.254" layer="100"/>
+<wire x1="110.737" y1="3.852" x2="110.737" y2="2.91" width="0.254" layer="100" curve="180"/>
+<wire x1="110.737" y1="2.91" x2="111.522" y2="3.067" width="0.254" layer="100" curve="25"/>
+<wire x1="113.877" y1="2.91" x2="113.877" y2="4.48" width="0.254" layer="100"/>
+<wire x1="112.621" y1="2.91" x2="112.621" y2="4.48" width="0.254" layer="100"/>
+<wire x1="112.621" y1="4.48" x2="112.621" y2="4.8725" width="0.254" layer="100"/>
+<wire x1="113.877" y1="4.48" x2="112.621" y2="4.48" width="0.254" layer="100" curve="140"/>
+<wire x1="114.976" y1="2.91" x2="114.976" y2="5.579" width="0.254" layer="100"/>
+<wire x1="116.389" y1="4.8725" x2="115.447" y2="3.852" width="0.254" layer="100"/>
+<wire x1="116.389" y1="2.91" x2="115.447" y2="3.852" width="0.254" layer="100"/>
+<wire x1="117.174" y1="4.8725" x2="117.645" y2="2.91" width="0.254" layer="100"/>
+<wire x1="117.645" y1="2.91" x2="118.43" y2="4.8725" width="0.254" layer="100"/>
+<wire x1="118.43" y1="4.8725" x2="119.215" y2="2.91" width="0.254" layer="100"/>
+<wire x1="119.215" y1="2.91" x2="119.686" y2="4.8725" width="0.254" layer="100"/>
+<wire x1="122.826" y1="2.91" x2="122.826" y2="4.794" width="0.254" layer="100"/>
+<wire x1="122.826" y1="5.3435" x2="122.826" y2="5.579" width="0.254" layer="100"/>
+<wire x1="120.471" y1="3.852" x2="121.884" y2="3.852" width="0.254" layer="100"/>
+<wire x1="121.884" y1="3.852" x2="121.884" y2="4.166" width="0.254" layer="100"/>
+<wire x1="121.884" y1="4.166" x2="120.471" y2="4.166" width="0.254" layer="100" curve="180"/>
+<wire x1="120.471" y1="4.166" x2="120.471" y2="3.852" width="0.254" layer="100"/>
+<wire x1="120.471" y1="3.852" x2="120.471" y2="3.224" width="0.254" layer="100"/>
+<wire x1="120.471" y1="3.224" x2="120.942" y2="2.91" width="0.254" layer="100" curve="85.3557"/>
+<wire x1="120.942" y1="2.91" x2="121.884" y2="2.91" width="0.254" layer="100"/>
+<wire x1="123.925" y1="5.579" x2="123.925" y2="2.91" width="0.254" layer="100"/>
+</symbol>
+<symbol name="HTL-A4-V">
+<description>Arbeitsblatt der HTL Rankweil für Schaltpläne DIN-A4 Portrait</description>
+<wire x1="0" y1="25.4" x2="45.72" y2="25.4" width="0.254" layer="100"/>
+<wire x1="45.72" y1="25.4" x2="180.34" y2="25.4" width="0.254" layer="100"/>
+<wire x1="0" y1="0" x2="45.72" y2="0" width="0.4064" layer="100"/>
+<wire x1="45.72" y1="0" x2="142.24" y2="0" width="0.4064" layer="100"/>
+<wire x1="142.24" y1="0" x2="180.34" y2="0" width="0.4064" layer="100"/>
+<wire x1="180.34" y1="0" x2="180.34" y2="5.08" width="0.4064" layer="100"/>
+<wire x1="180.34" y1="5.08" x2="180.34" y2="10.16" width="0.4064" layer="100"/>
+<wire x1="180.34" y1="10.16" x2="180.34" y2="20.32" width="0.4064" layer="100"/>
+<wire x1="180.34" y1="20.32" x2="180.34" y2="25.4" width="0.4064" layer="100"/>
+<wire x1="180.34" y1="25.4" x2="180.34" y2="264.16" width="0.4064" layer="100"/>
+<wire x1="180.34" y1="264.16" x2="0" y2="264.16" width="0.4064" layer="100"/>
+<wire x1="0" y1="25.4" x2="0" y2="0" width="0.4064" layer="100"/>
+<wire x1="45.72" y1="5.08" x2="180.34" y2="5.08" width="0.254" layer="100"/>
+<wire x1="45.72" y1="10.16" x2="59.69" y2="10.16" width="0.254" layer="100"/>
+<wire x1="59.69" y1="10.16" x2="142.24" y2="10.16" width="0.254" layer="100"/>
+<wire x1="142.24" y1="10.16" x2="180.34" y2="10.16" width="0.254" layer="100"/>
+<wire x1="45.72" y1="20.32" x2="59.69" y2="20.32" width="0.254" layer="100"/>
+<wire x1="59.69" y1="20.32" x2="180.34" y2="20.32" width="0.254" layer="100"/>
+<wire x1="59.69" y1="20.32" x2="59.69" y2="10.16" width="0.254" layer="100"/>
+<wire x1="142.24" y1="10.16" x2="142.24" y2="0" width="0.254" layer="100"/>
+<wire x1="45.72" y1="25.4" x2="45.72" y2="20.32" width="0.254" layer="100"/>
+<wire x1="45.72" y1="20.32" x2="45.72" y2="10.16" width="0.254" layer="100"/>
+<wire x1="45.72" y1="10.16" x2="45.72" y2="5.08" width="0.254" layer="100"/>
+<wire x1="45.72" y1="5.08" x2="45.72" y2="0" width="0.254" layer="100"/>
+<wire x1="0" y1="264.16" x2="0" y2="25.4" width="0.4064" layer="100"/>
+<text x="48.26" y="1.016" size="2.54" layer="100" font="vector">Date:</text>
+<text x="62.23" y="1.27" size="2.54" layer="100" font="vector">&gt;LAST_DATE_TIME</text>
+<text x="144.78" y="1.27" size="2.54" layer="100" font="vector">Sheet:</text>
+<text x="158.75" y="1.27" size="2.54" layer="100" font="vector">&gt;SHEET</text>
+<text x="48.26" y="21.59" size="2.54" layer="100" font="vector">TITLE:</text>
+<text x="62.23" y="21.59" size="2.54" layer="100" font="vector">&gt;DRAWING_NAME</text>
+<text x="48.26" y="6.35" size="2.54" layer="100" font="vector">Name:</text>
+<text x="49.53" y="12.7" size="5.08" layer="100" font="vector">A4</text>
+<text x="144.78" y="6.35" size="2.54" layer="100" font="vector">REV:</text>
+<text x="61.976" y="12.7" size="5.08" layer="100" font="vector">&gt;SCH_SHEET_NAME</text>
+<text x="62.23" y="6.35" size="2.54" layer="100" font="vector">&gt;USER_NAME</text>
+<text x="179.07" y="24.13" size="2.54" layer="100" font="vector" rot="R180">&gt;PROJEKT_NAME</text>
+<text x="154.94" y="6.35" size="2.54" layer="100" font="vector">&gt;REVISION</text>
+<rectangle x1="6.35" y1="14.7635" x2="8.705" y2="18.61" layer="100"/>
+<rectangle x1="6.35" y1="11.9375" x2="14.2" y2="14.2925" layer="100"/>
+<rectangle x1="6.35" y1="7.62" x2="8.705" y2="11.4665" layer="100"/>
+<rectangle x1="14.671" y1="7.62" x2="17.026" y2="18.61" layer="100"/>
+<rectangle x1="19.067" y1="16.255" x2="23.306" y2="18.61" layer="100"/>
+<rectangle x1="23.306" y1="7.62" x2="25.661" y2="18.61" layer="100"/>
+<rectangle x1="26.132" y1="16.255" x2="29.9" y2="18.61" layer="100"/>
+<rectangle x1="31.941" y1="7.62" x2="34.296" y2="18.61" layer="100"/>
+<rectangle x1="34.767" y1="7.62" x2="40.262" y2="9.975" layer="100"/>
+<wire x1="23.62" y1="2.91" x2="23.62" y2="4.009" width="0.254" layer="100"/>
+<wire x1="23.62" y1="4.009" x2="23.62" y2="5.579" width="0.254" layer="100"/>
+<wire x1="23.62" y1="5.579" x2="24.719" y2="5.579" width="0.254" layer="100"/>
+<wire x1="24.719" y1="5.579" x2="24.719" y2="4.009" width="0.254" layer="100" curve="-180"/>
+<wire x1="24.719" y1="4.009" x2="23.62" y2="4.009" width="0.254" layer="100"/>
+<wire x1="24.719" y1="4.009" x2="25.504" y2="2.91" width="0.254" layer="100"/>
+<wire x1="27.702" y1="2.91" x2="27.702" y2="3.067" width="0.254" layer="100"/>
+<wire x1="27.702" y1="3.067" x2="27.702" y2="3.852" width="0.254" layer="100"/>
+<wire x1="27.702" y1="3.852" x2="27.702" y2="4.48" width="0.254" layer="100"/>
+<wire x1="27.702" y1="4.48" x2="27.388" y2="4.8725" width="0.254" layer="100" curve="90"/>
+<wire x1="27.388" y1="4.8725" x2="26.446" y2="4.8725" width="0.254" layer="100"/>
+<wire x1="27.702" y1="3.852" x2="26.917" y2="3.852" width="0.254" layer="100"/>
+<wire x1="26.917" y1="3.852" x2="26.917" y2="2.91" width="0.254" layer="100" curve="180"/>
+<wire x1="26.917" y1="2.91" x2="27.702" y2="3.067" width="0.254" layer="100" curve="25"/>
+<wire x1="30.057" y1="2.91" x2="30.057" y2="4.48" width="0.254" layer="100"/>
+<wire x1="28.801" y1="2.91" x2="28.801" y2="4.48" width="0.254" layer="100"/>
+<wire x1="28.801" y1="4.48" x2="28.801" y2="4.8725" width="0.254" layer="100"/>
+<wire x1="30.057" y1="4.48" x2="28.801" y2="4.48" width="0.254" layer="100" curve="140"/>
+<wire x1="31.156" y1="2.91" x2="31.156" y2="5.579" width="0.254" layer="100"/>
+<wire x1="32.569" y1="4.8725" x2="31.627" y2="3.852" width="0.254" layer="100"/>
+<wire x1="32.569" y1="2.91" x2="31.627" y2="3.852" width="0.254" layer="100"/>
+<wire x1="33.354" y1="4.8725" x2="33.825" y2="2.91" width="0.254" layer="100"/>
+<wire x1="33.825" y1="2.91" x2="34.61" y2="4.8725" width="0.254" layer="100"/>
+<wire x1="34.61" y1="4.8725" x2="35.395" y2="2.91" width="0.254" layer="100"/>
+<wire x1="35.395" y1="2.91" x2="35.866" y2="4.8725" width="0.254" layer="100"/>
+<wire x1="39.006" y1="2.91" x2="39.006" y2="4.794" width="0.254" layer="100"/>
+<wire x1="39.006" y1="5.3435" x2="39.006" y2="5.579" width="0.254" layer="100"/>
+<wire x1="36.651" y1="3.852" x2="38.064" y2="3.852" width="0.254" layer="100"/>
+<wire x1="38.064" y1="3.852" x2="38.064" y2="4.166" width="0.254" layer="100"/>
+<wire x1="38.064" y1="4.166" x2="36.651" y2="4.166" width="0.254" layer="100" curve="180"/>
+<wire x1="36.651" y1="4.166" x2="36.651" y2="3.852" width="0.254" layer="100"/>
+<wire x1="36.651" y1="3.852" x2="36.651" y2="3.224" width="0.254" layer="100"/>
+<wire x1="36.651" y1="3.224" x2="37.122" y2="2.91" width="0.254" layer="100" curve="85.3557"/>
+<wire x1="37.122" y1="2.91" x2="38.064" y2="2.91" width="0.254" layer="100"/>
+<wire x1="40.105" y1="5.579" x2="40.105" y2="2.91" width="0.254" layer="100"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="-VERSION">
+<description>Version:&lt;br&gt;
+eagle 7.4.0&lt;br&gt;
+Version 20.12.2015
+&lt;br&gt;&lt;br&gt;
+Layer für Beschriftungsrahmen erstellt (neues Logo)</description>
+<gates>
+<gate name="G$1" symbol="-VERSION" x="0" y="0"/>
+</gates>
+<devices>
+<device name="">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="HTL-A3-H" prefix="FRAME">
+<description>Arbeitsblatt der HTL Rankweil für Schaltpläne DIN-A3 Landscape&lt;br&gt;
+kombinierbar mit Boardplänen (CHANGE PACKAGE): &lt;br&gt;
+DIN-A3 Landscape&lt;br&gt;
+DIN-A3 Portrait&lt;br&gt;
+DIN-A4 Landscape&lt;br&gt;
+DIN-A4 Portrait&lt;br&gt;
+Leer (für Projekte mit mehreren Schaltplänen und einem Board)&lt;br&gt;
+&lt;br&gt;
+Über Attribute werden die Beschriftungeinträge gesteuert:&lt;br&gt;
+&lt;b&gt;Attribut&lt;/b&gt;&lt;br&gt;
+USER_NAME  ( Schaltplan +  Board)&lt;br&gt;              
+PROJEKT_NAME  ( Schaltplan +  Board)&lt;br&gt;
+ACCOUNT_NAME  ( Schaltplan +  Board)&lt;br&gt;
+REVISION  ( Schaltplan +  Board)&lt;br&gt;
+SCH_SHEET_NAME  ( Schaltplan)&lt;br&gt;
+BRD_SHEET_NAME  ( Board)&lt;br&gt;</description>
+<gates>
+<gate name="G$1" symbol="HTL-A3-H" x="0" y="0"/>
+</gates>
+<devices>
+<device name="A3H" package="HTL-A3-H">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="A3V" package="HTL-A3-V">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="A4H" package="HTL-A4-H">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="A4V" package="HTL-A4-V">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="" package="HTL-LEER">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="HTL-A3-V" prefix="FRAME">
+<description>Arbeitsblatt der HTL Rankweil für Schaltpläne DIN-A3 Portrait&lt;br&gt;
+kombinierbar mit Boardplänen (CHANGE PACKAGE): &lt;br&gt;
+DIN-A3 Landscape&lt;br&gt;
+DIN-A3 Portrait&lt;br&gt;
+DIN-A4 Landscape&lt;br&gt;
+DIN-A4 Portrait&lt;br&gt;
+Leer (für Projekte mit mehreren Schaltplänen und einem Board)
+&lt;br&gt;
+Über Attribute werden die Beschriftungeinträge gesteuert:&lt;br&gt;
+&lt;b&gt;Attribut&lt;/b&gt;&lt;br&gt;
+USER_NAME  ( Schaltplan +  Board)&lt;br&gt;              
+PROJEKT_NAME  ( Schaltplan +  Board)&lt;br&gt;
+ACCOUNT_NAME  ( Schaltplan +  Board)&lt;br&gt;
+REVISION  ( Schaltplan +  Board)&lt;br&gt;
+SCH_SHEET_NAME  ( Schaltplan)&lt;br&gt;
+BRD_SHEET_NAME  ( Board)&lt;br&gt;</description>
+<gates>
+<gate name="G$1" symbol="HTL-A3-V" x="0" y="0"/>
+</gates>
+<devices>
+<device name="A3H" package="HTL-A3-H">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="A3V" package="HTL-A3-V">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="A4H" package="HTL-A4-H">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="A4V" package="HTL-A4-V">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="" package="HTL-LEER">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="HTL-A4-H" prefix="FRAME">
+<description>Arbeitsblatt der HTL Rankweil für Schaltpläne DIN-A4 Landscape&lt;br&gt;
+kombinierbar mit Boardplänen (CHANGE PACKAGE): &lt;br&gt;
+DIN-A3 Landscape&lt;br&gt;
+DIN-A3 Portrait&lt;br&gt;
+DIN-A4 Landscape&lt;br&gt;
+DIN-A4 Portrait&lt;br&gt;
+Leer (für Projekte mit mehreren Schaltplänen und einem Board)
+&lt;br&gt;
+Über Attribute werden die Beschriftungeinträge gesteuert:&lt;br&gt;
+&lt;b&gt;Attribut&lt;/b&gt;&lt;br&gt;
+USER_NAME  ( Schaltplan +  Board)&lt;br&gt;              
+PROJEKT_NAME  ( Schaltplan +  Board)&lt;br&gt;
+ACCOUNT_NAME  ( Schaltplan +  Board)&lt;br&gt;
+REVISION  ( Schaltplan +  Board)&lt;br&gt;
+SCH_SHEET_NAME  ( Schaltplan)&lt;br&gt;
+BRD_SHEET_NAME  ( Board)&lt;br&gt;</description>
+<gates>
+<gate name="G$1" symbol="HTL-A4-H" x="0" y="0"/>
+</gates>
+<devices>
+<device name="A4V" package="HTL-A4-V">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="A4H" package="HTL-A4-H">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="A3V" package="HTL-A3-V">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="A3H" package="HTL-A3-H">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="" package="HTL-LEER">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="HTL-A4-V" prefix="FRAME">
+<description>Arbeitsblatt der HTL Rankweil für Schaltpläne DIN-A4 Portrait&lt;br&gt;
+kombinierbar mit Boardplänen (CHANGE PACKAGE): &lt;br&gt;
+DIN-A3 Landscape&lt;br&gt;
+DIN-A3 Portrait&lt;br&gt;
+DIN-A4 Landscape&lt;br&gt;
+DIN-A4 Portrait&lt;br&gt;
+Leer (für Projekte mit mehreren Schaltplänen und einem Board)
+&lt;br&gt;
+Über Attribute werden die Beschriftungeinträge gesteuert:&lt;br&gt;
+&lt;b&gt;Attribut&lt;/b&gt;&lt;br&gt;
+USER_NAME  ( Schaltplan +  Board)&lt;br&gt;              
+PROJEKT_NAME  ( Schaltplan +  Board)&lt;br&gt;
+ACCOUNT_NAME  ( Schaltplan +  Board)&lt;br&gt;
+REVISION  ( Schaltplan +  Board)&lt;br&gt;
+SCH_SHEET_NAME  ( Schaltplan)&lt;br&gt;
+BRD_SHEET_NAME  ( Board)&lt;br&gt;</description>
+<gates>
+<gate name="G$1" symbol="HTL-A4-V" x="0" y="0"/>
+</gates>
+<devices>
+<device name="A4V" package="HTL-A4-V">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="A4H" package="HTL-A4-H">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="A3V" package="HTL-A3-V">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="A3H" package="HTL-A3-H">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="" package="HTL-LEER">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
+</drawing>
+</eagle>

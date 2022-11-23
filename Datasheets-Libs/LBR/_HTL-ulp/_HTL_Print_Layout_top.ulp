@@ -1,0 +1,78 @@
+#usage "<b>Stellt den Druckerdialog für den Layout (top) ein. (Version 1.0) </b>\n"
+       "<p>"
+       "<p>"
+       "<author>Autor: leopold.moosbrugger@htlr.snv.at</author><br>"
+       "<br>"
+
+#require 7.0300
+       
+real VERSION   = 1.0;
+
+/*
+ * CHANGELOG================================================
+ *
+ */
+
+if (board)
+{  
+   board(B)
+   {
+      string cmd = "";
+      string sub_cmd;
+   
+      real x_len;
+      real y_len;
+      real s_len;
+      real q_len;
+
+      x_len = u2mm(B.area.x2 - B.area.x1);
+      y_len = u2mm(B.area.y2 - B.area.y1);
+
+      cmd += "ATTRIBUTE * BRD_SHEET_NAME 'Layout (Top)'; ";
+      cmd += "Display none  1 17 18 101; ";
+      cmd += "Window FIT; ";
+      cmd += "SET POLYGON_RATSNEST ON; ";
+      cmd += "RATSNEST; ";
+      cmd += "WRITE; ";
+      cmd += "PRINT 1.0 - BLACK SOLID ";
+     
+      q_len = x_len / y_len;
+      if (q_len > sqrt(2))
+      {
+         cmd += "LANDSCAPE ";
+         s_len = x_len;
+      } else if (q_len < 1/sqrt(2))
+      {
+         cmd += "PORTRAIT ";
+         s_len = y_len;
+      } else if (x_len > y_len)
+      {
+         cmd += "LANDSCAPE ";
+         s_len = y_len * sqrt(2);
+      } else
+      {
+         cmd += "PORTRAIT ";
+         s_len = x_len * sqrt(2);
+      }
+      
+      if (s_len <= 297)
+          sub_cmd = "PAPER A4 ";
+      else if (s_len <= 420)
+          sub_cmd = "PAPER A3 "; 
+      else if (s_len <= 594)
+          sub_cmd = "PAPER A2 "; 
+      else if (s_len <= 841)
+          sub_cmd = "PAPER A1 ";
+      else
+          sub_cmd = "PAPER A0 "; 
+      cmd += sub_cmd;
+   
+      cmd += "FILE %N_brd_Layout_top.pdf";
+   
+      exit (cmd);
+   }
+} else 
+{
+   dlgMessageBox("_HTL_Print_Layout_top.ulp kann nur im Layout-Editor ausgeführt werden!", "&OK");
+   exit ("MOVE");
+}

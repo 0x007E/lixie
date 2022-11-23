@@ -1,0 +1,122 @@
+#usage "<b>Setzt die globalen Attribute für die Beschriftung (Version 1.0) </b>\n"
+       "<p>"
+       "<p>"
+       "<author>Autor: leopold.moosbrugger@htlr.snv.at</author><br>"
+       "<br>"
+
+#require 7.0300
+       
+real VERSION   = 1.0;
+
+/*
+ * CHANGELOG================================================
+ *
+ */  
+
+string myName = "";
+string myProjekt = "";
+string myAccount = "";
+string myRevision = "";
+
+string cmd;
+string sub_cmd;
+
+string Get_Global_Attribut_Value (string A_Name)
+{
+  string A_Value = "";
+
+  if (schematic)
+  {
+    schematic(S) 
+    {
+      S.attributes(A) 
+      {
+        if (A.name == A_Name)
+          A_Value = A.value;
+      }
+    }
+  } else if (board)
+  {
+    board(B) 
+    {
+      B.attributes(A) 
+      {
+        if (A.name == A_Name)
+          A_Value = A.value;
+      }
+    }
+  }
+  return A_Value;
+}
+
+// Ueberpruefung ob SCH oder BRD
+if (schematic)
+{
+  myName = Get_Global_Attribut_Value ("USER_NAME");
+  myProjekt = Get_Global_Attribut_Value ("PROJEKT_NAME");
+  myAccount = Get_Global_Attribut_Value ("ACCOUNT_NAME");
+  myRevision = Get_Global_Attribut_Value ("REVISION");
+
+  int Result = dlgDialog("Eingabe der Blattbeschriftung") 
+  {
+    dlgHBoxLayout 
+    {
+      dlgLabel("Name");
+      dlgStringEdit(myName);
+    }
+    dlgHBoxLayout 
+    {
+      dlgLabel("Projektname");
+      dlgStringEdit(myProjekt);
+    }
+    dlgHBoxLayout 
+    {
+      dlgLabel("Accountname");
+      dlgStringEdit(myAccount);
+    }
+    dlgHBoxLayout 
+    {
+      dlgLabel("Revision");
+      dlgStringEdit(myRevision);
+    }
+    dlgHBoxLayout
+    {
+      dlgStretch(1);
+      dlgPushButton("+OK")    dlgAccept(1);
+      dlgPushButton("Cancel") dlgReject();
+    }
+  };
+
+  if (Result == 1)
+  {
+    cmd = "";
+
+    sprintf (sub_cmd, "attribute * USER_NAME '%s'; ", myName);
+    cmd += sub_cmd;
+    sprintf (sub_cmd, "attribute * PROJEKT_NAME '%s'; ", myProjekt);
+    cmd += sub_cmd;
+    sprintf (sub_cmd, "attribute * ACCOUNT_NAME '%s'; ", myAccount);
+    cmd += sub_cmd;
+    sprintf (sub_cmd, "attribute * REVISION '%s'; ", myRevision);
+    cmd += sub_cmd;
+    cmd += "attribute * SCH_SHEET_NAME 'Schaltplan'; ";
+
+    cmd += "BOARD; ";
+
+    sprintf (sub_cmd, "attribute * USER_NAME '%s'; ", myName);
+    cmd += sub_cmd;
+    sprintf (sub_cmd, "attribute * PROJEKT_NAME '%s'; ", myProjekt);
+    cmd += sub_cmd;
+    sprintf (sub_cmd, "attribute * ACCOUNT_NAME '%s'; ", myAccount);
+    cmd += sub_cmd;
+    sprintf (sub_cmd, "attribute * REVISION '%s'; ", myRevision);
+    cmd += sub_cmd;
+    cmd += "attribute * BRD_SHEET_NAME 'Layout Work'; ";
+
+    cmd += "WRITE;";
+    cmd += "MOVE";
+    exit(cmd);
+  }
+} else
+  dlgMessageBox("HTL_Set_Project_Globale_Attributtes.ulp kann nur im Schematic ausgeführt werden!", "&OK");
+

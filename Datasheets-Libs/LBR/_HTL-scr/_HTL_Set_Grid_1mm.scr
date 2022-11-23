@@ -1,0 +1,8 @@
+# setzt das Raster auf 1 / 0,5mm und stellt auf Punktraster um
+# EAGLE-5.10.0
+#
+# DI Leopold Moosbrugger
+# 30.12.2012
+#
+
+GRID mm 1 1 dots on alt mm 0.5 mm; MOVE 

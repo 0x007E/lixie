@@ -1,0 +1,352 @@
+#usage "<b>Erzeugt ein Bauteil fuer eine RFID Antenne (Version 1.0) </b>\n"
+       "<p>"
+       "<author>Autor: leopold.moosbrugger@htlr.snv.at</author><br>"
+       "<br>"
+
+#require 7.0300
+       
+real VERSION   = 1.0;
+
+/*
+ * CHANGELOG================================================
+ *
+ */  
+
+int create_Sym;
+int create_Dev; 
+int connect_Pac;
+int create_rest_Top;
+int create_rest_Bottom;
+ 
+string PacName;
+string DevVar;
+int N_T;
+int N_S;
+real w_C;
+real s_I;
+real t_C;
+real C_L;
+real C_W;
+real L;
+real rest_top;
+real rest_right;
+real rest_bottom;
+real rest_left;
+
+int t;
+int s;
+
+real x = 0.0;
+real y = 0.0;
+
+string cmd = "";
+string sub_cmd;
+
+if (library)
+{
+   int Result = dlgDialog("RFID (V1.0)") 
+   {
+      PacName = "RFID";
+      DevVar = "4",
+
+      N_T = 4;
+      N_S = 16;
+      w_C = 1.0;
+      s_I = 0.5;
+      t_C = 35.0;
+      C_L = 40.0;
+      C_W = 45.0;
+      L = 1.20058;
+
+      rest_top = 10.0;
+      rest_right = 10.0;
+      rest_bottom = 10.0;
+      rest_left = 10.0;
+      
+      create_Sym = 0;
+      create_Dev = 0;
+      connect_Pac = 1;
+      create_rest_Top = 1;
+      create_rest_Bottom = 1;
+
+      dlgGroup("Library Selection") 
+      {
+         dlgHBoxLayout 
+         {
+            dlgLabel("Name of Package");
+            dlgStringEdit(PacName);
+            dlgLabel("_Variant.pac");
+         }
+
+         dlgHBoxLayout 
+         {
+            dlgLabel("Variant");
+            dlgStringEdit(DevVar);
+            dlgLabel("Name");
+         }
+         
+         dlgCheckBox("connect Package to RFID Device", connect_Pac);
+         dlgCheckBox("create Symbol for RFID", create_Sym);
+         dlgCheckBox("create Device for RFID", create_Dev);
+      }
+    
+      dlgGroup("Parameter of Antenna") 
+      {
+         dlgHBoxLayout 
+         {
+            dlgLabel("Number of Complete Turns");
+            dlgIntEdit(N_T, 1, 100);
+            dlgLabel("mm");
+         }
+
+         dlgHBoxLayout 
+         {
+            dlgLabel("Number Segments");
+            dlgIntEdit(N_S, 4, 400);
+            dlgLabel("mm");
+         }
+
+         dlgHBoxLayout 
+         {
+            dlgLabel("Width of Conductor");
+            dlgRealEdit(w_C, 0.0, 500.0);
+            dlgLabel("mm");
+         }
+
+         dlgHBoxLayout 
+         {
+            dlgLabel("Space between two conductors");
+            dlgRealEdit(s_I, 0.0, 500.0);
+            dlgLabel("mm");
+         }
+
+         dlgHBoxLayout 
+         {
+            dlgLabel("Thickness of conductors");
+            dlgRealEdit(t_C, 0.0, 500.0);
+            dlgLabel("micron");
+         }
+
+         dlgHBoxLayout 
+         {
+            dlgLabel("Lenth of coil");
+            dlgRealEdit(C_L, 0.0, 500.0);
+            dlgLabel("mm");
+         }
+
+         dlgHBoxLayout 
+         {
+            dlgLabel("Width of coil");
+            dlgRealEdit(C_W, 0.0, 500.0);
+            dlgLabel("mm");
+         }
+
+         dlgHBoxLayout 
+         {
+            dlgLabel("Inductance");
+            dlgRealEdit(L, 0.0, 10000.0);
+            dlgLabel("uH");
+         }
+      }
+
+      dlgGroup("Restriction") 
+      {
+         dlgHBoxLayout 
+         {
+            dlgLabel("Top");
+            dlgRealEdit(rest_top, 0.0, 100.0);
+            dlgLabel("mm");
+         }
+      
+          dlgHBoxLayout 
+         {
+            dlgLabel("Right");
+            dlgRealEdit(rest_right, 0.0, 100.0);
+            dlgLabel("mm");
+         }
+          dlgHBoxLayout 
+         {
+            dlgLabel("Bottom");
+            dlgRealEdit(rest_bottom, 0.0, 100.0);
+            dlgLabel("mm");
+         }
+
+         dlgHBoxLayout 
+         {
+            dlgLabel("Left");
+            dlgRealEdit(rest_left, 0.0, 100.0);
+            dlgLabel("mm");
+         }
+         dlgCheckBox("create restricted area (Top)", create_rest_Top);
+         dlgCheckBox("create restricted area (Bottom)", create_rest_Bottom);
+      }
+      
+      dlgHBoxLayout
+      {
+         dlgStretch(1);
+         dlgPushButton("+OK")    dlgAccept(1);
+         dlgPushButton("Cancel") dlgReject();
+      }
+   };
+
+   if (Result == 1)
+   {
+      N_T = N_S / 4;  // to play save
+     
+      sprintf (sub_cmd, "Edit '%s_%s.pac'; ", PacName, DevVar);
+      cmd += sub_cmd;
+      cmd += "Set Wire_Bend 2; ";
+      cmd += "Grid mm; ";
+      cmd += "Description '";
+      cmd += "RFID Antenne (Antenna Design)<br>\n";
+      cmd += "<br>\n";
+      sprintf (sub_cmd, "<br>Inductance result %fuH\n", L);
+      cmd += sub_cmd;
+      cmd += "<br>\n";
+      sprintf (sub_cmd, "<br>Number of Complete Turns: %d\n", N_T);
+      cmd += sub_cmd;
+      sprintf (sub_cmd, "<br>Number of Segments: %d\n", N_S);
+      cmd += sub_cmd;
+      sprintf (sub_cmd, "<br>w, Width of Conductor: %6.2fmm\n", w_C);
+      cmd += sub_cmd;
+      sprintf (sub_cmd, "<br>s, Space between two conductors: %6.2fmm\n", s_I);
+      cmd += sub_cmd;
+      sprintf (sub_cmd, "<br>Thickness of conductor: %6.2fmicron\n", t_C);
+      cmd += sub_cmd;
+      sprintf (sub_cmd, "<br>Length of Coil: %6.2fmm\n", C_L);
+      cmd += sub_cmd;
+      sprintf (sub_cmd, "<br>With of coil: %6.2fmm'; ", C_W);
+      cmd += sub_cmd;
+ 
+      cmd += "Layer 1; ";
+      sprintf (sub_cmd, "Wire %f ", w_C);
+      cmd += sub_cmd;
+     
+      t = 0;       // turn count
+      s = 0;       // segment count in one turn
+      x = w_C / 2; // startpoint of the firts segment
+     
+      while ((t*4+s) <= N_S)
+      {
+         if (s == 0)
+         {
+            y = -(t + 0.5) * w_C - t * s_I;
+            s = 1;
+         } else if (s == 1)
+         {
+            x = C_L - (t + 0.5) * w_C - t * s_I;
+            s = 2;
+         } else if (s == 2)
+         {
+            y = -C_W + (t + 0.5) * w_C + t * s_I;
+            s = 3;
+         } else if (s == 3)
+         {
+            x = (t + 0.5) * w_C + t * s_I;
+            s = 0;
+            t++;
+         }
+         sprintf (sub_cmd, "(%f %f) ", x, y);
+         cmd += sub_cmd;
+      }
+      cmd += "; ";
+	  
+      sprintf (sub_cmd, "Layer 16; Wire %f (%f %f) (%f %f); ", w_C, x, y, w_C/2, y);
+      cmd += sub_cmd;
+
+      cmd += "Layer 1; ";
+      sprintf (sub_cmd, "Smd '+' %f %f -0 R0 (%f %f); ", w_C, w_C, w_C/2, -w_C/2);
+      cmd += sub_cmd;
+      // work around (Loesung mit Mirror fuer Layer 16)
+      sprintf (sub_cmd, "Smd '-' %f %f -0 R0 (%f %f); Mirror '-'; ", w_C, w_C, w_C/2, y);
+      cmd += sub_cmd;
+      sprintf (sub_cmd, "Change Drill 0.6; Pad 'NC1' round %f R0 (%f %f); ", w_C, x, y);
+      cmd += sub_cmd;
+
+      // restricted area
+      real x1 = N_T * (w_C + s_I);
+      real y1 = -x1;
+      real x2 = C_L - x1;
+      real y2 = -C_W - y1;
+     
+      int mod_s = N_S % 4;
+      if (mod_s > 0)
+         y1 = y1 - w_C - s_I;
+      if (mod_s > 1)
+         x2 = x2 - w_C - s_I;
+      if (mod_s > 2)
+         y2 = y2 + w_C + s_I;
+       
+      if (create_rest_Top == 1)
+      {
+         cmd += "Change Spacing 1.27; Change Pour solid; Layer 41; ";
+         // outer restrict
+         sprintf (sub_cmd, "Polygon 0.127 (%f %f) (%f %f) (%f %f) (%f %f) (%f %f) (%f %f) (%f %f) (%f %f) (%f %f) (%f %f) (%f %f); ", 
+         -rest_left, rest_top, C_L+rest_right, rest_top, C_L+rest_right,  -C_W-rest_bottom,
+         -rest_left, -C_W-rest_bottom, -rest_left, -w_C-s_I,
+         -s_I, -w_C-s_I, -s_I, -C_W-s_I, C_L+s_I, -C_W-s_I, 
+         C_L+s_I, s_I, -rest_left, s_I, -rest_left, rest_top);
+         cmd += sub_cmd;
+         // inner restrict
+         sprintf (sub_cmd, "Polygon 0.127 (%f %f) (%f %f) (%f %f) (%f %f) (%f %f); ",
+         x1, y1, x2, y1, x2, y2, x1, y2, x1, y1);
+         cmd += sub_cmd;
+      }
+     
+      if (create_rest_Bottom == 1)
+      {
+         cmd += "Change Spacing 1.27; Change Pour solid; Layer 42; ";
+         // outer restrict
+         sprintf (sub_cmd, "Polygon 0.127 (%f %f) (%f %f) (%f %f) (%f %f) (%f %f) (%f %f) (%f %f) (%f %f) (%f %f) (%f %f) (%f %f) (%f %f) (%f %f); ", 
+         -rest_left, rest_top, C_L+rest_right, rest_top, C_L+rest_right,  -C_W-rest_bottom,
+         -rest_left, -C_W-rest_bottom, -rest_left, y-w_C/2-s_I,
+         -s_I, y-w_C/2-s_I, -s_I, -C_W-s_I, C_L+s_I, -C_W-s_I, 
+         C_L+s_I, s_I, -s_I, s_I, -s_I, y+w_C/2+s_I, -rest_left, y+w_C/2+s_I, 
+         -rest_left, rest_top);
+         cmd += sub_cmd;
+         // restrict between connectors
+         sprintf (sub_cmd, "Polygon 0.127 (%f %f) (%f %f) (%f %f) (%f %f) (%f %f); ",
+         -rest_left, -(w_C+s_I), -s_I, -(w_C+s_I), -s_I, y+w_C/2+s_I, -rest_left, y+w_C/2+s_I, -rest_left, -(w_C+s_I));
+         cmd += sub_cmd;
+         // inner restrict
+         sprintf (sub_cmd, "Polygon 0.127 (%f %f) (%f %f) (%f %f) (%f %f) (%f %f); ",
+         x1, y1, x2, y1, x2, y2, x1, y2, x1, y1);
+         cmd += sub_cmd;
+      }
+       
+      if (create_Sym == 1)
+      {
+         cmd += "Edit 'RFID.sym'; Set Wire_Bend 2; Grid mm; Layer 94; Change Style continuous; ";
+         cmd += "Wire  0.254 (-2.54 2.54) (4.064 2.54) (4.064 -4.064) (-2.54 -4.064) (-2.54 -2.54) (-2.54 2.032) (3.556 2.032) (3.556 -3.556) ";
+         cmd += "(-2.032 -3.556) (-2.032 1.524) (3.048 1.524) (3.048 -3.048) (-1.524 -3.048) (-1.524 1.016) (2.54 1.016) (2.54 -2.54) (-2.54 -2.54); ";
+         cmd += "Pin '+' pas none short R0 off 1 (-5.08 2.54); ";
+         cmd += "Pin '-' pas none short R0 off 1 (-5.08 -2.54); ";
+         cmd += "Change Size 1.778; Change Ratio 8; Change Align bottom left; Change Font proportional; ";
+         cmd += "Layer 95; ";
+         cmd += "Text '>NAME' R0 (-2.54 3.81); ";
+         cmd += "Layer 96; ";
+         cmd += "Text '>VALUE' R0 (-2.54 -7.62); ";
+      }
+     
+      if (create_Dev == 1)
+      {
+         cmd += "Edit 'RFID.dev'; Prefix ''; Description 'RFID Antenne'; Value off; Add RFID 'G$1' next 0 (5.08 -2.54); ";
+      }
+
+      // connect device
+      if (connect_Pac == 1)
+      {
+         cmd += "Edit 'RFID.dev'; ";
+         sprintf (sub_cmd, "Package '%s_%s' '%s'; ", PacName, DevVar, DevVar);
+         cmd += sub_cmd;
+         cmd += "Technology ''; ";
+         cmd += "Connect  'G$1.+' '+'  'G$1.-' '-'; ";
+      }
+  
+      cmd += "WINDOW FIT; ";
+	
+      exit(cmd);
+   }
+} else
+   dlgMessageBox("HTL_Create_RFID_Pac.ulp arbeitet nur in der Bibliothek!", "&OK");
+

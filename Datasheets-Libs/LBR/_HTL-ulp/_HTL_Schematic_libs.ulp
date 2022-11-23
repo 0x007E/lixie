@@ -1,0 +1,30 @@
+#usage "Dieses ULP generiert eine Textdatei, mit dem Verweis auf alle verwendeten "
+       "Bibliotheken eines Schematics"
+       "<p>"
+       "<author>Autor: leopold.moosbrugger@htlr.snv.at</author><br>"
+       "<br>"
+
+#require 7.0300
+
+
+string version = "Version EAGLE-5.10.0";
+
+if (EAGLE_VERSION * 100 + EAGLE_RELEASE < 410) 
+{
+   string h;
+   sprintf(h, "Eagleversion %d %d ", EAGLE_VERSION, EAGLE_RELEASE);
+   dlgMessageBox(h + "This ULP does not run in Eagle Versions older than 4.1", "OK");
+   exit(0);
+}
+string fileName;
+
+schematic(S) {
+   fileName = strsub(S.name, 0, strstr(S.name, ".sch")) + "_sch_libs.txt";
+  output(fileName, "wt") {
+     printf("Verwendete Library (Schematic)\n");
+     S.libraries(L) {
+        printf("Library: %s\n", L.name);
+        L.symbols(Sy) printf("   Symbol: %s\n", Sy.name);
+      }
+   }
+}

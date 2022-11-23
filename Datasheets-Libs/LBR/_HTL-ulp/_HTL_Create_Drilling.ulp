@@ -1,0 +1,299 @@
+#usage "Dieses ULP generiert ein Script, das eine Bohrlegende "
+       "im Layout im Layer 144 plaziert<p>"
+       "<p>"
+       "<author>Autor: leopold.moosbrugger@htlr.snv.at</author><br>"
+       "<br>"
+
+#require 7.0300
+
+
+string version = "Version EAGLE-5.10.0";
+
+if (EAGLE_VERSION * 100 + EAGLE_RELEASE < 410) 
+{
+   string h;
+   sprintf(h, "Eagleversion %d %d ", EAGLE_VERSION, EAGLE_RELEASE);
+   dlgMessageBox(h + "This ULP does not run in Eagle Versions older than 4.1", "OK");
+   exit(0);
+}
+
+int Drilling[];
+int DrillSymbol[];
+int Counts[];
+int Index[];
+int Plating[];
+int imax = 0;
+int totalDrills = 0;
+int totalPlates = 0;
+string fileName;
+int Symbol_19 = 0;
+
+string DrillSymbols[] =                      // the 19 Symbols
+{
+  "Wire 3 (R 40 40) (R -40 -40);Circle 3 (R 0 0) (R 40 0);",
+  "Wire 3 (R -40 0) (R 40 0);Wire 3 (R 0 40) (R 0 -40);",
+  "Wire 3 (R -40 -40) (R 40 40);Wire 3 (R -40 40) (R 40 -40);",
+  "Wire 3 (R 0 0) (R 0 40);Wire 3 (R -40 40) (R 40 40) (R 40 -40) (R -40 -40) (R -40 40);",
+  "Wire 3 (R 0 0) (R 0 40) (R -40 0) (R 0 -40) (R 40 0) (R 0 40);",
+  "Wire 3 (R -40 -40) (R 40 40) (R -40 40) (R 40 -40) (R -40 -40);",
+  "Wire 3 (R -40 40) (R 40 -40) (R 40 40) (R -40 -40) (R -40 40);",
+  "Wire 3 (R -40 0) (R 40 0) (R 0 40) (R 0 -40) (R -40 0);",
+  "Wire 3 (R -40 0) (R 40 0) (R 0 -40) (R 0 40) (R -40 0);",
+  "Wire 3 (R -40 40) (R 40 -40);Wire 3 (R 0 -40) (R 0 40);Wire 3 (R 40 40) (R -40 -40);",
+  "Wire 3 (R -40 0) (R 40 0);Wire 3 (R 40 40) (R -40 -40);Wire 3 (R -40 40) (R 40 -40);",
+  "Wire 3 (R 0 -40) (R 0 0) (R 40 40) (R -40 40) (R 0 0);",
+  "Wire 3 (R 0 40) (R 0 0) (R 40 -40) (R -40 -40) (R 0 0);",
+  "Wire 3 (R -40 0) (R 0 0) (R 40 40) (R 40 -40) (R 0 0);",
+  "Wire 3 (R 40 0) (R 0 0) (R -40 -40) (R -40 40) (R 0 0);",
+  "Wire 3 (R -40 0) (R 40 0);Wire 3 (R 0 40) (R 0 -40);Circle 3 (R 0 0) (R 40 0);",
+  "Wire 3 (R -40 0) (R 40 0);Wire 3 (R 0 40) (R 0 -40);Circle 3 (R 0 0) (R 40 0);Circle 3 (R 0 0) (R 20 0);",
+  "Wire 3 (R -40 0) (R 40 0);Wire 3 (R 0 40) (R 0 -40);Wire 3 (R -40 -40) (R 40 -40) (R 40 40) (R -40 40) (R -40 -40);",
+  "Wire 3 (R -40 0) (R 40 0);Wire 3 (R 0 40) (R 0 -40);Wire 3 (R -40 -40) (R 40 -40) (R 40 40) (R -40 40) (R -40 -40);Wire 3 (R -20 -20) (R 20 -20) (R 20 20) (R -20 20) (R -20 -20);"
+} ;
+
+
+void prsymbol (int s, real x, real y)  
+{
+   printf("MARK (%.1f %.1f);%s\n", x, y, DrillSymbols[s]);
+
+   return;
+}
+
+void drawsymbol (int drill, int sym, int x, int y) 
+{
+   if (!sym) 
+      Symbol_19++;
+ 
+   prsymbol (sym, u2mil(x), u2mil(y));
+
+   return;
+}
+
+void AddDrilling (int Size, int plated, int Symbol)
+{
+   int i;
+   for (i=imax-1; i>=0; i--)
+   {
+       if (Drilling[i] == Size)
+       {
+         Counts[i]++;
+         totalDrills++;
+         if (plated == 1)
+         {
+            Plating[i]++;
+            totalPlates++;
+         }
+         return;
+      }
+   }
+   Drilling[imax] = Size;
+   if (plated == 1)
+   {
+      Plating[imax] = 1;
+      totalPlates++;
+   } else
+      Plating[imax] = 0;
+
+   DrillSymbol[imax] = Symbol;
+   Counts[imax++] = 1;
+   totalDrills++;
+}
+
+
+board(B)
+{
+   string cmd = "";
+   string sub_cmd;
+
+   real ylegend;
+   real xlegend;
+   real drill = 0;  
+
+   real xl1;
+   real xl2;
+   real yl1;
+   real yl2;
+
+   B.holes(H) AddDrilling(H.drill, 0, H.drillsymbol);
+   B.signals(S) S.vias(V) AddDrilling(V.drill, 1, V.drillsymbol);
+   B.elements(E)
+   {
+      E.package.contacts(C)
+      {
+         if (C.pad)
+            AddDrilling(C.pad.drill, 1, C.pad.drillsymbol);
+      }
+      E.package.holes(H) AddDrilling(H.drill, 0, H.drillsymbol);
+   }
+
+   sort(imax, Index, Drilling, Counts, DrillSymbol );
+
+   fileName = filedir(B.name) + "bohrlegende.scr";
+   output(fileName, "wtD") 
+   {
+      printf("# exportet with %s from %s.\n", version, B.name);
+      printf("GRID mil FINEST on;\n");
+      printf("CHANGE SIZE 50;\n");
+      printf("WINDOW FIT;\n");
+      printf("SET WIRE_BEND 2;\n");
+      printf("CHANGE STYLE Continuous;\n");
+
+      B.elements(E) 
+      {
+         E.package.contacts(C) 
+         {
+            if (C.pad) 
+            {
+               printf("# Pads\n");
+               drawsymbol (C.pad.drill, C.pad.drillsymbol, C.pad.x, C.pad.y);
+            }
+         }
+         E.package.holes(H) 
+         {
+            printf("# Holes-PAC\n");
+            drawsymbol(H.drill, H.drillsymbol, H.x, H.y);
+         }
+      }
+      B.holes(H) drawsymbol(H.drill, H.drillsymbol, H.x, H.y);
+      printf("# Holes-BRD\n");
+
+      B.signals(S) S.vias(V) 
+      {
+         printf("# Vias\n");
+         drawsymbol(V.drill, V.drillsymbol, V.x, V.y);
+      }
+
+      xlegend = u2mil(B.area.x2) + 100;
+      ylegend = u2mil(B.area.y1);
+
+      for (int i=0; i < imax; i++)
+      {
+         prsymbol(DrillSymbol[Index[i]], xlegend + 200, ylegend + (imax - i) * 200 - 100);
+
+         printf("WIRE 5  (%f %f) (%f %f);\n",
+               xlegend,        ylegend + (imax - i) * 200 ,
+               xlegend + 2500, ylegend + (imax - i) * 200  );
+
+         printf("TEXT '%5.2f mm' (%f %f);\n", 
+            u2mm(Drilling[Index[i]]),
+            xlegend + 600, ylegend + (imax - i) * 200 - 135 );
+
+         printf("TEXT '%4d' (%f %f);\n",Counts[Index[i]],
+               xlegend + 2100, ylegend + (imax - i) * 200 - 135 );
+      }
+
+      printf("WIRE 5  (%f %f) (%f %f);\n",
+            xlegend,        ylegend - 200,
+            xlegend + 2500, ylegend - 200);
+
+       printf("WIRE 5  (%f %f) (%f %f);\n",
+            xlegend,        ylegend,
+            xlegend + 2500, ylegend);
+
+      printf("WIRE 5  (%f %f) (%f %f);\n",
+            xlegend,        ylegend + (imax * 200) + 400,
+            xlegend + 2500, ylegend + (imax * 200) + 400 );
+
+      printf("WIRE 5  (%f %f) (%f %f);\n", 
+            xlegend, ylegend -200,
+            xlegend, ylegend + (imax * 200) + 400 );
+
+      printf("WIRE 5  (%f %f) (%f %f);\n", 
+            xlegend + 2500, ylegend - 200,
+            xlegend + 2500, ylegend + (imax * 200) + 400 );
+
+      printf("WIRE 5  (%f %f) (%f %f);\n",
+            xlegend,        ylegend + (imax * 200) + 200,
+            xlegend + 2500, ylegend + (imax * 200) + 200 );
+
+      printf("WIRE 5  (%f %f) (%f %f);\n",
+            xlegend,        ylegend+ (imax * 200) ,
+            xlegend + 2500, ylegend + (imax * 200)  );
+
+      printf("WIRE 5  (%f %f) (%f %f);\n", 
+            xlegend + 370, ylegend,
+            xlegend + 370, ylegend + (imax * 200) + 200 );
+
+      printf("WIRE 5  (%f %f) (%f %f);\n", 
+            xlegend + 1900, ylegend - 200,
+            xlegend + 1900, ylegend + (imax * 200) + 200 );
+
+      printf("CHANGE SIZE 150;\n");
+
+      printf("TEXT 'Bohrplan' (%f %f);\n",
+            xlegend + 800, ylegend + (imax * 200) + 225);
+
+      printf("CHANGE SIZE 100;\n");
+
+      printf("TEXT 'SYM' (%f %f);\n",
+            xlegend + 50, ylegend + (imax * 200) + 50);
+
+      printf("TEXT 'SIZE' (%f %f);\n",
+            xlegend + 460, ylegend + (imax * 200) + 50);
+
+      printf("TEXT 'CNT' (%f %f);\n",
+            xlegend + 2060, ylegend + (imax * 200) + 50);
+
+      printf("CHANGE SIZE 70;\n");
+
+      printf("TEXT 'TOTAL' (%f %f);\n",
+            xlegend + 1400, ylegend - 150 );
+      printf("TEXT '%4d' (%f %f);\n",totalDrills,
+              xlegend + 2100, ylegend - 150 );
+
+      printf("TEXT 'Material:  FR4 1,5mm 35u Cu' (%f %f);\n",
+            xlegend + 120, ylegend + (imax * 200) + 600 );
+
+      printf("TEXT 'Toleranz: Aussenmass -0,5mm, sonst +/_0,2mm' (%f %f);\n",
+            xlegend + 120, ylegend + (imax * 200) + 500);
+
+      printf("WINDOW FIT;\n");
+      printf("GRID LAST;\n");
+   } /* output */
+
+   xl1 = xlegend-50;
+   yl1 = ylegend - 201;
+   xl2 = xlegend + 2550;
+   yl2 = ylegend + (imax * 200) + 601;
+
+   /* erstellt die Befehlszeile */
+   cmd  = "LAYER 144 bDrill; ";
+   cmd += "LAYER 143 tDrill; ";
+   cmd += "DISPLAY none 143 144; ";
+   cmd += "GROUP ALL; ";
+   cmd += "DELETE (> 0 0); ";
+
+   cmd += "CHANGE LAYER 143; ";
+   cmd += "SCRIPT '" + fileName + "'; ";
+
+   cmd += "CHANGE LAYER 144; ";
+   cmd += "SCRIPT '" + fileName + "'; ";
+
+   cmd += "GRID mil FINEST on; ";
+   cmd += "DISPLAY none 144; ";
+   sprintf (sub_cmd, "GROUP (%f %f) (%f %f) (%f %f) (%f %f) (%f %f); ",
+           xl1, yl1, xl2, yl1, xl2, yl2, xl1, yl2, xl1, yl1);
+   cmd += sub_cmd;
+   sprintf (sub_cmd, "MIRROR  (> %f %f); ",
+           (xl1 + xl2) / 2, (yl1 + yl2) / 2);
+   cmd += sub_cmd;
+
+   cmd += "SET CONFIRM YES; ";
+   cmd += "REMOVE '" + fileName + "'; ";
+   cmd += "SET CONFIRM OFF; ";
+   
+   cmd += "Display none 20 101 102 143 144; ";
+   
+   sprintf (sub_cmd, "GROUP (%f %f) (%f %f) (%f %f) (%f %f) (%f %f); ",
+           xl1, yl1, xl2, yl1, xl2, yl2, xl1, yl2, xl1, yl1);
+   cmd += sub_cmd;
+
+   sprintf (sub_cmd, "MARK  (%f %f); ",
+           (xl1 + xl2) / 2, (yl1 +yl2) / 2);
+   cmd += sub_cmd;
+   cmd += "GRID LAST; ";
+   cmd += "MOVE (> R0 0)";
+
+   exit(cmd);
+}
+

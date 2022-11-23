@@ -1,0 +1,42 @@
+#usage "Dieses ULP generiert eine Textdatei, mit den Bohrdurchmessern einer "
+       "Bibliothek"
+       "<p>"
+       "<author>Autor: leopold.moosbrugger@htlr.snv.at</author><br>"
+       "<br>"
+
+#require 7.0300
+
+
+string version = "Version EAGLE-5.10.0";
+
+if (EAGLE_VERSION * 100 + EAGLE_RELEASE < 410) 
+{
+   string h;
+   sprintf(h, "Eagleversion %d %d ", EAGLE_VERSION, EAGLE_RELEASE);
+   dlgMessageBox(h + "This ULP does not run in Eagle Versions older than 4.1", "OK");
+   exit(0);
+}
+
+string fileName;
+
+library(L) 
+{
+   fileName = strsub(L.name, 0, strstr(L.name, ".lbr")) + "_drill.txt";
+   output(fileName, "wt") 
+   {
+      printf("Library: %s\n", L.name);
+      L.packages(PAC) 
+      {
+         printf("Packages: %s\n", PAC.name);
+         PAC.contacts(C) 
+         {
+            if (C.pad)
+               printf("Pad: '%4s', (%+8.4f %+8.4f), dr=%+8.4f/%+8.4f, d=%+8.4f/%+8.4f\n",
+                  C.name, u2mm(C.pad.x), u2mm(C.pad.y), 
+                  u2mm(C.pad.drill), u2inch(C.pad.drill), 
+                  u2mm(C.pad.diameter[LAYER_BOTTOM]), u2inch(C.pad.diameter[LAYER_BOTTOM]));
+         }
+      }
+   }
+}
+

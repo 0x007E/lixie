@@ -1,0 +1,11 @@
+# setzt das Raster auf 1 / 0,5mm und stellt auf Punktraster um
+# EAGLE-5.10.0
+#
+# DI Leopold Moosbrugger
+# 30.12.2012
+#
+
+GRID inch 0.05 1 lines on alt inch 0.025 inch;
+MOVE;
+
+

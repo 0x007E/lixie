@@ -1,0 +1,36 @@
+#usage "Dieses ULP generiert eine CSV, mit dem Inhalt einer "
+       "Bibliotheken"
+       "<p>"
+       "<author>Autor: leopold.moosbrugger@htlr.snv.at</author><br>"
+       "<br>"
+
+#require 7.0300
+
+
+string version = "Version EAGLE-5.10.0";
+
+if (EAGLE_VERSION * 100 + EAGLE_RELEASE < 410) 
+{
+   string h;
+   sprintf(h, "Eagleversion %d %d ", EAGLE_VERSION, EAGLE_RELEASE);
+   dlgMessageBox(h + "This ULP does not run in Eagle Versions older than 4.1", "OK");
+   exit(0);
+}
+
+string fileName;
+
+library(L) 
+{
+   fileName = strsub(L.name, 0, strstr(L.name, ".lbr")) + "_libs.csv";
+   output(fileName, "wt") 
+   {
+      printf("L_name;DS_name;D_name;D_package_name;G_name;G_symbol_name;\n");
+      L.devicesets(DS) DS.devices(D) 
+      {
+         D.gates(G)
+         {
+            printf("%s;%s;%s;%s;%s;%s;\n", filename(L.name), DS.name, D.name, D.package.name, G.name, G.symbol.name);
+         }
+      }
+   }
+}

@@ -1,0 +1,21 @@
+#usage "Dieses ULP generiert eine Textdatei, mit dem Verweis auf alle verwendeten "
+       "Bibliotheken eines Boards."
+       "<p>"
+       "<author>Autor: leopold.moosbrugger@htlr.snv.at</author><br>"
+       "<br>"
+
+#require 7.0300
+
+string fileName;
+
+board(B) {
+   fileName = strsub(B.name, 0, strstr(B.name, ".brd")) + "_brd_libs.txt";
+   output(fileName, "wt") 
+   {
+      printf("Verwendete Library (Board)\n");
+      B.libraries(L) {
+         printf("Library: %s\n", L.name);
+         L.packages(P) printf("   Package: %s\n", P.name);
+      }
+   }
+}
