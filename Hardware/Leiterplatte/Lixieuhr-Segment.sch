@@ -8104,7 +8104,7 @@ Source: http://products.nichicon.co.jp/en/pdf/XJA043/e-ud.pdf</description>
 <part name="GND42" library="0_HTL_analog" deviceset="GND" device=""/>
 <part name="P+11" library="0_HTL_analog" deviceset="V+" device=""/>
 <part name="GND43" library="0_HTL_analog" deviceset="GND" device=""/>
-<part name="C21" library="rcl" deviceset="CPOL-US" device="E3.5-8"/>
+<part name="C21" library="rcl" deviceset="CPOL-US" device="E3.5-8" value="1mF"/>
 </parts>
 <sheets>
 <sheet>
