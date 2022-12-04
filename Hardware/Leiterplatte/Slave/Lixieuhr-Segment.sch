@@ -9092,6 +9092,29 @@ Source: http://products.nichicon.co.jp/en/pdf/XJA043/e-ud.pdf</description>
 </nets>
 </sheet>
 </sheets>
+<errors>
+<approved hash="104,1,68.58,185.42,U1,VCC,V+,,,"/>
+<approved hash="104,1,104.14,185.42,U2,VCC,V+,,,"/>
+<approved hash="104,1,139.7,185.42,U3,VCC,V+,,,"/>
+<approved hash="104,1,172.72,185.42,U4,VCC,V+,,,"/>
+<approved hash="104,1,205.74,185.42,U5,VCC,V+,,,"/>
+<approved hash="104,1,68.58,137.16,U6,VCC,V+,,,"/>
+<approved hash="104,1,104.14,137.16,U7,VCC,V+,,,"/>
+<approved hash="104,1,139.7,137.16,U8,VCC,V+,,,"/>
+<approved hash="104,1,172.72,137.16,U9,VCC,V+,,,"/>
+<approved hash="104,1,205.74,137.16,U10,VCC,V+,,,"/>
+<approved hash="104,1,68.58,88.9,U11,VCC,V+,,,"/>
+<approved hash="104,1,104.14,88.9,U12,VCC,V+,,,"/>
+<approved hash="104,1,139.7,88.9,U13,VCC,V+,,,"/>
+<approved hash="104,1,172.72,88.9,U14,VCC,V+,,,"/>
+<approved hash="104,1,205.74,88.9,U15,VCC,V+,,,"/>
+<approved hash="104,1,68.58,40.64,U16,VCC,V+,,,"/>
+<approved hash="104,1,104.14,40.64,U17,VCC,V+,,,"/>
+<approved hash="104,1,139.7,40.64,U18,VCC,V+,,,"/>
+<approved hash="104,1,172.72,40.64,U19,VCC,V+,,,"/>
+<approved hash="104,1,205.74,40.64,U20,VCC,V+,,,"/>
+<approved hash="113,1,227.395,35.1705,JP4,,,,,"/>
+</errors>
 </schematic>
 </drawing>
 </eagle>
