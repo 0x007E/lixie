@@ -1,9 +1,9 @@
 /*---------------------------------------------------------------*\
-| Datei:		main.c
-| Projekt:		Lixie Uhr
+| Datei:		      main.c
+| Projekt:		   Lixie Uhr
 | Beschreibung:
-| Autor:		Samir El-Farfar
-| Erstellt:		09.11.2022
+| Autor:		      Samir El-Farfar
+| Erstellt:		   09.11.2022
 |
 | Geaendert:
 \*---------------------------------------------------------------*/ 
@@ -11,11 +11,12 @@
 #include <util/delay.h>
 #include <avr/interrupt.h>
 
-uint8_t sec = 0, min = 0, hrs = 0;
+uint8_t sec, min, hrs;
+uint32_t clk;
 
 ISR(TIMER1_COMPA_vect)
 {
-	
+	clk++;
 }
 
 void port_init()
