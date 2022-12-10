@@ -19,6 +19,19 @@
 
 uint8_t sec, min, hrs;
 
+
+int frame[2][4] = //Initialisierung der Frames (funktioniert nicht)
+{
+   {
+      led_sof(), led_data(0xFF, 255, 255, 255), led_data(0x00, 255, 255, 255), led_eof()
+   },
+
+   {
+      led_sof(), led_data(0x00, 255, 255, 255), led_data(0xFF, 255, 255, 255), led_eof()
+   }
+};
+
+
 ISR(TIMER1_COMPA_vect)
 {
    sec++;
@@ -52,17 +65,11 @@ int main()
    while (1)
    {
       
-     led_sof();
-     led_data(0, 255, 255, 255);
-     led_data(0xFF, 255, 255, 255);
-     led_eof();
+     frame[0];
 
      _delay_ms(500);
 
-     led_sof();
-     led_data(0xFF, 255, 255, 255);
-     led_data(0, 255, 255, 255);     
-     led_eof();
+     frame[1];
 
      _delay_ms(500);
      
