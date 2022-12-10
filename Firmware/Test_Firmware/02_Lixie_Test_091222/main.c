@@ -52,7 +52,21 @@ int main()
    while (1)
    {
       
-      if(sec >= 60)
+     led_sof();
+     led_data(0, 255, 255, 255);
+     led_data(0xFF, 255, 255, 255);
+     led_eof();
+
+     _delay_ms(500);
+
+     led_sof();
+     led_data(0xFF, 255, 255, 255);
+     led_data(0, 255, 255, 255);     
+     led_eof();
+
+     _delay_ms(500);
+     
+     /* if(sec >= 60)
       {
          min++;
          sec = 0;
@@ -67,7 +81,7 @@ int main()
       else if(hrs >= 24)
       {
          hrs = 0;
-      }
+      } */
 
    }
 
