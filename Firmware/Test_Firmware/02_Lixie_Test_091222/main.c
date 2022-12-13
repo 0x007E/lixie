@@ -17,19 +17,23 @@
 #include "APA102C/led/led.h"
 #include "APA102C/spi/spi.h"
 
-uint8_t sec, min, hrs;
+uint8_t sec = 0, min, hrs;
 
+uint8_t frame[2] = {0x00, 0xFF};
+
+/*static const led_data_0 = led_data(0xFF, 255, 255, 255);
+static const led_data_1 = led_data(0x00, 255, 255, 255);
 
 int frame[2][4] = //Initialisierung der Frames (funktioniert nicht)
 {
    {
-      led_sof(), led_data(0xFF, 255, 255, 255), led_data(0x00, 255, 255, 255), led_eof()
+      LED_SOF, led_data_0, led_data_1, LED_EOF
    },
 
    {
-      led_sof(), led_data(0x00, 255, 255, 255), led_data(0xFF, 255, 255, 255), led_eof()
+      LED_SOF, led_data_1, led_data_0, LED_EOF
    }
-};
+}; */
 
 
 ISR(TIMER1_COMPA_vect)
@@ -64,14 +68,18 @@ int main()
    
    while (1)
    {
-      
-     frame[0];
+      if (sec > 1) 
+      {
+         sec = 0;
+      }
 
-     _delay_ms(500);
 
-     frame[1];
+      led_sof();
+      led_data(frame[sec], 255, 255, 255);
+      led_data(~frame[sec], 255, 255, 255);
+      led_eof();
 
-     _delay_ms(500);
+
      
      /* if(sec >= 60)
       {
