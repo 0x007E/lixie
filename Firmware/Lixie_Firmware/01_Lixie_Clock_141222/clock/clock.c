@@ -3,10 +3,10 @@
 
 void clock_data(Clock_Data_t hours, Clock_Data_t minutes, Clock_Data_t seconds)
 {
-	led_sof();
+   led_sof();
    
-	// Sekunden
-	clock_transmit(seconds);
+   // Sekunden
+   clock_transmit(seconds);
    
    // Minuten
    clock_transmit(minutes);
@@ -14,7 +14,7 @@ void clock_data(Clock_Data_t hours, Clock_Data_t minutes, Clock_Data_t seconds)
    // Stunden
    clock_transmit(hours);
    
-	led_eof();
+   led_eof();
 }
 
 void clock_transmit(Clock_Data_t data)

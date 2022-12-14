@@ -1,0 +1,627 @@
+
+01_Lixie_Clock_141222.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000374  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000010  00800060  00000374  000003e8  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .comment      00000030  00000000  00000000  000003f8  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000428  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 000000d8  00000000  00000000  00000464  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00000e18  00000000  00000000  0000053c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 000008dd  00000000  00000000  00001354  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   0000064d  00000000  00000000  00001c31  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  0000020c  00000000  00000000  00002280  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    0000054c  00000000  00000000  0000248c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    000004d1  00000000  00000000  000029d8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 000000b0  00000000  00000000  00002ea9  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+   8:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+   c:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  10:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  14:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  18:	0c 94 40 01 	jmp	0x280	; 0x280 <__vector_6>
+  1c:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  20:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  24:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  28:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  2c:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  30:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  34:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  38:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  3c:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  40:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  44:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  48:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  4c:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  50:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d4 e0       	ldi	r29, 0x04	; 4
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	10 e0       	ldi	r17, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	e4 e7       	ldi	r30, 0x74	; 116
+  68:	f3 e0       	ldi	r31, 0x03	; 3
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	a0 37       	cpi	r26, 0x70	; 112
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+  76:	0e 94 8e 01 	call	0x31c	; 0x31c <main>
+  7a:	0c 94 b8 01 	jmp	0x370	; 0x370 <_exit>
+
+0000007e <__bad_interrupt>:
+  7e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000082 <clock_transmit>:
+   
+   led_eof();
+}
+
+void clock_transmit(Clock_Data_t data)
+{
+  82:	bf 92       	push	r11
+  84:	cf 92       	push	r12
+  86:	df 92       	push	r13
+  88:	ef 92       	push	r14
+  8a:	ff 92       	push	r15
+  8c:	0f 93       	push	r16
+  8e:	1f 93       	push	r17
+  90:	cf 93       	push	r28
+  92:	df 93       	push	r29
+  94:	00 d0       	rcall	.+0      	; 0x96 <clock_transmit+0x14>
+  96:	00 d0       	rcall	.+0      	; 0x98 <clock_transmit+0x16>
+  98:	1f 92       	push	r1
+  9a:	cd b7       	in	r28, 0x3d	; 61
+  9c:	de b7       	in	r29, 0x3e	; 62
+  9e:	5a 83       	std	Y+2, r21	; 0x02
+  a0:	6b 83       	std	Y+3, r22	; 0x03
+  a2:	7c 83       	std	Y+4, r23	; 0x04
+  a4:	8d 83       	std	Y+5, r24	; 0x05
+   
+   unsigned char upper_data= data.data/10;
+  a6:	04 2f       	mov	r16, r20
+  a8:	8d ec       	ldi	r24, 0xCD	; 205
+  aa:	48 9f       	mul	r20, r24
+  ac:	f1 2c       	mov	r15, r1
+  ae:	11 24       	eor	r1, r1
+  b0:	f6 94       	lsr	r15
+  b2:	f6 94       	lsr	r15
+  b4:	f6 94       	lsr	r15
+   unsigned char lower_data = data.data%10;
+  b6:	9f 2d       	mov	r25, r15
+  b8:	99 0f       	add	r25, r25
+  ba:	89 2f       	mov	r24, r25
+  bc:	88 0f       	add	r24, r24
+  be:	88 0f       	add	r24, r24
+  c0:	89 0f       	add	r24, r25
+  c2:	08 1b       	sub	r16, r24
+   
+   for(signed char i=9; i >= 0; i--)
+  c4:	19 e0       	ldi	r17, 0x09	; 9
+  c6:	27 c0       	rjmp	.+78     	; 0x116 <clock_transmit+0x94>
+   {
+      if(i == upper_data)
+  c8:	2f 2d       	mov	r18, r15
+  ca:	30 e0       	ldi	r19, 0x00	; 0
+  cc:	81 2f       	mov	r24, r17
+  ce:	01 2e       	mov	r0, r17
+  d0:	00 0c       	add	r0, r0
+  d2:	99 0b       	sbc	r25, r25
+  d4:	82 17       	cp	r24, r18
+  d6:	93 07       	cpc	r25, r19
+  d8:	89 f4       	brne	.+34     	; 0xfc <clock_transmit+0x7a>
+      {
+         led_data(data.intensity, data.R, data.G, data.B);
+  da:	bd 80       	ldd	r11, Y+5	; 0x05
+  dc:	cc 80       	ldd	r12, Y+4	; 0x04
+  de:	db 80       	ldd	r13, Y+3	; 0x03
+  e0:	ea 80       	ldd	r14, Y+2	; 0x02
+  e2:	2b 2d       	mov	r18, r11
+  e4:	4c 2d       	mov	r20, r12
+  e6:	6d 2d       	mov	r22, r13
+  e8:	8e 2d       	mov	r24, r14
+  ea:	0e 94 2a 01 	call	0x254	; 0x254 <led_data>
+         led_data(data.intensity, data.R, data.G, data.B);
+  ee:	2b 2d       	mov	r18, r11
+  f0:	4c 2d       	mov	r20, r12
+  f2:	6d 2d       	mov	r22, r13
+  f4:	8e 2d       	mov	r24, r14
+  f6:	0e 94 2a 01 	call	0x254	; 0x254 <led_data>
+  fa:	0c c0       	rjmp	.+24     	; 0x114 <clock_transmit+0x92>
+      }
+      else
+      {
+         led_data(0x00, 0, 0, 0);
+  fc:	20 e0       	ldi	r18, 0x00	; 0
+  fe:	40 e0       	ldi	r20, 0x00	; 0
+ 100:	60 e0       	ldi	r22, 0x00	; 0
+ 102:	80 e0       	ldi	r24, 0x00	; 0
+ 104:	0e 94 2a 01 	call	0x254	; 0x254 <led_data>
+         led_data(0x00, 0, 0, 0);
+ 108:	20 e0       	ldi	r18, 0x00	; 0
+ 10a:	40 e0       	ldi	r20, 0x00	; 0
+ 10c:	60 e0       	ldi	r22, 0x00	; 0
+ 10e:	80 e0       	ldi	r24, 0x00	; 0
+ 110:	0e 94 2a 01 	call	0x254	; 0x254 <led_data>
+{
+   
+   unsigned char upper_data= data.data/10;
+   unsigned char lower_data = data.data%10;
+   
+   for(signed char i=9; i >= 0; i--)
+ 114:	11 50       	subi	r17, 0x01	; 1
+ 116:	11 23       	and	r17, r17
+ 118:	bc f6       	brge	.-82     	; 0xc8 <clock_transmit+0x46>
+ 11a:	19 e0       	ldi	r17, 0x09	; 9
+ 11c:	27 c0       	rjmp	.+78     	; 0x16c <clock_transmit+0xea>
+      }
+   }
+   
+   for(signed char i=9; i >= 0; i--)
+   {
+      if(i == lower_data)
+ 11e:	20 2f       	mov	r18, r16
+ 120:	30 e0       	ldi	r19, 0x00	; 0
+ 122:	81 2f       	mov	r24, r17
+ 124:	01 2e       	mov	r0, r17
+ 126:	00 0c       	add	r0, r0
+ 128:	99 0b       	sbc	r25, r25
+ 12a:	82 17       	cp	r24, r18
+ 12c:	93 07       	cpc	r25, r19
+ 12e:	89 f4       	brne	.+34     	; 0x152 <clock_transmit+0xd0>
+      {
+         led_data(data.intensity, data.R, data.G, data.B);
+ 130:	cd 80       	ldd	r12, Y+5	; 0x05
+ 132:	dc 80       	ldd	r13, Y+4	; 0x04
+ 134:	eb 80       	ldd	r14, Y+3	; 0x03
+ 136:	fa 80       	ldd	r15, Y+2	; 0x02
+ 138:	2c 2d       	mov	r18, r12
+ 13a:	4d 2d       	mov	r20, r13
+ 13c:	6e 2d       	mov	r22, r14
+ 13e:	8f 2d       	mov	r24, r15
+ 140:	0e 94 2a 01 	call	0x254	; 0x254 <led_data>
+         led_data(data.intensity, data.R, data.G, data.B);
+ 144:	2c 2d       	mov	r18, r12
+ 146:	4d 2d       	mov	r20, r13
+ 148:	6e 2d       	mov	r22, r14
+ 14a:	8f 2d       	mov	r24, r15
+ 14c:	0e 94 2a 01 	call	0x254	; 0x254 <led_data>
+ 150:	0c c0       	rjmp	.+24     	; 0x16a <clock_transmit+0xe8>
+      }
+      else
+      {
+         led_data(0x00, 0, 0, 0);
+ 152:	20 e0       	ldi	r18, 0x00	; 0
+ 154:	40 e0       	ldi	r20, 0x00	; 0
+ 156:	60 e0       	ldi	r22, 0x00	; 0
+ 158:	80 e0       	ldi	r24, 0x00	; 0
+ 15a:	0e 94 2a 01 	call	0x254	; 0x254 <led_data>
+         led_data(0x00, 0, 0, 0);
+ 15e:	20 e0       	ldi	r18, 0x00	; 0
+ 160:	40 e0       	ldi	r20, 0x00	; 0
+ 162:	60 e0       	ldi	r22, 0x00	; 0
+ 164:	80 e0       	ldi	r24, 0x00	; 0
+ 166:	0e 94 2a 01 	call	0x254	; 0x254 <led_data>
+         led_data(0x00, 0, 0, 0);
+         led_data(0x00, 0, 0, 0);
+      }
+   }
+   
+   for(signed char i=9; i >= 0; i--)
+ 16a:	11 50       	subi	r17, 0x01	; 1
+ 16c:	11 23       	and	r17, r17
+ 16e:	bc f6       	brge	.-82     	; 0x11e <clock_transmit+0x9c>
+      {
+         led_data(0x00, 0, 0, 0);
+         led_data(0x00, 0, 0, 0);
+      }
+   }
+ 170:	0f 90       	pop	r0
+ 172:	0f 90       	pop	r0
+ 174:	0f 90       	pop	r0
+ 176:	0f 90       	pop	r0
+ 178:	0f 90       	pop	r0
+ 17a:	df 91       	pop	r29
+ 17c:	cf 91       	pop	r28
+ 17e:	1f 91       	pop	r17
+ 180:	0f 91       	pop	r16
+ 182:	ff 90       	pop	r15
+ 184:	ef 90       	pop	r14
+ 186:	df 90       	pop	r13
+ 188:	cf 90       	pop	r12
+ 18a:	bf 90       	pop	r11
+ 18c:	08 95       	ret
+
+0000018e <clock_data>:
+
+#include "clock.h"
+
+void clock_data(Clock_Data_t hours, Clock_Data_t minutes, Clock_Data_t seconds)
+{
+ 18e:	8f 92       	push	r8
+ 190:	9f 92       	push	r9
+ 192:	af 92       	push	r10
+ 194:	bf 92       	push	r11
+ 196:	cf 92       	push	r12
+ 198:	ef 92       	push	r14
+ 19a:	ff 92       	push	r15
+ 19c:	0f 93       	push	r16
+ 19e:	1f 93       	push	r17
+ 1a0:	cf 93       	push	r28
+ 1a2:	df 93       	push	r29
+ 1a4:	cd b7       	in	r28, 0x3d	; 61
+ 1a6:	de b7       	in	r29, 0x3e	; 62
+ 1a8:	2f 97       	sbiw	r28, 0x0f	; 15
+ 1aa:	0f b6       	in	r0, 0x3f	; 63
+ 1ac:	f8 94       	cli
+ 1ae:	de bf       	out	0x3e, r29	; 62
+ 1b0:	0f be       	out	0x3f, r0	; 63
+ 1b2:	cd bf       	out	0x3d, r28	; 61
+ 1b4:	49 83       	std	Y+1, r20	; 0x01
+ 1b6:	5a 83       	std	Y+2, r21	; 0x02
+ 1b8:	6b 83       	std	Y+3, r22	; 0x03
+ 1ba:	7c 83       	std	Y+4, r23	; 0x04
+ 1bc:	8d 83       	std	Y+5, r24	; 0x05
+ 1be:	ee 82       	std	Y+6, r14	; 0x06
+ 1c0:	ff 82       	std	Y+7, r15	; 0x07
+ 1c2:	08 87       	std	Y+8, r16	; 0x08
+ 1c4:	19 87       	std	Y+9, r17	; 0x09
+ 1c6:	2a 87       	std	Y+10, r18	; 0x0a
+ 1c8:	8b 86       	std	Y+11, r8	; 0x0b
+ 1ca:	9c 86       	std	Y+12, r9	; 0x0c
+ 1cc:	ad 86       	std	Y+13, r10	; 0x0d
+ 1ce:	be 86       	std	Y+14, r11	; 0x0e
+ 1d0:	cf 86       	std	Y+15, r12	; 0x0f
+   led_sof();
+ 1d2:	0e 94 14 01 	call	0x228	; 0x228 <led_sof>
+   
+   // Sekunden
+   clock_transmit(seconds);
+ 1d6:	4b 85       	ldd	r20, Y+11	; 0x0b
+ 1d8:	5c 85       	ldd	r21, Y+12	; 0x0c
+ 1da:	6d 85       	ldd	r22, Y+13	; 0x0d
+ 1dc:	7e 85       	ldd	r23, Y+14	; 0x0e
+ 1de:	8f 85       	ldd	r24, Y+15	; 0x0f
+ 1e0:	0e 94 41 00 	call	0x82	; 0x82 <clock_transmit>
+   
+   // Minuten
+   clock_transmit(minutes);
+ 1e4:	4e 81       	ldd	r20, Y+6	; 0x06
+ 1e6:	5f 81       	ldd	r21, Y+7	; 0x07
+ 1e8:	68 85       	ldd	r22, Y+8	; 0x08
+ 1ea:	79 85       	ldd	r23, Y+9	; 0x09
+ 1ec:	8a 85       	ldd	r24, Y+10	; 0x0a
+ 1ee:	0e 94 41 00 	call	0x82	; 0x82 <clock_transmit>
+   
+   // Stunden
+   clock_transmit(hours);
+ 1f2:	49 81       	ldd	r20, Y+1	; 0x01
+ 1f4:	5a 81       	ldd	r21, Y+2	; 0x02
+ 1f6:	6b 81       	ldd	r22, Y+3	; 0x03
+ 1f8:	7c 81       	ldd	r23, Y+4	; 0x04
+ 1fa:	8d 81       	ldd	r24, Y+5	; 0x05
+ 1fc:	0e 94 41 00 	call	0x82	; 0x82 <clock_transmit>
+   
+   led_eof();
+ 200:	0e 94 1f 01 	call	0x23e	; 0x23e <led_eof>
+}
+ 204:	2f 96       	adiw	r28, 0x0f	; 15
+ 206:	0f b6       	in	r0, 0x3f	; 63
+ 208:	f8 94       	cli
+ 20a:	de bf       	out	0x3e, r29	; 62
+ 20c:	0f be       	out	0x3f, r0	; 63
+ 20e:	cd bf       	out	0x3d, r28	; 61
+ 210:	df 91       	pop	r29
+ 212:	cf 91       	pop	r28
+ 214:	1f 91       	pop	r17
+ 216:	0f 91       	pop	r16
+ 218:	ff 90       	pop	r15
+ 21a:	ef 90       	pop	r14
+ 21c:	cf 90       	pop	r12
+ 21e:	bf 90       	pop	r11
+ 220:	af 90       	pop	r10
+ 222:	9f 90       	pop	r9
+ 224:	8f 90       	pop	r8
+ 226:	08 95       	ret
+
+00000228 <led_sof>:
+{
+   spi_init(SPI_Master, SPI_MSB, SPI_Falling, SPI_Rising);
+}
+
+void led_sof()
+{
+ 228:	cf 93       	push	r28
+   for(unsigned char i=0; i < LED_FRAME; i++)
+ 22a:	c0 e0       	ldi	r28, 0x00	; 0
+ 22c:	04 c0       	rjmp	.+8      	; 0x236 <led_sof+0xe>
+   {
+      spi_transfer(LED_SOF);
+ 22e:	80 e0       	ldi	r24, 0x00	; 0
+ 230:	0e 94 b1 01 	call	0x362	; 0x362 <spi_transfer>
+   spi_init(SPI_Master, SPI_MSB, SPI_Falling, SPI_Rising);
+}
+
+void led_sof()
+{
+   for(unsigned char i=0; i < LED_FRAME; i++)
+ 234:	cf 5f       	subi	r28, 0xFF	; 255
+ 236:	c4 30       	cpi	r28, 0x04	; 4
+ 238:	d0 f3       	brcs	.-12     	; 0x22e <led_sof+0x6>
+   {
+      spi_transfer(LED_SOF);
+   }
+}
+ 23a:	cf 91       	pop	r28
+ 23c:	08 95       	ret
+
+0000023e <led_eof>:
+
+void led_eof()
+{
+ 23e:	cf 93       	push	r28
+   for(unsigned char i=0; i < LED_FRAME; i++)
+ 240:	c0 e0       	ldi	r28, 0x00	; 0
+ 242:	04 c0       	rjmp	.+8      	; 0x24c <led_eof+0xe>
+   {
+      spi_transfer(LED_EOF);
+ 244:	8f ef       	ldi	r24, 0xFF	; 255
+ 246:	0e 94 b1 01 	call	0x362	; 0x362 <spi_transfer>
+   }
+}
+
+void led_eof()
+{
+   for(unsigned char i=0; i < LED_FRAME; i++)
+ 24a:	cf 5f       	subi	r28, 0xFF	; 255
+ 24c:	c4 30       	cpi	r28, 0x04	; 4
+ 24e:	d0 f3       	brcs	.-12     	; 0x244 <led_eof+0x6>
+   {
+      spi_transfer(LED_EOF);
+   }
+}
+ 250:	cf 91       	pop	r28
+ 252:	08 95       	ret
+
+00000254 <led_data>:
+
+void led_data(unsigned char intensity, unsigned char r, unsigned char g, unsigned char b)
+{
+ 254:	1f 93       	push	r17
+ 256:	cf 93       	push	r28
+ 258:	df 93       	push	r29
+ 25a:	c6 2f       	mov	r28, r22
+ 25c:	d4 2f       	mov	r29, r20
+ 25e:	12 2f       	mov	r17, r18
+   spi_transfer(0xE0 | intensity);
+ 260:	80 6e       	ori	r24, 0xE0	; 224
+ 262:	0e 94 b1 01 	call	0x362	; 0x362 <spi_transfer>
+   spi_transfer(b);
+ 266:	81 2f       	mov	r24, r17
+ 268:	0e 94 b1 01 	call	0x362	; 0x362 <spi_transfer>
+   spi_transfer(g);
+ 26c:	8d 2f       	mov	r24, r29
+ 26e:	0e 94 b1 01 	call	0x362	; 0x362 <spi_transfer>
+   spi_transfer(r);
+ 272:	8c 2f       	mov	r24, r28
+ 274:	0e 94 b1 01 	call	0x362	; 0x362 <spi_transfer>
+ 278:	df 91       	pop	r29
+ 27a:	cf 91       	pop	r28
+ 27c:	1f 91       	pop	r17
+ 27e:	08 95       	ret
+
+00000280 <__vector_6>:
+volatile Clock_Data_t hours = {12, 0x0F, 255, 255, 255 };
+volatile Clock_Data_t minutes = {0, 0x0F, 255, 255, 255 };
+volatile Clock_Data_t seconds = {0, 0x0F, 255, 255, 255 };
+
+ISR(TIMER1_COMPA_vect)
+{
+ 280:	1f 92       	push	r1
+ 282:	0f 92       	push	r0
+ 284:	0f b6       	in	r0, 0x3f	; 63
+ 286:	0f 92       	push	r0
+ 288:	11 24       	eor	r1, r1
+ 28a:	8f 93       	push	r24
+ 28c:	af 93       	push	r26
+ 28e:	bf 93       	push	r27
+ 290:	ef 93       	push	r30
+ 292:	ff 93       	push	r31
+   seconds.R++;
+ 294:	e0 e6       	ldi	r30, 0x60	; 96
+ 296:	f0 e0       	ldi	r31, 0x00	; 0
+ 298:	82 81       	ldd	r24, Z+2	; 0x02
+ 29a:	8f 5f       	subi	r24, 0xFF	; 255
+ 29c:	82 83       	std	Z+2, r24	; 0x02
+   minutes.G++;
+ 29e:	a5 e6       	ldi	r26, 0x65	; 101
+ 2a0:	b0 e0       	ldi	r27, 0x00	; 0
+ 2a2:	13 96       	adiw	r26, 0x03	; 3
+ 2a4:	8c 91       	ld	r24, X
+ 2a6:	13 97       	sbiw	r26, 0x03	; 3
+ 2a8:	8f 5f       	subi	r24, 0xFF	; 255
+ 2aa:	13 96       	adiw	r26, 0x03	; 3
+ 2ac:	8c 93       	st	X, r24
+   hours.B++;
+ 2ae:	aa e6       	ldi	r26, 0x6A	; 106
+ 2b0:	b0 e0       	ldi	r27, 0x00	; 0
+ 2b2:	14 96       	adiw	r26, 0x04	; 4
+ 2b4:	8c 91       	ld	r24, X
+ 2b6:	14 97       	sbiw	r26, 0x04	; 4
+ 2b8:	8f 5f       	subi	r24, 0xFF	; 255
+ 2ba:	14 96       	adiw	r26, 0x04	; 4
+ 2bc:	8c 93       	st	X, r24
+ 2be:	14 97       	sbiw	r26, 0x04	; 4
+   
+   // Alle 1ms auslösen
+   
+   // Variablen hour, minute, seconde anpassen
+   seconds.data++;
+ 2c0:	80 81       	ld	r24, Z
+ 2c2:	8f 5f       	subi	r24, 0xFF	; 255
+ 2c4:	80 83       	st	Z, r24
+   
+   seconds.data++;
+ 2c6:	80 81       	ld	r24, Z
+ 2c8:	8f 5f       	subi	r24, 0xFF	; 255
+ 2ca:	80 83       	st	Z, r24
+   
+   if(seconds.data >= 59)
+ 2cc:	80 81       	ld	r24, Z
+ 2ce:	8b 33       	cpi	r24, 0x3B	; 59
+ 2d0:	90 f0       	brcs	.+36     	; 0x2f6 <__vector_6+0x76>
+   {
+      minutes.data++;
+ 2d2:	e5 e6       	ldi	r30, 0x65	; 101
+ 2d4:	f0 e0       	ldi	r31, 0x00	; 0
+ 2d6:	80 81       	ld	r24, Z
+ 2d8:	8f 5f       	subi	r24, 0xFF	; 255
+ 2da:	80 83       	st	Z, r24
+      seconds.data = 0;
+ 2dc:	10 92 60 00 	sts	0x0060, r1	; 0x800060 <__DATA_REGION_ORIGIN__>
+      
+      if(minutes.data >= 59)
+ 2e0:	80 81       	ld	r24, Z
+ 2e2:	8b 33       	cpi	r24, 0x3B	; 59
+ 2e4:	40 f0       	brcs	.+16     	; 0x2f6 <__vector_6+0x76>
+      {
+         hours.data++;
+ 2e6:	fd 01       	movw	r30, r26
+ 2e8:	80 81       	ld	r24, Z
+ 2ea:	8f 5f       	subi	r24, 0xFF	; 255
+ 2ec:	80 83       	st	Z, r24
+         minutes.data = 0;
+ 2ee:	10 92 65 00 	sts	0x0065, r1	; 0x800065 <minutes>
+         
+         if(hours.data >= 23);
+ 2f2:	80 81       	ld	r24, Z
+         {
+            hours.data=0;
+ 2f4:	10 82       	st	Z, r1
+         }
+      }
+   }
+}
+ 2f6:	ff 91       	pop	r31
+ 2f8:	ef 91       	pop	r30
+ 2fa:	bf 91       	pop	r27
+ 2fc:	af 91       	pop	r26
+ 2fe:	8f 91       	pop	r24
+ 300:	0f 90       	pop	r0
+ 302:	0f be       	out	0x3f, r0	; 63
+ 304:	0f 90       	pop	r0
+ 306:	1f 90       	pop	r1
+ 308:	18 95       	reti
+
+0000030a <timer_init>:
+
+void timer_init()
+{
+   TCCR1B =  (1<<WGM12) | (1<<CS12);    // Timer setup
+ 30a:	8c e0       	ldi	r24, 0x0C	; 12
+ 30c:	8e bd       	out	0x2e, r24	; 46
+   TIMSK = (1<<OCIE1A);                 // Mode:      CTC
+ 30e:	80 e1       	ldi	r24, 0x10	; 16
+ 310:	89 bf       	out	0x39, r24	; 57
+   OCR1A = 46875;                       // Prescaler: 256
+ 312:	8b e1       	ldi	r24, 0x1B	; 27
+ 314:	97 eb       	ldi	r25, 0xB7	; 183
+ 316:	9b bd       	out	0x2b, r25	; 43
+ 318:	8a bd       	out	0x2a, r24	; 42
+ 31a:	08 95       	ret
+
+0000031c <main>:
+}
+
+int main(void)
+{
+   timer_init();           // Timer initialisieren
+ 31c:	0e 94 85 01 	call	0x30a	; 0x30a <timer_init>
+   // Während Startup über UART Zeit einstellen
+   // Gewünschte Farbe
+   
+   while (1)
+   {
+      clock_data(hours, minutes, seconds);      
+ 320:	80 90 60 00 	lds	r8, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 324:	90 90 61 00 	lds	r9, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 328:	a0 90 62 00 	lds	r10, 0x0062	; 0x800062 <__DATA_REGION_ORIGIN__+0x2>
+ 32c:	b0 90 63 00 	lds	r11, 0x0063	; 0x800063 <__DATA_REGION_ORIGIN__+0x3>
+ 330:	c0 90 64 00 	lds	r12, 0x0064	; 0x800064 <__DATA_REGION_ORIGIN__+0x4>
+ 334:	e0 90 65 00 	lds	r14, 0x0065	; 0x800065 <minutes>
+ 338:	f0 90 66 00 	lds	r15, 0x0066	; 0x800066 <minutes+0x1>
+ 33c:	00 91 67 00 	lds	r16, 0x0067	; 0x800067 <minutes+0x2>
+ 340:	10 91 68 00 	lds	r17, 0x0068	; 0x800068 <minutes+0x3>
+ 344:	20 91 69 00 	lds	r18, 0x0069	; 0x800069 <minutes+0x4>
+ 348:	40 91 6a 00 	lds	r20, 0x006A	; 0x80006a <hours>
+ 34c:	50 91 6b 00 	lds	r21, 0x006B	; 0x80006b <hours+0x1>
+ 350:	60 91 6c 00 	lds	r22, 0x006C	; 0x80006c <hours+0x2>
+ 354:	70 91 6d 00 	lds	r23, 0x006D	; 0x80006d <hours+0x3>
+ 358:	80 91 6e 00 	lds	r24, 0x006E	; 0x80006e <hours+0x4>
+ 35c:	0e 94 c7 00 	call	0x18e	; 0x18e <clock_data>
+ 360:	df cf       	rjmp	.-66     	; 0x320 <main+0x4>
+
+00000362 <spi_transfer>:
+    //  |                                                               |
+    //  |    Return:    0x??    ->  Receive data byte                   |
+    //  +---------------------------------------------------------------+
+    unsigned char spi_transfer(unsigned char data)
+    {
+        SPDR = data;    // Write data into the SPI Data Register and initiate a transmission
+ 362:	8f b9       	out	0x0f, r24	; 15
+    
+        // Wait until transmission is Complete
+        while(!(SPSR & (1<<SPIF)))
+ 364:	01 c0       	rjmp	.+2      	; 0x368 <spi_transfer+0x6>
+            asm volatile("NOP");
+ 366:	00 00       	nop
+    unsigned char spi_transfer(unsigned char data)
+    {
+        SPDR = data;    // Write data into the SPI Data Register and initiate a transmission
+    
+        // Wait until transmission is Complete
+        while(!(SPSR & (1<<SPIF)))
+ 368:	77 9b       	sbis	0x0e, 7	; 14
+ 36a:	fd cf       	rjmp	.-6      	; 0x366 <spi_transfer+0x4>
+                if(SPSR & (1<<WCOL))
+                    SPI_WCOL_PORT |= (1<<SPI_WCOL_PIN);
+            #endif
+        #endif
+        
+        return SPDR;    // Return received data from the bus
+ 36c:	8f b1       	in	r24, 0x0f	; 15
+    }
+ 36e:	08 95       	ret
+
+00000370 <_exit>:
+ 370:	f8 94       	cli
+
+00000372 <__stop_program>:
+ 372:	ff cf       	rjmp	.-2      	; 0x372 <__stop_program>

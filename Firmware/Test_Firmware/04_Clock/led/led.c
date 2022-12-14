@@ -28,4 +28,3 @@ void led_data(unsigned char intensity, unsigned char r, unsigned char g, unsigne
    spi_transfer(g);
    spi_transfer(r);
 }
-

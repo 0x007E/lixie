@@ -7,11 +7,11 @@
 
 typedef struct
 {
-	unsigned char data;		// Zeit
-	unsigned char intensity;
-	unsigned char R;
-	unsigned char G;
-	unsigned char B;
+   unsigned char data;		// Zeit
+   unsigned char intensity;
+   unsigned char R;
+   unsigned char G;
+   unsigned char B;
 } Clock_Data_t;
 
 void clock_data(Clock_Data_t hours, Clock_Data_t minutes, Clock_Data_t seconds);

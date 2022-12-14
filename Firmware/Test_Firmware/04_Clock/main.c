@@ -1,81 +1,88 @@
+/*---------------------------------------------------------------*\
+| Datei:		      main.c
+| Projekt:		   Lixie Uhr
+| Beschreibung:
+| Autor:		      Samir El-Farfar
+| Erstellt:		   14.12.2022
+|
+| Geaendert:
+\*---------------------------------------------------------------*/
 
 #define F_CPU 12000000UL
 
-
 #include <avr/io.h>
+#include <avr/interrupt.h>
+#include <util/delay.h>
+
 #include "clock/clock.h"
+                               // t   Inten. R.  G.   B.
+volatile Clock_Data_t hours;
+volatile Clock_Data_t minutes;
+volatile Clock_Data_t seconds;
 
-typedef struct
+ISR(TIMER0_OVF_vect)
 {
-	unsigned char hour;
-	unsigned char minute;
-	unsigned char second;
-} Time_t;
+   seconds.G++;
+   minutes.B++;
+   hours.R++;
+}
 
-volatile unsigned char millis;
-volatile unsigned char hour;
-volatile unsigned char minute;
-volatile unsigned char second;
+ISR(TIMER2_OVF_vect)
+{
+   seconds.B++;
+   minutes.R++;
+   hours.G++;
+}
 
 ISR(TIMER1_COMPA_vect)
 {
+   seconds.R++;
+   minutes.G++;
+   hours.B++;
+   
 	// Alle 1ms auslösen
 	
 	// Variablen hour, minute, seconde anpassen
-	second++;
+	seconds.data++;
 	
-	second.data++;
+	seconds.data++;
 	
-	if(second >= 59)
+	if(seconds.data >= 59)
 	{
-		minute++;
-		second = 0;
+		minutes.data++;
+		seconds.data = 0;
 		
-		if(minute >= 59)
+		if(minutes.data >= 59)
 		{
-			hour++;
-			minute = 0;
+			hours.data++;
+			minutes.data = 0;
 			
-			if(hour >= 23);
+			if(hours.data >= 23);
 			{
-				hour=0;
+				hours.data=0;
 			}	
 		}
 	}
 }
 
-int main(void)
+void timer_init()
 {
-	Time_t data = { 12, 10, 0 };
-	data.hour = 12;
-	data.minute = 10;
-	data.second = 0;
-	
-	
-	// Timmer initialisieren
-	
+   TCCR1B =  (1<<WGM12) | (1<<CS12);    // Timer setup
+   TIMSK = (1<<OCIE1A);                 // Mode:      CTC
+   OCR1A = 46875;                       // Prescaler: 256  
+}
+
+int main(void)
+{	
+	timer_init();           // Timer initialisieren
 	
 	// Während Startup über UART Zeit einstellen
 	// Gewünschte Farbe
 	
-	volatile Clock_Data_t hour_t = { 12, 0x0F, 255, 127, 0};
-	volatile Clock_Data_t minute_t = { 12, 0x0F, 255, 127, 0};
-	volatile Clock_Data_t second_t = { 12, 0x0F, 255, 127, 0};
-	
     while (1) 
     {
-		clock_transmit(hour, minute, second);
-		clock_transmit2(hour_t, minute_t, second_t);
+		clock_data(hours, minutes, seconds);
+      
     }
 }
 
-void set_time(unsigned char hour, unsigned char minute, unsigned char second)
-{
-	
-}
-
-
-void set_time(Time_t data)
-{
-	
-}
