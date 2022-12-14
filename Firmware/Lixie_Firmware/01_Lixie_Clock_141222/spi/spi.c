@@ -65,7 +65,7 @@ unsigned char spi_init(SPI_Mode operation, SPI_Direction direction, SPI_Polarity
     // MSB/LSB first
     SPCR |= ((0x01 & direction)<<5);
     
-    // Polarity and Phase of SCK and DATA
+    // Polarity and Phase of SCK and time
     SPCR |= ((0x01 & polarity)<<3) | ((0x01 & phase)<<2);
     
     // SPI interrupt setup
@@ -136,13 +136,13 @@ SPI_Select spi_slave_select(void)
     //  +---------------------------------------------------------------+
     //  |           SPI master transfer / receive character             |
     //  +---------------------------------------------------------------+
-    //  | Parameter:    data    ->  Transmit data byte                  |
+    //  | Parameter:    time    ->  Transmit time byte                  |
     //  |                                                               |
-    //  |    Return:    0x??    ->  Receive data byte                   |
+    //  |    Return:    0x??    ->  Receive time byte                   |
     //  +---------------------------------------------------------------+
-    unsigned char spi_transfer(unsigned char data)
+    unsigned char spi_transfer(unsigned char time)
     {
-        SPDR = data;    // Write data into the SPI Data Register and initiate a transmission
+        SPDR = time;    // Write time into the SPI time Register and initiate a transmission
     
         // Wait until transmission is Complete
         while(!(SPSR & (1<<SPIF)))
@@ -156,26 +156,26 @@ SPI_Select spi_slave_select(void)
             #endif
         #endif
         
-        return SPDR;    // Return received data from the bus
+        return SPDR;    // Return received time from the bus
     }
 
     //  +---------------------------------------------------------------+
     //  |           SPI master transfer / receive character             |
     //  +---------------------------------------------------------------+
-    //  | Parameter:    data    ->  Transmit/Receive data byte          |
+    //  | Parameter:    time    ->  Transmit/Receive time byte          |
     //  |                                                               |
-    //  |    Return:    Received  ->  Data received                     |
-    //  |               Collision ->  Data collision                    |
-    //  |               None      ->  No data received                  |
+    //  |    Return:    Received  ->  time received                     |
+    //  |               Collision ->  time collision                    |
+    //  |               None      ->  No time received                  |
     //  +---------------------------------------------------------------+
-    SPI_Status spi_slave_transfer(unsigned char *data)
+    SPI_Status spi_slave_transfer(unsigned char *time)
     {   
         if(SPSR & (1<<SPIF))
         {
-            unsigned char temp = *data;  // Write data into a temporary buffer
+            unsigned char temp = *time;  // Write time into a temporary buffer
             
-            *data = SPDR;   // Write data form buffer into data variable
-            SPDR = temp;    // Setup new data for next transmission and reset WCOL and SPIF
+            *time = SPDR;   // Write time form buffer into time variable
+            SPDR = temp;    // Setup new time for next transmission and reset WCOL and SPIF
             
             // Check if this is necessary
             // Write Collision to Collision Port (Sticky)
@@ -187,11 +187,11 @@ SPI_Select spi_slave_select(void)
                     #endif
                 #endif
                 
-                SPDR = temp;            // Write data again into the SPI data register and reset WCOL and SPIF
+                SPDR = temp;            // Write time again into the SPI time register and reset WCOL and SPIF
                 return SPI_Collision;   // Return that a collision happened
             }
-            return SPI_Received;        // Return that new data received
+            return SPI_Received;        // Return that new time received
         }
-        return SPI_None;                // Return that no new data received
+        return SPI_None;                // Return that no new time received
     }
 #endif

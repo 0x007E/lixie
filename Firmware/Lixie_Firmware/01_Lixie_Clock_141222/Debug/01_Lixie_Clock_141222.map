@@ -20,6 +20,8 @@ Discarded input sections
  .text          0x00000000        0x0 main.o
  .data          0x00000000        0x0 main.o
  .bss           0x00000000        0x0 main.o
+ .text.port_init
+                0x00000000        0x2 main.o
  .text          0x00000000        0x0 spi/spi.o
  .data          0x00000000        0x0 spi/spi.o
  .bss           0x00000000        0x0 spi/spi.o
@@ -194,7 +196,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x374
+.text           0x00000000      0x340
  *(.vectors)
  .vectors       0x00000000       0x54 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega16a/avr5/crtatmega16a.o
                 0x00000000                __vector_default
@@ -283,25 +285,25 @@ END GROUP
                 0x00000228                led_sof
  .text.led_eof  0x0000023e       0x16 led/led.o
                 0x0000023e                led_eof
- .text.led_data
+ .text.led_time
                 0x00000254       0x2c led/led.o
-                0x00000254                led_data
+                0x00000254                led_time
  .text.__vector_6
-                0x00000280       0x8a main.o
+                0x00000280       0x56 main.o
                 0x00000280                __vector_6
  .text.timer_init
-                0x0000030a       0x12 main.o
-                0x0000030a                timer_init
- .text.main     0x0000031c       0x46 main.o
-                0x0000031c                main
+                0x000002d6       0x12 main.o
+                0x000002d6                timer_init
+ .text.main     0x000002e8       0x46 main.o
+                0x000002e8                main
  .text.spi_transfer
-                0x00000362        0xe spi/spi.o
-                0x00000362                spi_transfer
-                0x00000370                . = ALIGN (0x2)
+                0x0000032e        0xe spi/spi.o
+                0x0000032e                spi_transfer
+                0x0000033c                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000370        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
-                0x00000370                _exit
-                0x00000370                exit
+ .fini9         0x0000033c        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+                0x0000033c                _exit
+                0x0000033c                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -320,11 +322,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000370        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+ .fini0         0x0000033c        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x00000374                _etext = .
+                0x00000340                _etext = .
 
-.data           0x00800060       0x10 load address 0x00000374
+.data           0x00800060       0x10 load address 0x00000340
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -349,8 +351,8 @@ END GROUP
  *(.bss*)
  *(COMMON)
                 [!provide]                PROVIDE (__bss_end, .)
-                0x00000374                __data_load_start = LOADADDR (.data)
-                0x00000384                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00000340                __data_load_start = LOADADDR (.data)
+                0x00000350                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800070        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
@@ -424,27 +426,27 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000       0xd8
+.debug_aranges  0x00000000       0xe0
  *(.debug_aranges)
  .debug_aranges
                 0x00000000       0x28 clock/clock.o
  .debug_aranges
                 0x00000028       0x38 led/led.o
  .debug_aranges
-                0x00000060       0x30 main.o
+                0x00000060       0x38 main.o
  .debug_aranges
-                0x00000090       0x48 spi/spi.o
+                0x00000098       0x48 spi/spi.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000      0xe18
+.debug_info     0x00000000      0xe2d
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x52e C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega16a/avr5/crtatmega16a.o
  .debug_info    0x0000052e      0x2e0 clock/clock.o
  .debug_info    0x0000080e      0x22d led/led.o
- .debug_info    0x00000a3b      0x171 main.o
- .debug_info    0x00000bac      0x26c spi/spi.o
+ .debug_info    0x00000a3b      0x186 main.o
+ .debug_info    0x00000bc1      0x26c spi/spi.o
 
 .debug_abbrev   0x00000000      0x8dd
  *(.debug_abbrev)
@@ -454,39 +456,39 @@ END GROUP
  .debug_abbrev  0x000006e3       0xe6 main.o
  .debug_abbrev  0x000007c9      0x114 spi/spi.o
 
-.debug_line     0x00000000      0x64d
+.debug_line     0x00000000      0x645
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x115 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega16a/avr5/crtatmega16a.o
  .debug_line    0x00000115      0x114 clock/clock.o
  .debug_line    0x00000229       0xf9 led/led.o
- .debug_line    0x00000322      0x147 main.o
- .debug_line    0x00000469      0x1e4 spi/spi.o
+ .debug_line    0x00000322      0x13f main.o
+ .debug_line    0x00000461      0x1e4 spi/spi.o
 
-.debug_frame    0x00000000      0x20c
+.debug_frame    0x00000000      0x214
  *(.debug_frame)
  .debug_frame   0x00000000       0xa8 clock/clock.o
  .debug_frame   0x000000a8       0x74 led/led.o
- .debug_frame   0x0000011c       0x68 main.o
- .debug_frame   0x00000184       0x88 spi/spi.o
+ .debug_frame   0x0000011c       0x70 main.o
+ .debug_frame   0x0000018c       0x88 spi/spi.o
 
-.debug_str      0x00000000      0x54c
+.debug_str      0x00000000      0x556
  *(.debug_str)
  .debug_str     0x00000000      0x1af C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega16a/avr5/crtatmega16a.o
  .debug_str     0x000001af      0x1c9 clock/clock.o
-                                0x202 (size before relaxing)
+                                0x207 (size before relaxing)
  .debug_str     0x00000378       0x8e led/led.o
                                 0x227 (size before relaxing)
- .debug_str     0x00000406       0x38 main.o
-                                0x1eb (size before relaxing)
- .debug_str     0x0000043e      0x10e spi/spi.o
+ .debug_str     0x00000406       0x42 main.o
+                                0x1f5 (size before relaxing)
+ .debug_str     0x00000448      0x10e spi/spi.o
                                 0x309 (size before relaxing)
 
-.debug_loc      0x00000000      0x4d1
+.debug_loc      0x00000000      0x4b7
  *(.debug_loc)
  .debug_loc     0x00000000      0x1b7 clock/clock.o
  .debug_loc     0x000001b7      0x163 led/led.o
- .debug_loc     0x0000031a       0x70 main.o
- .debug_loc     0x0000038a      0x147 spi/spi.o
+ .debug_loc     0x0000031a       0x56 main.o
+ .debug_loc     0x00000370      0x147 spi/spi.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -506,12 +508,12 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000       0xb0
+.debug_ranges   0x00000000       0xb8
  *(.debug_ranges)
  .debug_ranges  0x00000000       0x18 clock/clock.o
  .debug_ranges  0x00000018       0x28 led/led.o
- .debug_ranges  0x00000040       0x20 main.o
- .debug_ranges  0x00000060       0x50 spi/spi.o
+ .debug_ranges  0x00000040       0x28 main.o
+ .debug_ranges  0x00000068       0x50 spi/spi.o
 
 .debug_macro
  *(.debug_macro)

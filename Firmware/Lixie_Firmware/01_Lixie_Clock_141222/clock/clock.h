@@ -7,15 +7,15 @@
 
 typedef struct
 {
-   unsigned char data;		// Zeit
+   unsigned char time;		// Zeit
    unsigned char intensity;
    unsigned char R;
    unsigned char G;
    unsigned char B;
-} Clock_Data_t;
+} Clock_time_t;
 
-void clock_data(Clock_Data_t hours, Clock_Data_t minutes, Clock_Data_t seconds);
-void clock_transmit(Clock_Data_t data);
+void clock_data(Clock_time_t hours, Clock_time_t minutes, Clock_time_t seconds);
+void clock_transmit(Clock_time_t data);
 
 
-#endif /* APA102_H_ */
+#endif /* CLOCK_H_ */

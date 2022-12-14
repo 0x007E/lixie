@@ -141,8 +141,8 @@ unsigned char spi_init(SPI_Mode operation, SPI_Direction direction, SPI_Polarity
    SPI_Select spi_slave_select(void);
 
 #ifndef SPI_SPIE
-    unsigned char spi_transfer(unsigned char data);
-       SPI_Status spi_slave_transfer(unsigned char *data);
+    unsigned char spi_transfer(unsigned char time);
+       SPI_Status spi_slave_transfer(unsigned char *time);
 #endif
 
 #endif /* SPI_H_ */

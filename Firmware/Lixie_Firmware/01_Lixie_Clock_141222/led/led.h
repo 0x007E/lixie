@@ -22,7 +22,7 @@
 void led_init();
 void led_sof();
 void led_eof();
-void led_data(unsigned char intensity, unsigned char r, unsigned char g, unsigned char b);
+void led_time(unsigned char intensity, unsigned char r, unsigned char g, unsigned char b);
 
 
 #endif /* LED_H_ */

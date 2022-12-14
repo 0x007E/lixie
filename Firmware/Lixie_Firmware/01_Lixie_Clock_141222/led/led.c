@@ -21,7 +21,7 @@ void led_eof()
    }
 }
 
-void led_data(unsigned char intensity, unsigned char r, unsigned char g, unsigned char b)
+void led_time(unsigned char intensity, unsigned char r, unsigned char g, unsigned char b)
 {
    spi_transfer(0xE0 | intensity);
    spi_transfer(b);
