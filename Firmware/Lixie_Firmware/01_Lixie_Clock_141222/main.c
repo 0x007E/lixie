@@ -11,6 +11,7 @@
 #include <avr/interrupt.h>
 #include <util/delay.h>
 
+#include "uart/uart.h"
 #include "clock/clock.h"
 
                               // t   Inte. R.   G.   B.
@@ -54,11 +55,49 @@ void port_init()
 
 int main(void)
 {
-   timer_init();           // Timer initialisieren
-   port_init();            // Ports initialisieren
+   uart_init();
    
    // Während Startup über UART Zeit einstellen
    // Gewünschte Farbe
+   
+   printf("Press key for setup\n\r");
+   
+   char data = 0;
+   
+   for(unsigned char i=0; i < 10; i++)
+   {
+      printf(".");
+      if(uart_scanchar_nonblocking(&data) == UART_Received)
+      {
+         // Run setup:
+         printf("\n\rTime 0:00:00]");
+         
+         unsigned int hour;
+         unsigned int minute;
+         unsigned int second;
+         
+         if(scanf("%2u:%2u:%2u", &hour, &minute, &second) != 1)
+         {
+            uart_clear();
+         }
+         
+         // Color/Intensity setup
+         
+         
+         // Parameter übernehmen
+         hours.time = (unsigned char)hour;
+         minutes.time = (unsigned char)minute;
+         seconds.time = (unsigned char)second;
+         
+         break;
+      }
+      _delay_ms(1000);
+   }
+   
+   timer_init();           // Timer initialisieren
+   port_init();            // Ports initialisieren
+   sei();
+   
    
    while (1)
    {

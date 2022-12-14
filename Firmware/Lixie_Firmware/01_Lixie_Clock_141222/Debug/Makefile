@@ -35,6 +35,7 @@ LINKER_SCRIPT_DEP:=
 SUBDIRS :=  \
 ../clock \
 ../led \
+../uart \
 ../spi
 
 
@@ -43,7 +44,8 @@ C_SRCS +=  \
 ../clock/clock.c \
 ../led/led.c \
 ../main.c \
-../spi/spi.c
+../spi/spi.c \
+../uart/uart.c
 
 
 PREPROCESSING_SRCS += 
@@ -56,25 +58,29 @@ OBJS +=  \
 clock/clock.o \
 led/led.o \
 main.o \
-spi/spi.o
+spi/spi.o \
+uart/uart.o
 
 OBJS_AS_ARGS +=  \
 clock/clock.o \
 led/led.o \
 main.o \
-spi/spi.o
+spi/spi.o \
+uart/uart.o
 
 C_DEPS +=  \
 clock/clock.d \
 led/led.d \
 main.d \
-spi/spi.d
+spi/spi.d \
+uart/uart.d
 
 C_DEPS_AS_ARGS +=  \
 clock/clock.d \
 led/led.d \
 main.d \
-spi/spi.d
+spi/spi.d \
+uart/uart.d
 
 OUTPUT_FILE_PATH +=01_Lixie_Clock_141222.elf
 
@@ -112,6 +118,13 @@ led/led.o: ../led/led.c
 	
 
 spi/spi.o: ../spi/spi.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega16a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega16a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+uart/uart.o: ../uart/uart.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega16a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega16a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

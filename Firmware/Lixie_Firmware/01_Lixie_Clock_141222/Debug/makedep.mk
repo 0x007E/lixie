@@ -10,3 +10,5 @@ main.c
 
 spi\spi.c
 
+uart\uart.c
+
