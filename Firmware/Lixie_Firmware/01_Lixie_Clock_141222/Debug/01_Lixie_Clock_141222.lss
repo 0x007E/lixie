@@ -655,13 +655,13 @@ int main(void)
    timer_init();           // Timer initialisieren
      3b0:	0e 94 79 01 	call	0x2f2	; 0x2f2 <timer_init>
    port_init();            // Ports initialisieren
-   sei();
+   sei();                  // Interrupt starten
      3b4:	78 94       	sei
    
    
    while (1)
    {
-      clock_data(hours, minutes, seconds);      
+      clock_data(hours, minutes, seconds);
      3b6:	80 90 60 00 	lds	r8, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
      3ba:	90 90 61 00 	lds	r9, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
      3be:	a0 90 62 00 	lds	r10, 0x0062	; 0x800062 <__DATA_REGION_ORIGIN__+0x2>

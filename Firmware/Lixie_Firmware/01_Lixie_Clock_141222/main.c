@@ -1,9 +1,9 @@
 /*
- * 01_Lixie_Clock_141222.c
- *
- * Created: 14.12.2022 13:16:16
- * Author : Samir El-Farfar
- */ 
+* 01_Lixie_Clock_141222.c
+*
+* Created: 14.12.2022 13:16:16
+* Author : Samir El-Farfar
+*/
 
 #define F_CPU 12000000UL
 
@@ -96,12 +96,12 @@ int main(void)
    
    timer_init();           // Timer initialisieren
    port_init();            // Ports initialisieren
-   sei();
+   sei();                  // Interrupt starten
    
    
    while (1)
    {
-      clock_data(hours, minutes, seconds);      
+      clock_data(hours, minutes, seconds);
    }
 }
 
