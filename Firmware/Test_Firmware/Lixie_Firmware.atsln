@@ -9,6 +9,8 @@ Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "01_Lixie_CLK_091122", "01_L
 EndProject
 Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "03_Lixie_2BitClock_131222", "03_Lixie_Test_131222\03_Lixie_2BitClock_131222.cproj", "{531856A8-F6FB-4B44-BF90-9D84CF54D572}"
 EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "04_Clock", "04_Clock\04_Clock.cproj", "{1B25B991-8B37-4971-AFDE-D38BDABD583B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|AVR = Debug|AVR
@@ -27,6 +29,10 @@ Global
 		{531856A8-F6FB-4B44-BF90-9D84CF54D572}.Debug|AVR.Build.0 = Debug|AVR
 		{531856A8-F6FB-4B44-BF90-9D84CF54D572}.Release|AVR.ActiveCfg = Release|AVR
 		{531856A8-F6FB-4B44-BF90-9D84CF54D572}.Release|AVR.Build.0 = Release|AVR
+		{1B25B991-8B37-4971-AFDE-D38BDABD583B}.Debug|AVR.ActiveCfg = Debug|AVR
+		{1B25B991-8B37-4971-AFDE-D38BDABD583B}.Debug|AVR.Build.0 = Debug|AVR
+		{1B25B991-8B37-4971-AFDE-D38BDABD583B}.Release|AVR.ActiveCfg = Release|AVR
+		{1B25B991-8B37-4971-AFDE-D38BDABD583B}.Release|AVR.Build.0 = Release|AVR
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
