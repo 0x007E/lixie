@@ -8432,6 +8432,7 @@ Source: www.farnell.com/datasheets/247.pdf</description>
 <approved hash="104,1,139.7,40.64,U18,VCC,V+,,,"/>
 <approved hash="104,1,172.72,40.64,U19,VCC,V+,,,"/>
 <approved hash="104,1,205.74,40.64,U20,VCC,V+,,,"/>
+<approved hash="113,1,242.635,35.1705,JP4,,,,,"/>
 </errors>
 </schematic>
 </drawing>
