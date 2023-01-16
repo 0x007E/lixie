@@ -11694,6 +11694,84 @@ Source: http://www.farnell.com/datasheets/716597.pdf</description>
 </deviceset>
 </devicesets>
 </library>
+<library name="0_HTL_uC-MEGACARD">
+<packages>
+<package name="PIN2">
+<wire x1="-2.54" y1="0.9525" x2="-2.2225" y2="1.27" width="0.1524" layer="21"/>
+<wire x1="-2.2225" y1="1.27" x2="-0.3175" y2="1.27" width="0.1524" layer="21"/>
+<wire x1="-0.3175" y1="1.27" x2="0" y2="0.9525" width="0.1524" layer="21"/>
+<wire x1="0" y1="0.9525" x2="0.3175" y2="1.27" width="0.1524" layer="21"/>
+<wire x1="0.3175" y1="1.27" x2="2.2225" y2="1.27" width="0.1524" layer="21"/>
+<wire x1="2.2225" y1="1.27" x2="2.54" y2="0.9525" width="0.1524" layer="21"/>
+<wire x1="2.54" y1="0.9525" x2="2.54" y2="-0.9525" width="0.1524" layer="21"/>
+<wire x1="2.54" y1="-0.9525" x2="2.2225" y2="-1.27" width="0.1524" layer="21"/>
+<wire x1="2.2225" y1="-1.27" x2="0.3175" y2="-1.27" width="0.1524" layer="21"/>
+<wire x1="0.3175" y1="-1.27" x2="0" y2="-0.9525" width="0.1524" layer="21"/>
+<wire x1="0" y1="-0.9525" x2="-0.3175" y2="-1.27" width="0.1524" layer="21"/>
+<wire x1="-0.3175" y1="-1.27" x2="-2.2225" y2="-1.27" width="0.1524" layer="21"/>
+<wire x1="-2.2225" y1="-1.27" x2="-2.54" y2="-0.9525" width="0.1524" layer="21"/>
+<wire x1="-2.54" y1="-0.9525" x2="-2.54" y2="0.9525" width="0.1524" layer="21"/>
+<pad name="P$2" x="-1.27" y="0" drill="1" diameter="1.778" shape="square"/>
+<pad name="P$3" x="1.27" y="0" drill="1" diameter="1.778" shape="octagon"/>
+<text x="-2.54" y="3.81" size="1.27" layer="25" ratio="10">&gt;NAME</text>
+<text x="-2.54" y="1.905" size="1.27" layer="27" ratio="10">&gt;VALUE</text>
+<rectangle x1="-1.524" y1="-0.254" x2="-1.016" y2="0.254" layer="51"/>
+<rectangle x1="1.016" y1="-0.254" x2="1.524" y2="0.254" layer="51"/>
+<wire x1="0" y1="0.9525" x2="0" y2="-0.9525" width="0.1524" layer="21"/>
+</package>
+<package name="PIN2-B">
+<circle x="-1.27" y="0" radius="0.635" width="0.1524" layer="21"/>
+<circle x="1.27" y="0" radius="0.635" width="0.1524" layer="21"/>
+<pad name="P$2" x="-1.27" y="0" drill="0.8" diameter="1.8288" shape="square"/>
+<pad name="P$3" x="1.27" y="0" drill="0.8" diameter="1.8288" shape="square"/>
+<text x="-2.54" y="3.81" size="1.27" layer="25">&gt;NAME</text>
+<text x="-2.54" y="1.905" size="1.27" layer="27">&gt;VALUE</text>
+<rectangle x1="-1.524" y1="-0.254" x2="-1.016" y2="0.254" layer="51"/>
+<rectangle x1="1.016" y1="-0.254" x2="1.524" y2="0.254" layer="51"/>
+</package>
+</packages>
+<symbols>
+<symbol name="PIN2">
+<wire x1="0" y1="2.54" x2="0" y2="5.08" width="0.4064" layer="94"/>
+<wire x1="2.54" y1="2.54" x2="2.54" y2="5.08" width="0.4064" layer="94"/>
+<wire x1="-1.27" y1="2.032" x2="3.81" y2="2.032" width="0.127" layer="94"/>
+<wire x1="3.81" y1="2.032" x2="3.81" y2="1.27" width="0.127" layer="94"/>
+<wire x1="3.81" y1="1.27" x2="-1.27" y2="1.27" width="0.127" layer="94"/>
+<wire x1="-1.27" y1="1.27" x2="-1.27" y2="2.032" width="0.127" layer="94"/>
+<text x="-2.032" y="7.747" size="1.778" layer="95">&gt;NAME</text>
+<text x="-2.54" y="5.461" size="1.778" layer="96">&gt;VALUE</text>
+<pin name="KL1" x="0" y="0" visible="off" length="short" direction="pas" rot="R90"/>
+<pin name="KL2" x="2.54" y="0" visible="off" length="short" direction="pas" rot="R90"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="PIN2" prefix="X">
+<gates>
+<gate name="G$2" symbol="PIN2" x="0" y="0"/>
+</gates>
+<devices>
+<device name="&quot;" package="PIN2">
+<connects>
+<connect gate="G$2" pin="KL1" pad="P$2"/>
+<connect gate="G$2" pin="KL2" pad="P$3"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="B" package="PIN2-B">
+<connects>
+<connect gate="G$2" pin="KL1" pad="P$2"/>
+<connect gate="G$2" pin="KL2" pad="P$3"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -11733,6 +11811,10 @@ Source: http://www.farnell.com/datasheets/716597.pdf</description>
 <part name="C2" library="rcl" deviceset="CPOL-EU" device="153CLV-0405" value="4u7"/>
 <part name="C3" library="rcl" deviceset="CPOL-EU" device="153CLV-0405" value="4u7"/>
 <part name="F1" library="fuse" deviceset="MF-SMDF" device="" technology="200"/>
+<part name="X1" library="0_HTL_uC-MEGACARD" deviceset="PIN2" device="&quot;"/>
+<part name="U$5" library="0_HTL_analog_neu" deviceset="VCC" device=""/>
+<part name="GND8" library="0_HTL_analog_neu" deviceset="GND" device=""/>
+<part name="C4" library="0_HTL_MegaCard_V3" deviceset="C-EU" device="C0805" value="0u1"/>
 </parts>
 <sheets>
 <sheet>
@@ -11780,6 +11862,10 @@ Source: http://www.farnell.com/datasheets/716597.pdf</description>
 <instance part="C2" gate="G$1" x="226.06" y="78.74"/>
 <instance part="C3" gate="G$1" x="233.68" y="78.74"/>
 <instance part="F1" gate="A" x="27.94" y="66.04" rot="R90"/>
+<instance part="X1" gate="G$2" x="5.08" y="76.2" rot="R90"/>
+<instance part="U$5" gate="G$1" x="10.16" y="86.36"/>
+<instance part="GND8" gate="1" x="10.16" y="71.12"/>
+<instance part="C4" gate="G$1" x="175.26" y="81.28" rot="R270"/>
 </instances>
 <busses>
 </busses>
@@ -11848,6 +11934,9 @@ Source: http://www.farnell.com/datasheets/716597.pdf</description>
 <junction x="144.78" y="81.28"/>
 <pinref part="S1" gate="G$1" pin="S1"/>
 <wire x1="142.24" y1="81.28" x2="144.78" y2="81.28" width="0.1524" layer="91"/>
+<pinref part="C4" gate="G$1" pin="2"/>
+<wire x1="170.18" y1="81.28" x2="167.64" y2="81.28" width="0.1524" layer="91"/>
+<junction x="167.64" y="81.28"/>
 </segment>
 <segment>
 <pinref part="GND7" gate="1" pin="GND"/>
@@ -11857,6 +11946,12 @@ Source: http://www.farnell.com/datasheets/716597.pdf</description>
 <wire x1="226.06" y1="71.12" x2="233.68" y2="71.12" width="0.1524" layer="91"/>
 <wire x1="233.68" y1="71.12" x2="233.68" y2="73.66" width="0.1524" layer="91"/>
 <junction x="226.06" y="71.12"/>
+</segment>
+<segment>
+<pinref part="X1" gate="G$2" pin="KL1"/>
+<pinref part="GND8" gate="1" pin="GND"/>
+<wire x1="5.08" y1="76.2" x2="10.16" y2="76.2" width="0.1524" layer="91"/>
+<wire x1="10.16" y1="76.2" x2="10.16" y2="73.66" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$2" class="0">
@@ -11938,6 +12033,9 @@ Source: http://www.farnell.com/datasheets/716597.pdf</description>
 <wire x1="180.34" y1="71.12" x2="203.2" y2="71.12" width="0.1524" layer="91"/>
 <wire x1="203.2" y1="71.12" x2="203.2" y2="81.28" width="0.1524" layer="91"/>
 <pinref part="ATTINY-406" gate="G$1" pin="VDD"/>
+<pinref part="C4" gate="G$1" pin="1"/>
+<wire x1="177.8" y1="81.28" x2="180.34" y2="81.28" width="0.1524" layer="91"/>
+<junction x="180.34" y="81.28"/>
 </segment>
 <segment>
 <pinref part="U$4" gate="G$1" pin="VCC"/>
@@ -11947,6 +12045,12 @@ Source: http://www.farnell.com/datasheets/716597.pdf</description>
 <wire x1="226.06" y1="83.82" x2="233.68" y2="83.82" width="0.1524" layer="91"/>
 <wire x1="233.68" y1="83.82" x2="233.68" y2="81.28" width="0.1524" layer="91"/>
 <junction x="226.06" y="83.82"/>
+</segment>
+<segment>
+<pinref part="X1" gate="G$2" pin="KL2"/>
+<pinref part="U$5" gate="G$1" pin="VCC"/>
+<wire x1="5.08" y1="78.74" x2="10.16" y2="78.74" width="0.1524" layer="91"/>
+<wire x1="10.16" y1="78.74" x2="10.16" y2="81.28" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="TXD" class="0">
