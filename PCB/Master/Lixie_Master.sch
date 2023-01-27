@@ -11948,7 +11948,7 @@ Source: http://www.farnell.com/datasheets/716597.pdf</description>
 <part name="R5" library="0_HTL_analog" deviceset="R" device="1206" value="330R"/>
 <part name="R6" library="0_HTL_analog" deviceset="R" device="1206" value="330R"/>
 <part name="JP1" library="jumper" deviceset="JP7Q" device=""/>
-<part name="ATTINY-406" library="SOIC127P1032X265-20N" deviceset="ATTINY-406SN" device=""/>
+<part name="U1" library="SOIC127P1032X265-20N" deviceset="ATTINY-406SN" device=""/>
 <part name="R7" library="0_HTL_analog" deviceset="R" device="0805" value="330"/>
 <part name="GND6" library="0_HTL_analog_neu" deviceset="GND" device=""/>
 <part name="U$4" library="0_HTL_analog_neu" deviceset="VCC" device=""/>
@@ -12005,7 +12005,7 @@ Source: http://www.farnell.com/datasheets/716597.pdf</description>
 <attribute name="VALUE" x="209.55" y="61.468" size="1.778" layer="96"/>
 </instance>
 <instance part="JP1" gate="B" x="114.3" y="2.54" rot="R90"/>
-<instance part="ATTINY-406" gate="G$1" x="154.94" y="48.26"/>
+<instance part="U1" gate="G$1" x="154.94" y="48.26"/>
 <instance part="R7" gate="G$1" x="129.54" y="73.66" rot="R180"/>
 <instance part="GND6" gate="1" x="167.64" y="76.2"/>
 <instance part="U$4" gate="G$1" x="226.06" y="88.9"/>
@@ -12074,7 +12074,7 @@ Source: http://www.farnell.com/datasheets/716597.pdf</description>
 <segment>
 <pinref part="U$3" gate="G$1" pin="4"/>
 <wire x1="210.82" y1="33.02" x2="210.82" y2="81.28" width="0.1524" layer="91"/>
-<pinref part="ATTINY-406" gate="G$1" pin="GND"/>
+<pinref part="U1" gate="G$1" pin="GND"/>
 <wire x1="175.26" y1="33.02" x2="180.34" y2="33.02" width="0.1524" layer="91"/>
 <pinref part="GND5" gate="1" pin="GND"/>
 <wire x1="180.34" y1="33.02" x2="210.82" y2="33.02" width="0.1524" layer="91"/>
@@ -12207,7 +12207,7 @@ Source: http://www.farnell.com/datasheets/716597.pdf</description>
 <junction x="180.34" y="71.12"/>
 <wire x1="180.34" y1="71.12" x2="203.2" y2="71.12" width="0.1524" layer="91"/>
 <wire x1="203.2" y1="71.12" x2="203.2" y2="81.28" width="0.1524" layer="91"/>
-<pinref part="ATTINY-406" gate="G$1" pin="VDD"/>
+<pinref part="U1" gate="G$1" pin="VDD"/>
 <pinref part="C4" gate="G$1" pin="1"/>
 <wire x1="177.8" y1="81.28" x2="180.34" y2="81.28" width="0.1524" layer="91"/>
 <junction x="180.34" y="81.28"/>
@@ -12244,7 +12244,7 @@ Source: http://www.farnell.com/datasheets/716597.pdf</description>
 <segment>
 <wire x1="175.26" y1="53.34" x2="180.34" y2="53.34" width="0.1524" layer="91"/>
 <label x="180.34" y="53.34" size="1.778" layer="95" xref="yes"/>
-<pinref part="ATTINY-406" gate="G$1" pin="PB3"/>
+<pinref part="U1" gate="G$1" pin="PB3"/>
 </segment>
 </net>
 <net name="RXD" class="0">
@@ -12257,7 +12257,7 @@ Source: http://www.farnell.com/datasheets/716597.pdf</description>
 <segment>
 <wire x1="134.62" y1="48.26" x2="121.92" y2="48.26" width="0.1524" layer="91"/>
 <label x="121.92" y="48.26" size="1.778" layer="95" rot="R180" xref="yes"/>
-<pinref part="ATTINY-406" gate="G$1" pin="PB2"/>
+<pinref part="U1" gate="G$1" pin="PB2"/>
 </segment>
 </net>
 <net name="DTR" class="0">
@@ -12275,7 +12275,7 @@ Source: http://www.farnell.com/datasheets/716597.pdf</description>
 <wire x1="132.08" y1="20.32" x2="205.74" y2="20.32" width="0.1524" layer="91"/>
 <wire x1="205.74" y1="20.32" x2="205.74" y2="58.42" width="0.1524" layer="91"/>
 <pinref part="R5" gate="G$1" pin="1"/>
-<pinref part="ATTINY-406" gate="G$1" pin="PC0"/>
+<pinref part="U1" gate="G$1" pin="PC0"/>
 </segment>
 </net>
 <net name="N$9" class="0">
@@ -12283,7 +12283,7 @@ Source: http://www.farnell.com/datasheets/716597.pdf</description>
 <wire x1="175.26" y1="43.18" x2="208.28" y2="43.18" width="0.1524" layer="91"/>
 <wire x1="208.28" y1="43.18" x2="208.28" y2="58.42" width="0.1524" layer="91"/>
 <pinref part="R6" gate="G$1" pin="1"/>
-<pinref part="ATTINY-406" gate="G$1" pin="PC2"/>
+<pinref part="U1" gate="G$1" pin="PC2"/>
 </segment>
 </net>
 <net name="N$4" class="0">
@@ -12303,7 +12303,7 @@ Source: http://www.farnell.com/datasheets/716597.pdf</description>
 </net>
 <net name="UPDI" class="0">
 <segment>
-<pinref part="ATTINY-406" gate="G$1" pin="PA0/RESET/UPDI"/>
+<pinref part="U1" gate="G$1" pin="PA0/RESET/UPDI"/>
 <wire x1="134.62" y1="66.04" x2="129.54" y2="66.04" width="0.1524" layer="91"/>
 <label x="121.92" y="66.04" size="1.778" layer="95" rot="R180" xref="yes"/>
 <pinref part="R7" gate="G$1" pin="2"/>
@@ -12335,7 +12335,7 @@ Source: http://www.farnell.com/datasheets/716597.pdf</description>
 <segment>
 <wire x1="175.26" y1="60.96" x2="180.34" y2="60.96" width="0.1524" layer="91"/>
 <label x="180.34" y="60.96" size="1.778" layer="95" xref="yes"/>
-<pinref part="ATTINY-406" gate="G$1" pin="PA6"/>
+<pinref part="U1" gate="G$1" pin="PA6"/>
 </segment>
 <segment>
 <pinref part="JP1" gate="B" pin="11"/>
@@ -12347,7 +12347,7 @@ Source: http://www.farnell.com/datasheets/716597.pdf</description>
 <segment>
 <label x="187.96" y="58.42" size="1.778" layer="95" xref="yes"/>
 <wire x1="187.96" y1="58.42" x2="175.26" y2="58.42" width="0.1524" layer="91"/>
-<pinref part="ATTINY-406" gate="G$1" pin="PA7"/>
+<pinref part="U1" gate="G$1" pin="PA7"/>
 </segment>
 <segment>
 <pinref part="JP1" gate="B" pin="13"/>
@@ -12359,12 +12359,12 @@ Source: http://www.farnell.com/datasheets/716597.pdf</description>
 <segment>
 <label x="187.96" y="50.8" size="1.778" layer="95" xref="yes"/>
 <wire x1="175.26" y1="50.8" x2="187.96" y2="50.8" width="0.1524" layer="91"/>
-<pinref part="ATTINY-406" gate="G$1" pin="PB4"/>
+<pinref part="U1" gate="G$1" pin="PB4"/>
 </segment>
 <segment>
 <wire x1="175.26" y1="66.04" x2="180.34" y2="66.04" width="0.1524" layer="91"/>
 <label x="180.34" y="66.04" size="1.778" layer="95" xref="yes"/>
-<pinref part="ATTINY-406" gate="G$1" pin="PA4"/>
+<pinref part="U1" gate="G$1" pin="PA4"/>
 </segment>
 <segment>
 <pinref part="JP1" gate="B" pin="6"/>
@@ -12376,12 +12376,12 @@ Source: http://www.farnell.com/datasheets/716597.pdf</description>
 <segment>
 <wire x1="175.26" y1="48.26" x2="180.34" y2="48.26" width="0.1524" layer="91"/>
 <label x="180.34" y="48.26" size="1.778" layer="95" xref="yes"/>
-<pinref part="ATTINY-406" gate="G$1" pin="PB5"/>
+<pinref part="U1" gate="G$1" pin="PB5"/>
 </segment>
 <segment>
 <label x="187.96" y="63.5" size="1.778" layer="95" xref="yes"/>
 <wire x1="175.26" y1="63.5" x2="187.96" y2="63.5" width="0.1524" layer="91"/>
-<pinref part="ATTINY-406" gate="G$1" pin="PA5"/>
+<pinref part="U1" gate="G$1" pin="PA5"/>
 </segment>
 <segment>
 <pinref part="JP1" gate="B" pin="8"/>
@@ -12393,7 +12393,7 @@ Source: http://www.farnell.com/datasheets/716597.pdf</description>
 <segment>
 <wire x1="175.26" y1="40.64" x2="180.34" y2="40.64" width="0.1524" layer="91"/>
 <label x="180.34" y="40.64" size="1.778" layer="95" xref="yes"/>
-<pinref part="ATTINY-406" gate="G$1" pin="PC3"/>
+<pinref part="U1" gate="G$1" pin="PC3"/>
 </segment>
 <segment>
 <pinref part="JP1" gate="B" pin="12"/>
@@ -12405,14 +12405,14 @@ Source: http://www.farnell.com/datasheets/716597.pdf</description>
 <segment>
 <wire x1="134.62" y1="63.5" x2="129.54" y2="63.5" width="0.1524" layer="91"/>
 <label x="129.54" y="63.5" size="1.778" layer="95" rot="R180" xref="yes"/>
-<pinref part="ATTINY-406" gate="G$1" pin="PA1"/>
+<pinref part="U1" gate="G$1" pin="PA1"/>
 </segment>
 </net>
 <net name="PA2" class="0">
 <segment>
 <wire x1="134.62" y1="60.96" x2="121.92" y2="60.96" width="0.1524" layer="91"/>
 <label x="121.92" y="60.96" size="1.778" layer="95" rot="R180" xref="yes"/>
-<pinref part="ATTINY-406" gate="G$1" pin="PA2"/>
+<pinref part="U1" gate="G$1" pin="PA2"/>
 </segment>
 <segment>
 <pinref part="DCF-77" gate="G$1" pin="2"/>
@@ -12424,14 +12424,14 @@ Source: http://www.farnell.com/datasheets/716597.pdf</description>
 <segment>
 <wire x1="134.62" y1="58.42" x2="129.54" y2="58.42" width="0.1524" layer="91"/>
 <label x="129.54" y="58.42" size="1.778" layer="95" rot="R180" xref="yes"/>
-<pinref part="ATTINY-406" gate="G$1" pin="EXTCLK/PA3"/>
+<pinref part="U1" gate="G$1" pin="EXTCLK/PA3"/>
 </segment>
 </net>
 <net name="PB0" class="0">
 <segment>
 <wire x1="134.62" y1="53.34" x2="121.92" y2="53.34" width="0.1524" layer="91"/>
 <label x="121.92" y="53.34" size="1.778" layer="95" rot="R180" xref="yes"/>
-<pinref part="ATTINY-406" gate="G$1" pin="PB0"/>
+<pinref part="U1" gate="G$1" pin="PB0"/>
 </segment>
 <segment>
 <pinref part="JP1" gate="B" pin="2"/>
@@ -12443,7 +12443,7 @@ Source: http://www.farnell.com/datasheets/716597.pdf</description>
 <segment>
 <wire x1="134.62" y1="50.8" x2="129.54" y2="50.8" width="0.1524" layer="91"/>
 <label x="129.54" y="50.8" size="1.778" layer="95" rot="R180" xref="yes"/>
-<pinref part="ATTINY-406" gate="G$1" pin="PB1"/>
+<pinref part="U1" gate="G$1" pin="PB1"/>
 </segment>
 <segment>
 <pinref part="JP1" gate="B" pin="4"/>
@@ -12455,7 +12455,7 @@ Source: http://www.farnell.com/datasheets/716597.pdf</description>
 <segment>
 <wire x1="134.62" y1="40.64" x2="129.54" y2="40.64" width="0.1524" layer="91"/>
 <label x="129.54" y="40.64" size="1.778" layer="95" rot="R180" xref="yes"/>
-<pinref part="ATTINY-406" gate="G$1" pin="PC1"/>
+<pinref part="U1" gate="G$1" pin="PC1"/>
 </segment>
 <segment>
 <pinref part="JP1" gate="B" pin="10"/>
