@@ -19,38 +19,50 @@ volatile Clock_time_t hours   = {12, 0x0F, 255, 255, 255 };
 volatile Clock_time_t minutes = {0,  0x0F, 255, 255, 255 };
 volatile Clock_time_t seconds = {0,  0x0F, 255, 255, 255 };
 
-ISR(RTC_CNT_vect)
+volatile unsigned char miliseconds = 0;
+
+ISR(TCA0_OVF_vect)
 {
-   seconds.time++;
-   
-   if(seconds.time > 59)
+   if(miliseconds > 9)
    {
-      minutes.time++;
-      seconds.time = 0;
+      seconds.time++;
       
-      if(minutes.time > 59)
+      if(seconds.time > 59)
       {
-         hours.time++;
-         minutes.time = 0;
+         minutes.time++;
+         seconds.time = 0;
          
-         if(hours.time > 23);
+         if(minutes.time > 59)
          {
-            hours.time=0;
+            hours.time++;
+            minutes.time = 0;
+            
+            if(hours.time > 23);
+            {
+               hours.time=0;
+            }
          }
       }
-   }
+   }   
 }
 
-void interrupt_init()
+void clock_init()
 {
+   CCP = CCP_IOREG_gc;
+   CLKCTRL.MCLKCTRLA = CLKCTRL_CLKSEL_OSC20M_gc;
+   while(!(CLKCTRL.MCLKSTATUS & CLKCTRL_OSC20MS_bm));
    
+   CCP = CCP_IOREG_gc;
+   CLKCTRL.MCLKCTRLB = 0x00;
+   CLKCTRL.OSC20MCTRLA = CLKCTRL_RUNSTDBY_bm;
 }
 
 void timer_init()
 {
-   TCCR1B =  (1<<WGM12) | (1<<CS12);    // Timer setup
-   TIMSK = (1<<OCIE1A);                 // Mode:      CTC
-   OCR1A = 46875;                       // Prescaler: 256
+   TCA0.SINGLE.PER = 0x7A12;
+   TCA0.SINGLE.INTCTRL = TCA_SINGLE_OVF_bm;
+   TCA0.SINGLE.CTRLB = TCA_SINGLE_WGMODE_NORMAL_gc;
+   TCA0.SINGLE.CTRLA = TCA_SINGLE_CLKSEL_DIV64_gc | TCA_SINGLE_ENABLE_bm;
 }
 
 void port_init()
@@ -60,7 +72,9 @@ void port_init()
 
 int main(void)
 {
+   clock_init();
    uart_init();
+   sei();
    
    // Während Startup über UART Zeit einstellen
    // Gewünschte Farbe
