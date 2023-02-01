@@ -23,9 +23,12 @@ volatile unsigned char miliseconds = 0;
 
 ISR(TCA0_OVF_vect)
 {
+   miliseconds++;
+   
    if(miliseconds > 9)
    {
       seconds.time++;
+      miliseconds = 0;
       
       if(seconds.time > 59)
       {
