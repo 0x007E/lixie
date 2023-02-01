@@ -16,6 +16,7 @@
 
 void spi_init()
 {   
+    PORTMUX.CTRLB |= PORTMUX_SPI0_ALTERNATE_gc;
     PORTC.DIR |= PIN2_bm;        /* Set MOSI pin direction to output */
     PORTC.DIR |= PIN0_bm;        /* Set SCK pin direction to output */
     SPI0.CTRLA = SPI_CLK2X_bm    /* Enable double-speed */
