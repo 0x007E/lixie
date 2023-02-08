@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root xmlns:nsd="https://structorizer.fisch.lu" version="3.32-11" preRepeat="until " postFor="to" preReturn="return" postForIn="in" preWhile="while " output="OUTPUT" input="INPUT" preFor="for" preExit="exit" preLeave="leave" ignoreCase="true" preThrow="throw" preForIn="foreach" stepFor="by" namespace="" author="Samir El-Farfar" created="2023-02-08" changedby="Samir El-Farfar" changed="2023-02-08" origin="Structorizer 3.32-11" text="&#34;SPI Übertragung&#34;" comment="&#34;&#34;" color="ffffff" type="program" style="nice">
+	<children>
+		<instruction text="&#34;Daten werden von &#34;&#34;SPI0.DATA&#34;&#34; übernommen&#34;" comment="&#34;&#34;" color="ffffff" rotated="0" disabled="0"></instruction>
+		<while text="&#34;while (bis die Daten gesendet und Empfangen wurden)&#34;" comment="&#34;&#34;" color="ffffff" disabled="0">
+			<qWhile color="ffffff">
+			</qWhile>
+		</while>
+		<instruction text="&#34;Gibt &#34;&#34;SPI0.DATA&#34;&#34; zurück&#34;" comment="&#34;&#34;" color="ffffff" rotated="0" disabled="0"></instruction>
+	</children>
+</root>

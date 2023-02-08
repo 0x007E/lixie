@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root xmlns:nsd="https://structorizer.fisch.lu" version="3.32-11" preRepeat="until " postFor="to" preReturn="return" postForIn="in" preWhile="while " output="OUTPUT" input="INPUT" preFor="for" preExit="exit" preLeave="leave" ignoreCase="true" preThrow="throw" preForIn="foreach" stepFor="by" namespace="" author="Samir El-Farfar" created="2023-02-08" changed="2023-02-08" origin="Structorizer 3.32-11" text="&#34;LED Startframe&#34;" comment="" color="ffffff" type="program" style="nice">
+	<children>
+		<call text="&#34;LED Startframe wird über SPI Übertragen&#34;" comment="" color="ffffff" disabled="0" ismethoddecl="0"></call>
+	</children>
+</root>

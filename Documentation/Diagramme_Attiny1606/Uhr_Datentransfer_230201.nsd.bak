@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root xmlns:nsd="https://structorizer.fisch.lu" version="3.32-11" preRepeat="until " postFor="to" preReturn="return" postForIn="in" preWhile="while " output="OUTPUT" input="INPUT" preFor="for" preExit="exit" preLeave="leave" ignoreCase="true" preThrow="throw" preForIn="foreach" stepFor="by" author="Samir El-Farfar" created="2022-12-14" changedby="Samir El-Farfar" changed="2022-12-14" origin="Structorizer 3.32-11" text="&#34;Uhr Datentransfer&#34;" comment="" color="ffffff" type="program" style="nice">
+	<children>
+		<instruction text="&#34;Zehnerziffer ergibt Zeit/10&#34;,&#34;&#34;,&#34;Bsp. 16/10 = 1,6&#34;,&#34;Die Kommzahl wird weggestrichen, die 1 bleibt übrig&#34;" comment="" color="ffffff" rotated="0" disabled="0"></instruction>
+		<instruction text="&#34;Einserziffer ergibt Zeit mod 10&#34;,&#34;&#34;,&#34;Bsp. 26 mod 10 = 6&#34;,&#34;26/10 = 2 (Rest 6)&#34;" comment="" color="ffffff" rotated="0" disabled="0"></instruction>
+		<for text="&#34;for i &#60;- 9 to 0&#34;" comment="" counterVar="i" startValue="9" endValue="0" stepConst="1" style="COUNTER" color="ffffff" disabled="0">
+			<qFor>
+				<alternative text="&#34;wenn i der Zehnerziffer entspricht&#34;" comment="" color="ffffff" disabled="0">
+					<qTrue>
+						<instruction text="&#34;2 Frames mit einstellbaren Daten:&#34;,&#34;Intensität, Rot, Grün, Blau&#34;,&#34;(Eingeschaltete LED)&#34;" comment="" color="ffffff" rotated="0" disabled="0"></instruction>
+					</qTrue>
+					<qFalse>
+						<instruction text="&#34;2 Frames mit festgelegten Daten:&#34;,&#34;Intensität 0, Rot 0, Gruen 0, Blau 0&#34;,&#34;(LED ist Ausgeschaltet)&#34;" comment="" color="ffffff" rotated="0" disabled="0"></instruction>
+					</qFalse>
+				</alternative>
+			</qFor>
+		</for>
+		<for text="&#34;for i &#60;- 9 to 0&#34;" comment="" counterVar="i" startValue="9" endValue="0" stepConst="1" style="COUNTER" color="ffffff" disabled="0">
+			<qFor>
+				<alternative text="&#34;wenn i der Einerrziffer entspricht&#34;" comment="" color="ffffff" disabled="0">
+					<qTrue>
+						<instruction text="&#34;2 Frames mit einstellbaren Daten:&#34;,&#34;Intensität, Rot, Grün, Blau&#34;,&#34;(Eingeschaltete LED)&#34;" comment="" color="ffffff" rotated="0" disabled="0"></instruction>
+					</qTrue>
+					<qFalse>
+						<instruction text="&#34;2 Frames mit festgelegten Daten:&#34;,&#34;Intensität 0, Rot 0, Gruen 0, Blau 0&#34;,&#34;(LED ist Ausgeschaltet)&#34;" comment="" color="ffffff" rotated="0" disabled="0"></instruction>
+					</qFalse>
+				</alternative>
+			</qFor>
+		</for>
+	</children>
+</root>
