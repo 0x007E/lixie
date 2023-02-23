@@ -14,34 +14,34 @@
 #include "uart/uart.h"
 #include "clock/clock.h"
 
-// t   Inte. R.   G.   B.
-volatile Clock_time_t hours   = {12, 0x0F, 255, 255, 255 };
-volatile Clock_time_t minutes = {0,  0x0F, 255, 255, 255 };
-volatile Clock_time_t seconds = {0,  0x0F, 255, 255, 255 };
+                              // t   Hell. R.   G.   B.
+volatile Clock_time_t hours   = {12, 0x0F, 255, 255, 255};
+volatile Clock_time_t minutes = {0,  0x0F, 255, 255, 255};
+volatile Clock_time_t seconds = {0,  0x0F, 255, 255, 255};
 
 volatile unsigned char miliseconds = 0;
 
 ISR(TCA0_OVF_vect)
 {
-   miliseconds++;
+   miliseconds++;                // Millisekunde wird hochgezählt
    
-   if(miliseconds > 9)
-   {
-      seconds.time++;
-      miliseconds = 0;
+   if(miliseconds > 9)           // Wenn die Millisekunde größer als 9 ist:
+   {                             // Die Sekunde wird hochgezählt
+      seconds.time++;            // Die Millisekunde wird auf 0 gesetzt
+      miliseconds = 0;           
       
-      if(seconds.time > 59)
-      {
-         minutes.time++;
+      if(seconds.time > 59)      // Wenn die Sekunde größer als 59 ist:
+      {                          // Die Minute wird hochgezählt
+         minutes.time++;         // Die Sekunde wird auf 0 gesetzt
          seconds.time = 0;
          
-         if(minutes.time > 59)
-         {
-            hours.time++;
-            minutes.time = 0;
+         if(minutes.time > 59)   // Wenn die Minute größer als 59 ist:
+         {                       // Die Stunde wird hochgezählt
+            hours.time++;        // Die Minute wird auf 0 gesetzt
+            minutes.time = 0;    
             
-            if(hours.time > 23);
-            {
+            if(hours.time > 23); // Wenn die Stunde größer als 23 ist:
+            {                    // Die Stunde wird auf 0 gesetzt
                hours.time=0;
             }
          }
@@ -62,11 +62,11 @@ void clock_init()
 
 void timer_init()
 {
-   TCA0.SINGLE.PER = 0x7A12;
-   TCA0.SINGLE.INTCTRL = TCA_SINGLE_OVF_bm;
-   TCA0.SINGLE.CTRLB = TCA_SINGLE_WGMODE_NORMAL_gc;
-   TCA0.SINGLE.CTRLA = TCA_SINGLE_CLKSEL_DIV64_gc | TCA_SINGLE_ENABLE_bm;
-}
+   TCA0.SINGLE.PER = 0x7A12;                                               // Timer Setup:
+   TCA0.SINGLE.INTCTRL = TCA_SINGLE_OVF_bm;                                // - Overflow Interrupt wird aktiviert
+   TCA0.SINGLE.CTRLB = TCA_SINGLE_WGMODE_NORMAL_gc;                        // - Normal Mode
+   TCA0.SINGLE.CTRLA = TCA_SINGLE_CLKSEL_DIV64_gc | TCA_SINGLE_ENABLE_bm;  // - sysclk / 64
+}                                                                          // - Startet Timer
 
 void port_init()
 {
@@ -123,7 +123,7 @@ int main(void)
    
    while (1)
    {
-      clock_data(hours, minutes, seconds);
+      clock_data(hours, minutes, seconds);   //Die Daten werden an die Uhr Gescickt
    }
 }
 
