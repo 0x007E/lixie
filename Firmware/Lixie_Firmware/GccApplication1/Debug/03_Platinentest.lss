@@ -1,0 +1,455 @@
+
+03_Platinentest.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000244  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  00800060  000002b8  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000001  00800060  00800060  000002b8  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  000002b8  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000002e8  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 000000b0  00000000  00000000  00000324  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00000c33  00000000  00000000  000003d4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000870  00000000  00000000  00001007  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   000005b6  00000000  00000000  00001877  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000154  00000000  00000000  00001e30  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000532  00000000  00000000  00001f84  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000347  00000000  00000000  000024b6  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000098  00000000  00000000  000027fd  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+   8:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+   c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  10:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  14:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  18:	0c 94 71 00 	jmp	0xe2	; 0xe2 <__vector_6>
+  1c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  20:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  24:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  28:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  2c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  30:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  34:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  38:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  3c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  40:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  44:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  48:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  4c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  50:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d4 e0       	ldi	r29, 0x04	; 4
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_clear_bss>:
+  60:	20 e0       	ldi	r18, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	01 c0       	rjmp	.+2      	; 0x6a <.do_clear_bss_start>
+
+00000068 <.do_clear_bss_loop>:
+  68:	1d 92       	st	X+, r1
+
+0000006a <.do_clear_bss_start>:
+  6a:	a1 36       	cpi	r26, 0x61	; 97
+  6c:	b2 07       	cpc	r27, r18
+  6e:	e1 f7       	brne	.-8      	; 0x68 <.do_clear_bss_loop>
+  70:	0e 94 92 00 	call	0x124	; 0x124 <main>
+  74:	0c 94 20 01 	jmp	0x240	; 0x240 <_exit>
+
+00000078 <__bad_interrupt>:
+  78:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+0000007c <led_init>:
+#include "led.h"
+
+void led_init()
+{
+   spi_init(SPI_Master, SPI_MSB, SPI_Falling, SPI_Rising);
+  7c:	20 e0       	ldi	r18, 0x00	; 0
+  7e:	41 e0       	ldi	r20, 0x01	; 1
+  80:	60 e0       	ldi	r22, 0x00	; 0
+  82:	81 e0       	ldi	r24, 0x01	; 1
+  84:	0e 94 cc 00 	call	0x198	; 0x198 <spi_init>
+  88:	08 95       	ret
+
+0000008a <led_sof>:
+}
+
+void led_sof()
+{
+  8a:	cf 93       	push	r28
+   for(unsigned char i=0; i < LED_FRAME; i++)
+  8c:	c0 e0       	ldi	r28, 0x00	; 0
+  8e:	04 c0       	rjmp	.+8      	; 0x98 <led_sof+0xe>
+   {
+      spi_transfer(LED_SOF);
+  90:	80 e0       	ldi	r24, 0x00	; 0
+  92:	0e 94 19 01 	call	0x232	; 0x232 <spi_transfer>
+   spi_init(SPI_Master, SPI_MSB, SPI_Falling, SPI_Rising);
+}
+
+void led_sof()
+{
+   for(unsigned char i=0; i < LED_FRAME; i++)
+  96:	cf 5f       	subi	r28, 0xFF	; 255
+  98:	c4 30       	cpi	r28, 0x04	; 4
+  9a:	d0 f3       	brcs	.-12     	; 0x90 <led_sof+0x6>
+   {
+      spi_transfer(LED_SOF);
+   }
+}
+  9c:	cf 91       	pop	r28
+  9e:	08 95       	ret
+
+000000a0 <led_eof>:
+
+void led_eof()
+{
+  a0:	cf 93       	push	r28
+   for(unsigned char i=0; i < LED_FRAME; i++)
+  a2:	c0 e0       	ldi	r28, 0x00	; 0
+  a4:	04 c0       	rjmp	.+8      	; 0xae <led_eof+0xe>
+   {
+      spi_transfer(LED_EOF);
+  a6:	8f ef       	ldi	r24, 0xFF	; 255
+  a8:	0e 94 19 01 	call	0x232	; 0x232 <spi_transfer>
+   }
+}
+
+void led_eof()
+{
+   for(unsigned char i=0; i < LED_FRAME; i++)
+  ac:	cf 5f       	subi	r28, 0xFF	; 255
+  ae:	c4 30       	cpi	r28, 0x04	; 4
+  b0:	d0 f3       	brcs	.-12     	; 0xa6 <led_eof+0x6>
+   {
+      spi_transfer(LED_EOF);
+   }
+}
+  b2:	cf 91       	pop	r28
+  b4:	08 95       	ret
+
+000000b6 <led_time>:
+
+void led_time(unsigned char intensity, unsigned char r, unsigned char g, unsigned char b)
+{
+  b6:	1f 93       	push	r17
+  b8:	cf 93       	push	r28
+  ba:	df 93       	push	r29
+  bc:	c6 2f       	mov	r28, r22
+  be:	d4 2f       	mov	r29, r20
+  c0:	12 2f       	mov	r17, r18
+   spi_transfer(0xE0 | intensity);
+  c2:	80 6e       	ori	r24, 0xE0	; 224
+  c4:	0e 94 19 01 	call	0x232	; 0x232 <spi_transfer>
+   spi_transfer(b);
+  c8:	81 2f       	mov	r24, r17
+  ca:	0e 94 19 01 	call	0x232	; 0x232 <spi_transfer>
+   spi_transfer(g);
+  ce:	8d 2f       	mov	r24, r29
+  d0:	0e 94 19 01 	call	0x232	; 0x232 <spi_transfer>
+   spi_transfer(r);
+  d4:	8c 2f       	mov	r24, r28
+  d6:	0e 94 19 01 	call	0x232	; 0x232 <spi_transfer>
+  da:	df 91       	pop	r29
+  dc:	cf 91       	pop	r28
+  de:	1f 91       	pop	r17
+  e0:	08 95       	ret
+
+000000e2 <__vector_6>:
+
+
+volatile unsigned char clk = 0;
+
+ISR(TIMER1_COMPA_vect)
+{
+  e2:	1f 92       	push	r1
+  e4:	0f 92       	push	r0
+  e6:	0f b6       	in	r0, 0x3f	; 63
+  e8:	0f 92       	push	r0
+  ea:	11 24       	eor	r1, r1
+  ec:	8f 93       	push	r24
+  ee:	9f 93       	push	r25
+   if((clk++) > 9)
+  f0:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+  f4:	91 e0       	ldi	r25, 0x01	; 1
+  f6:	98 0f       	add	r25, r24
+  f8:	90 93 60 00 	sts	0x0060, r25	; 0x800060 <__DATA_REGION_ORIGIN__>
+  fc:	8a 30       	cpi	r24, 0x0A	; 10
+  fe:	10 f0       	brcs	.+4      	; 0x104 <__vector_6+0x22>
+   {
+      clk = 0;
+ 100:	10 92 60 00 	sts	0x0060, r1	; 0x800060 <__DATA_REGION_ORIGIN__>
+   }
+}
+ 104:	9f 91       	pop	r25
+ 106:	8f 91       	pop	r24
+ 108:	0f 90       	pop	r0
+ 10a:	0f be       	out	0x3f, r0	; 63
+ 10c:	0f 90       	pop	r0
+ 10e:	1f 90       	pop	r1
+ 110:	18 95       	reti
+
+00000112 <timer_init>:
+
+void timer_init()
+{
+   TCCR1B =  (1<<WGM12) | (1<<CS12);    // Timer setup
+ 112:	8c e0       	ldi	r24, 0x0C	; 12
+ 114:	8e bd       	out	0x2e, r24	; 46
+   TIMSK = (1<<OCIE1A);                 // Mode:      CTC
+ 116:	80 e1       	ldi	r24, 0x10	; 16
+ 118:	89 bf       	out	0x39, r24	; 57
+   OCR1A = 46875;                       // Prescaler: 256
+ 11a:	8b e1       	ldi	r24, 0x1B	; 27
+ 11c:	97 eb       	ldi	r25, 0xB7	; 183
+ 11e:	9b bd       	out	0x2b, r25	; 43
+ 120:	8a bd       	out	0x2a, r24	; 42
+ 122:	08 95       	ret
+
+00000124 <main>:
+}
+
+int main(void)
+{
+    led_init();
+ 124:	0e 94 3e 00 	call	0x7c	; 0x7c <led_init>
+    timer_init();
+ 128:	0e 94 89 00 	call	0x112	; 0x112 <timer_init>
+    
+    //unsigned char last_clock = 0;
+    unsigned char last = 0;
+ 12c:	d0 e0       	ldi	r29, 0x00	; 0
+    
+    while (1) 
+    {
+       led_sof();
+ 12e:	0e 94 45 00 	call	0x8a	; 0x8a <led_sof>
+       
+       for (unsigned char i=0; i < 10; i++)
+ 132:	c0 e0       	ldi	r28, 0x00	; 0
+ 134:	1c c0       	rjmp	.+56     	; 0x16e <main+0x4a>
+       {
+          if(last == i)
+ 136:	dc 13       	cpse	r29, r28
+ 138:	0d c0       	rjmp	.+26     	; 0x154 <main+0x30>
+          {
+             led_time(0x0F,255,255,255);
+ 13a:	2f ef       	ldi	r18, 0xFF	; 255
+ 13c:	4f ef       	ldi	r20, 0xFF	; 255
+ 13e:	6f ef       	ldi	r22, 0xFF	; 255
+ 140:	8f e0       	ldi	r24, 0x0F	; 15
+ 142:	0e 94 5b 00 	call	0xb6	; 0xb6 <led_time>
+             led_time(0x0F,255,255,255);
+ 146:	2f ef       	ldi	r18, 0xFF	; 255
+ 148:	4f ef       	ldi	r20, 0xFF	; 255
+ 14a:	6f ef       	ldi	r22, 0xFF	; 255
+ 14c:	8f e0       	ldi	r24, 0x0F	; 15
+ 14e:	0e 94 5b 00 	call	0xb6	; 0xb6 <led_time>
+ 152:	0c c0       	rjmp	.+24     	; 0x16c <main+0x48>
+          }
+          else
+          {
+             led_time(0,0,0,0);
+ 154:	20 e0       	ldi	r18, 0x00	; 0
+ 156:	40 e0       	ldi	r20, 0x00	; 0
+ 158:	60 e0       	ldi	r22, 0x00	; 0
+ 15a:	80 e0       	ldi	r24, 0x00	; 0
+ 15c:	0e 94 5b 00 	call	0xb6	; 0xb6 <led_time>
+             led_time(0,0,0,0);
+ 160:	20 e0       	ldi	r18, 0x00	; 0
+ 162:	40 e0       	ldi	r20, 0x00	; 0
+ 164:	60 e0       	ldi	r22, 0x00	; 0
+ 166:	80 e0       	ldi	r24, 0x00	; 0
+ 168:	0e 94 5b 00 	call	0xb6	; 0xb6 <led_time>
+    
+    while (1) 
+    {
+       led_sof();
+       
+       for (unsigned char i=0; i < 10; i++)
+ 16c:	cf 5f       	subi	r28, 0xFF	; 255
+ 16e:	ca 30       	cpi	r28, 0x0A	; 10
+ 170:	10 f3       	brcs	.-60     	; 0x136 <main+0x12>
+             led_time(0,0,0,0);
+          }
+    
+       }
+       
+       if((last++) == 9)
+ 172:	81 e0       	ldi	r24, 0x01	; 1
+ 174:	8d 0f       	add	r24, r29
+ 176:	d9 30       	cpi	r29, 0x09	; 9
+ 178:	11 f0       	breq	.+4      	; 0x17e <main+0x5a>
+ 17a:	d8 2f       	mov	r29, r24
+ 17c:	01 c0       	rjmp	.+2      	; 0x180 <main+0x5c>
+       {
+          last = 0;
+ 17e:	d0 e0       	ldi	r29, 0x00	; 0
+       }
+       
+       
+       led_eof();
+ 180:	0e 94 50 00 	call	0xa0	; 0xa0 <led_eof>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 184:	2f ef       	ldi	r18, 0xFF	; 255
+ 186:	8e e9       	ldi	r24, 0x9E	; 158
+ 188:	94 e2       	ldi	r25, 0x24	; 36
+ 18a:	21 50       	subi	r18, 0x01	; 1
+ 18c:	80 40       	sbci	r24, 0x00	; 0
+ 18e:	90 40       	sbci	r25, 0x00	; 0
+ 190:	e1 f7       	brne	.-8      	; 0x18a <main+0x66>
+ 192:	00 c0       	rjmp	.+0      	; 0x194 <main+0x70>
+ 194:	00 00       	nop
+ 196:	cb cf       	rjmp	.-106    	; 0x12e <main+0xa>
+
+00000198 <spi_init>:
+{
+    if(!(SPI_PIN & (1<<SPI_SS)))
+        return SPI_Enable;
+    else
+        return SPI_Disable;
+}
+ 198:	0f 93       	push	r16
+ 19a:	1f 93       	push	r17
+ 19c:	cf 93       	push	r28
+ 19e:	df 93       	push	r29
+ 1a0:	97 b3       	in	r25, 0x17	; 23
+ 1a2:	9f 7a       	andi	r25, 0xAF	; 175
+ 1a4:	97 bb       	out	0x17, r25	; 23
+ 1a6:	98 b3       	in	r25, 0x18	; 24
+ 1a8:	90 65       	ori	r25, 0x50	; 80
+ 1aa:	98 bb       	out	0x18, r25	; 24
+ 1ac:	91 e0       	ldi	r25, 0x01	; 1
+ 1ae:	9e b9       	out	0x0e, r25	; 14
+ 1b0:	93 e0       	ldi	r25, 0x03	; 3
+ 1b2:	9d b9       	out	0x0d, r25	; 13
+ 1b4:	9d b1       	in	r25, 0x0d	; 13
+ 1b6:	81 70       	andi	r24, 0x01	; 1
+ 1b8:	c8 2f       	mov	r28, r24
+ 1ba:	80 e0       	ldi	r24, 0x00	; 0
+ 1bc:	d8 2f       	mov	r29, r24
+ 1be:	c2 95       	swap	r28
+ 1c0:	d2 95       	swap	r29
+ 1c2:	d0 7f       	andi	r29, 0xF0	; 240
+ 1c4:	dc 27       	eor	r29, r28
+ 1c6:	c0 7f       	andi	r28, 0xF0	; 240
+ 1c8:	dc 27       	eor	r29, r28
+ 1ca:	c9 2b       	or	r28, r25
+ 1cc:	cd b9       	out	0x0d, r28	; 13
+ 1ce:	8d b1       	in	r24, 0x0d	; 13
+ 1d0:	a6 2f       	mov	r26, r22
+ 1d2:	a1 70       	andi	r26, 0x01	; 1
+ 1d4:	b0 e0       	ldi	r27, 0x00	; 0
+ 1d6:	aa 0f       	add	r26, r26
+ 1d8:	bb 1f       	adc	r27, r27
+ 1da:	a2 95       	swap	r26
+ 1dc:	b2 95       	swap	r27
+ 1de:	b0 7f       	andi	r27, 0xF0	; 240
+ 1e0:	ba 27       	eor	r27, r26
+ 1e2:	a0 7f       	andi	r26, 0xF0	; 240
+ 1e4:	ba 27       	eor	r27, r26
+ 1e6:	a8 2b       	or	r26, r24
+ 1e8:	ad b9       	out	0x0d, r26	; 13
+ 1ea:	8d b1       	in	r24, 0x0d	; 13
+ 1ec:	04 2f       	mov	r16, r20
+ 1ee:	01 70       	andi	r16, 0x01	; 1
+ 1f0:	10 e0       	ldi	r17, 0x00	; 0
+ 1f2:	00 0f       	add	r16, r16
+ 1f4:	11 1f       	adc	r17, r17
+ 1f6:	00 0f       	add	r16, r16
+ 1f8:	11 1f       	adc	r17, r17
+ 1fa:	00 0f       	add	r16, r16
+ 1fc:	11 1f       	adc	r17, r17
+ 1fe:	e2 2f       	mov	r30, r18
+ 200:	e1 70       	andi	r30, 0x01	; 1
+ 202:	f0 e0       	ldi	r31, 0x00	; 0
+ 204:	ee 0f       	add	r30, r30
+ 206:	ff 1f       	adc	r31, r31
+ 208:	ee 0f       	add	r30, r30
+ 20a:	ff 1f       	adc	r31, r31
+ 20c:	e0 2b       	or	r30, r16
+ 20e:	e8 2b       	or	r30, r24
+ 210:	ed b9       	out	0x0d, r30	; 13
+ 212:	8d b1       	in	r24, 0x0d	; 13
+ 214:	80 64       	ori	r24, 0x40	; 64
+ 216:	8d b9       	out	0x0d, r24	; 13
+ 218:	87 b3       	in	r24, 0x17	; 23
+ 21a:	80 6f       	ori	r24, 0xF0	; 240
+ 21c:	87 bb       	out	0x17, r24	; 23
+ 21e:	6c 99       	sbic	0x0d, 4	; 13
+ 220:	02 c0       	rjmp	.+4      	; 0x226 <__EEPROM_REGION_LENGTH__+0x26>
+ 222:	8f ef       	ldi	r24, 0xFF	; 255
+ 224:	01 c0       	rjmp	.+2      	; 0x228 <__EEPROM_REGION_LENGTH__+0x28>
+ 226:	80 e0       	ldi	r24, 0x00	; 0
+ 228:	df 91       	pop	r29
+ 22a:	cf 91       	pop	r28
+ 22c:	1f 91       	pop	r17
+ 22e:	0f 91       	pop	r16
+ 230:	08 95       	ret
+
+00000232 <spi_transfer>:
+    //  |                                                               |
+    //  |    Return:    0x??    ->  Receive time byte                   |
+    //  +---------------------------------------------------------------+
+    unsigned char spi_transfer(unsigned char time)
+    {
+        SPDR = time;    // Write time into the SPI time Register and initiate a transmission
+ 232:	8f b9       	out	0x0f, r24	; 15
+    
+        // Wait until transmission is Complete
+        while(!(SPSR & (1<<SPIF)))
+ 234:	01 c0       	rjmp	.+2      	; 0x238 <spi_transfer+0x6>
+            asm volatile("NOP");
+ 236:	00 00       	nop
+    unsigned char spi_transfer(unsigned char time)
+    {
+        SPDR = time;    // Write time into the SPI time Register and initiate a transmission
+    
+        // Wait until transmission is Complete
+        while(!(SPSR & (1<<SPIF)))
+ 238:	77 9b       	sbis	0x0e, 7	; 14
+ 23a:	fd cf       	rjmp	.-6      	; 0x236 <spi_transfer+0x4>
+                if(SPSR & (1<<WCOL))
+                    SPI_WCOL_PORT |= (1<<SPI_WCOL_PIN);
+            #endif
+        #endif
+        
+        return SPDR;    // Return received time from the bus
+ 23c:	8f b1       	in	r24, 0x0f	; 15
+    }
+ 23e:	08 95       	ret
+
+00000240 <_exit>:
+ 240:	f8 94       	cli
+
+00000242 <__stop_program>:
+ 242:	ff cf       	rjmp	.-2      	; 0x242 <__stop_program>
