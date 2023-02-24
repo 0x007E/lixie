@@ -28,8 +28,8 @@ typedef struct
 volatile unsigned char clk = 0;
 
 ISR(TIMER1_COMPA_vect)
-{
-   if((clk++) > 9)
+{  
+   if(clk++ > 9)
    {
       clk = 0;
    }
@@ -47,38 +47,40 @@ int main(void)
     led_init();
     timer_init();
     
-    //unsigned char last_clock = 0;
+    unsigned char last_clk = 0;
     unsigned char last = 0;
     
-    while (1) 
-    {
-       led_sof();
-       
-       for (unsigned char i=0; i < 10; i++)
-       {
-          if(last == i)
-          {
-             led_time(0x0F,255,255,255);
-             led_time(0x0F,255,255,255);
-          }
-          else
-          {
-             led_time(0,0,0,0);
-             led_time(0,0,0,0);
-          }
+    sei();
     
-       }
-       
-       if((last++) == 9)
-       {
-          last = 0;
-       }
-       
-       
-       led_eof();
-       
-       _delay_ms(1000);
-           
+    while (1) 
+    {     
+      led_sof();
+      
+      for (unsigned char i=0; i < 10; i++)
+      {
+         if(last == i)
+         {
+            led_time(0x0F,255,0,0);
+            led_time(0x0F,255,0,0);
+         }
+         else
+         {
+            led_time(0,0,0,0);
+            led_time(0,0,0,0);
+         }
+         
+      }
+      
+      if((last++) == 9)
+      {
+         last = 0;
+      }
+      
+      
+      led_eof();
+      
+      _delay_ms(1000);
+         
     }
 }
 
