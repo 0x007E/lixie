@@ -15,19 +15,19 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   5 .debug_aranges 000000b0  00000000  00000000  0000031c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00000bad  00000000  00000000  000003cc  2**0
+  6 .debug_info   00000bb1  00000000  00000000  000003cc  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 000007f7  00000000  00000000  00000f79  2**0
+  7 .debug_abbrev 000007f7  00000000  00000000  00000f7d  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000563  00000000  00000000  00001770  2**0
+  8 .debug_line   00000563  00000000  00000000  00001774  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000154  00000000  00000000  00001cd4  2**2
+  9 .debug_frame  00000154  00000000  00000000  00001cd8  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    000004e2  00000000  00000000  00001e28  2**0
+ 10 .debug_str    000004e2  00000000  00000000  00001e2c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000330  00000000  00000000  0000230a  2**0
+ 11 .debug_loc    00000330  00000000  00000000  0000230e  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 000000b0  00000000  00000000  0000263a  2**0
+ 12 .debug_ranges 000000b0  00000000  00000000  0000263e  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -269,15 +269,15 @@ int main(void)
  144:	c8 13       	cpse	r28, r24
  146:	0d c0       	rjmp	.+26     	; 0x162 <main+0x38>
             {
-               led_time(0x01,255,0,0);
- 148:	20 e0       	ldi	r18, 0x00	; 0
- 14a:	40 e0       	ldi	r20, 0x00	; 0
+               led_time(0x01,255,255,255);
+ 148:	2f ef       	ldi	r18, 0xFF	; 255
+ 14a:	4f ef       	ldi	r20, 0xFF	; 255
  14c:	6f ef       	ldi	r22, 0xFF	; 255
  14e:	81 e0       	ldi	r24, 0x01	; 1
  150:	0e 94 5b 00 	call	0xb6	; 0xb6 <led_time>
-               led_time(0x01,255,0,0);
- 154:	20 e0       	ldi	r18, 0x00	; 0
- 156:	40 e0       	ldi	r20, 0x00	; 0
+               led_time(0x01,255,255,255);
+ 154:	2f ef       	ldi	r18, 0xFF	; 255
+ 156:	4f ef       	ldi	r20, 0xFF	; 255
  158:	6f ef       	ldi	r22, 0xFF	; 255
  15a:	81 e0       	ldi	r24, 0x01	; 1
  15c:	0e 94 5b 00 	call	0xb6	; 0xb6 <led_time>

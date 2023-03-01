@@ -422,12 +422,12 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000      0xbad
+.debug_info     0x00000000      0xbb1
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x52e C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega16a/avr5/crtatmega16a.o
  .debug_info    0x0000052e      0x22d led/led.o
- .debug_info    0x0000075b      0x1e6 main.o
- .debug_info    0x00000941      0x26c spi/spi.o
+ .debug_info    0x0000075b      0x1ea main.o
+ .debug_info    0x00000945      0x26c spi/spi.o
 
 .debug_abbrev   0x00000000      0x7f7
  *(.debug_abbrev)
