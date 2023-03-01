@@ -15,9 +15,9 @@
 #include "clock/clock.h"
 
                               // t   Inte. R.   G.   B.
-volatile Clock_time_t hours   = {12, 0x0F, 255, 255, 255};
-volatile Clock_time_t minutes = {0,  0x0F, 255, 255, 255};
-volatile Clock_time_t seconds = {0,  0x0F, 255, 255, 255};
+volatile Clock_time_t hours   = {12, 0x01, 255, 255, 255};
+volatile Clock_time_t minutes = {0, 0x01, 255, 255, 255};
+volatile Clock_time_t seconds = {0, 0x01, 255, 255, 255};
 
 ISR(TIMER1_COMPA_vect)
 {
@@ -70,7 +70,7 @@ int main(void)
       if(uart_scanchar_nonblocking(&data) == UART_Received)
       {
          // Run setup:
-         printf("\n\rTime 0:00:00]");
+         printf("\n\rTime [00:00:00]");
          
          unsigned int hour;
          unsigned int minute;
@@ -82,7 +82,6 @@ int main(void)
          }
          
          // Color/Intensity setup
-         
          
          // Parameter übernehmen
          hours.time = (unsigned char)hour;
@@ -96,12 +95,12 @@ int main(void)
    
    timer_init();           // Timer initialisieren
    port_init();            // Ports initialisieren
+   clock_init();
    sei();                  // Interrupt starten
-   
    
    while (1)
    {
-      clock_data(hours, minutes, seconds);
+      clock_data(&hours, &minutes, &seconds);
    }
 }
 

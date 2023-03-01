@@ -42,7 +42,7 @@
     // | 0x02 -> F_CPU | / 64  | / 32 |
     // | 0x03 -> F_CPU | / 128 | / 64 |
     // +---------------+-------+------+
-    #define SPI_CLOCK 0x03
+    #define SPI_CLOCK 0x01
 #endif
 
 #ifndef SPI_DDR     // Port direction register

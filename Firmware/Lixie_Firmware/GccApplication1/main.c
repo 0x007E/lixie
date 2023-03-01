@@ -1,9 +1,9 @@
 /*
- * GccApplication1.c
- *
- * Created: 22.02.2023 10:56:27
- * Author : Samir El-Farfar
- */ 
+* GccApplication1.c
+*
+* Created: 22.02.2023 10:56:27
+* Author : Samir El-Farfar
+*/
 
 #define F_CPU 12000000UL
 
@@ -28,8 +28,10 @@ typedef struct
 volatile unsigned char clk = 0;
 
 ISR(TIMER1_COMPA_vect)
-{  
-   if(clk++ > 9)
+{
+   PORTC ^= 0x01;
+   
+   if((++clk) > 9)
    {
       clk = 0;
    }
@@ -44,43 +46,38 @@ void timer_init()
 
 int main(void)
 {
-    led_init();
-    timer_init();
-    
-    unsigned char last_clk = 0;
-    unsigned char last = 0;
-    
-    sei();
-    
-    while (1) 
-    {     
+   DDRC = 0x01;
+   
+   led_init();
+   timer_init();
+   
+   sei();
+   
+   while (1)
+   {
       led_sof();
       
-      for (unsigned char i=0; i < 10; i++)
-      {
-         if(last == i)
-         {
-            led_time(0x0F,255,0,0);
-            led_time(0x0F,255,0,0);
-         }
-         else
-         {
-            led_time(0,0,0,0);
-            led_time(0,0,0,0);
-         }
-         
-      }
       
-      if((last++) == 9)
+      for (unsigned char j=0; j < 6; j++)
       {
-         last = 0;
+         for (unsigned char i=0; i < 10; i++)
+         {
+            if(clk == i)
+            {
+               led_time(0x01,255,0,0);
+               led_time(0x01,255,0,0);
+            }
+            else
+            {
+               led_time(0,0,0,0);
+               led_time(0,0,0,0);
+            }
+            
+         }
       }
-      
       
       led_eof();
       
-      _delay_ms(1000);
-         
-    }
+   }
 }
 
