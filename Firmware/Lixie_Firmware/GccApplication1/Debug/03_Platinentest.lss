@@ -15,11 +15,11 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   5 .debug_aranges 000000b0  00000000  00000000  0000031c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00000bb1  00000000  00000000  000003cc  2**0
+  6 .debug_info   00000baf  00000000  00000000  000003cc  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 000007f7  00000000  00000000  00000f7d  2**0
+  7 .debug_abbrev 000007f7  00000000  00000000  00000f7b  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000563  00000000  00000000  00001774  2**0
+  8 .debug_line   00000563  00000000  00000000  00001772  2**0
                   CONTENTS, READONLY, DEBUGGING
   9 .debug_frame  00000154  00000000  00000000  00001cd8  2**2
                   CONTENTS, READONLY, DEBUGGING
@@ -200,14 +200,14 @@ ISR(TIMER1_COMPA_vect)
   f6:	85 bb       	out	0x15, r24	; 21
    
    if((++clk) > 9)
-  f8:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+  f8:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <_edata>
   fc:	8f 5f       	subi	r24, 0xFF	; 255
-  fe:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+  fe:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <_edata>
  102:	8a 30       	cpi	r24, 0x0A	; 10
  104:	10 f0       	brcs	.+4      	; 0x10a <__vector_6+0x28>
    {
       clk = 0;
- 106:	10 92 60 00 	sts	0x0060, r1	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 106:	10 92 60 00 	sts	0x0060, r1	; 0x800060 <_edata>
    }
 }
  10a:	9f 91       	pop	r25
@@ -265,20 +265,20 @@ int main(void)
          for (unsigned char i=0; i < 10; i++)
          {
             if(clk == i)
- 140:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 140:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <_edata>
  144:	c8 13       	cpse	r28, r24
  146:	0d c0       	rjmp	.+26     	; 0x162 <main+0x38>
             {
-               led_time(0x01,255,255,255);
- 148:	2f ef       	ldi	r18, 0xFF	; 255
- 14a:	4f ef       	ldi	r20, 0xFF	; 255
- 14c:	6f ef       	ldi	r22, 0xFF	; 255
+               led_time(0x01,189, 55, 2);
+ 148:	22 e0       	ldi	r18, 0x02	; 2
+ 14a:	47 e3       	ldi	r20, 0x37	; 55
+ 14c:	6d eb       	ldi	r22, 0xBD	; 189
  14e:	81 e0       	ldi	r24, 0x01	; 1
  150:	0e 94 5b 00 	call	0xb6	; 0xb6 <led_time>
-               led_time(0x01,255,255,255);
- 154:	2f ef       	ldi	r18, 0xFF	; 255
- 156:	4f ef       	ldi	r20, 0xFF	; 255
- 158:	6f ef       	ldi	r22, 0xFF	; 255
+               led_time(0x01,189, 55, 2);
+ 154:	22 e0       	ldi	r18, 0x02	; 2
+ 156:	47 e3       	ldi	r20, 0x37	; 55
+ 158:	6d eb       	ldi	r22, 0xBD	; 189
  15a:	81 e0       	ldi	r24, 0x01	; 1
  15c:	0e 94 5b 00 	call	0xb6	; 0xb6 <led_time>
  160:	0c c0       	rjmp	.+24     	; 0x17a <main+0x50>

@@ -64,8 +64,8 @@ int main(void)
          {
             if(clk == i)
             {
-               led_time(0x01,255,255,255);
-               led_time(0x01,255,255,255);
+               led_time(0x01,189, 55, 2);
+               led_time(0x01,189, 55, 2);
             }
             else
             {

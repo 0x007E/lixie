@@ -16,8 +16,8 @@
 
                               // t   Inte. R.   G.   B.
 volatile Clock_time_t hours   = {12, 0x0F, 255, 255, 255};
-volatile Clock_time_t minutes = {0, 0x0F, 255, 255, 255};
-volatile Clock_time_t seconds = {0, 0x0F, 255, 255, 255};
+volatile Clock_time_t minutes = {33, 0x0F, 255, 255, 255};
+volatile Clock_time_t seconds = {2, 0x0F, 255, 255, 255};
 
 ISR(TIMER1_COMPA_vect)
 {
