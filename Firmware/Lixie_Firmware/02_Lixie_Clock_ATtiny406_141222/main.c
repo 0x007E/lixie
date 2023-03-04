@@ -15,17 +15,15 @@
 #include "clock/clock.h"
 
                               // t   Hell. R.   G.   B.
-volatile Clock_time_t hours   = {12, 0x0F, 255, 255, 255};
-volatile Clock_time_t minutes = {0,  0x0F, 255, 255, 255};
-volatile Clock_time_t seconds = {0,  0x0F, 255, 255, 255};
+volatile Clock_time_t hours   = {0, 8, 255, 0, 255};
+volatile Clock_time_t minutes = {1,  8, 0, 255, 255};
+volatile Clock_time_t seconds = {10, 8, 0, 0, 255};
 
 volatile unsigned char miliseconds = 0;
 
 ISR(TCA0_OVF_vect)
 {
-   miliseconds++;                // Millisekunde wird hochgezählt
-   
-   if(miliseconds > 9)           // Wenn die Millisekunde größer als 9 ist:
+   if((++miliseconds) > 9)           // Wenn die Millisekunde größer als 9 ist:
    {                             // Die Sekunde wird hochgezählt
       seconds.time++;            // Die Millisekunde wird auf 0 gesetzt
       miliseconds = 0;           
@@ -46,10 +44,12 @@ ISR(TCA0_OVF_vect)
             }
          }
       }
-   }   
+   }
+   
+   TCA0.SINGLE.INTFLAGS = TCA_SINGLE_OVF_bm;   
 }
 
-void clock_init()
+void cpu_init()
 {
    CCP = CCP_IOREG_gc;
    CLKCTRL.MCLKCTRLA = CLKCTRL_CLKSEL_OSC20M_gc;
@@ -62,7 +62,7 @@ void clock_init()
 
 void timer_init()
 {
-   TCA0.SINGLE.PER = 0x7A12;                                               // Timer Setup:
+   TCA0.SINGLE.PER = 31250;                                               // Timer Setup:
    TCA0.SINGLE.INTCTRL = TCA_SINGLE_OVF_bm;                                // - Overflow Interrupt wird aktiviert
    TCA0.SINGLE.CTRLB = TCA_SINGLE_WGMODE_NORMAL_gc;                        // - Normal Mode
    TCA0.SINGLE.CTRLA = TCA_SINGLE_CLKSEL_DIV64_gc | TCA_SINGLE_ENABLE_bm;  // - sysclk / 64
@@ -75,55 +75,56 @@ void port_init()
 
 int main(void)
 {
-   clock_init();
-   uart_init();
-   sei();
+   cpu_init();
+   //uart_init();
+   //sei();
+   //
+   //// Während Startup über UART Zeit einstellen
+   //// Gewünschte Farbe
+   //
+   //printf("Press key for setup\n\r");
+   //
+   //char data = 0;
+   //
+   //for(unsigned char i=0; i < 10; i++)
+   //{
+      //printf(".");
+      //if(uart_scanchar_nonblocking(&data) == UART_Received)
+      //{
+         //// Run setup:
+         //printf("\n\rTime 0:00:00]");
+         //
+         //unsigned int hour;
+         //unsigned int minute;
+         //unsigned int second;
+         //
+         //if(scanf("%2u:%2u:%2u", &hour, &minute, &second) != 1)
+         //{
+            //uart_clear();
+         //}
+         //
+         //// Color/Intensity setup
+         //
+         //
+         //// Parameter übernehmen
+         //hours.time = (unsigned char)hour;
+         //minutes.time = (unsigned char)minute;
+         //seconds.time = (unsigned char)second;
+         //
+         //break;
+      //}
+      //_delay_ms(1000);
+   //}
    
-   // Während Startup über UART Zeit einstellen
-   // Gewünschte Farbe
-   
-   printf("Press key for setup\n\r");
-   
-   char data = 0;
-   
-   for(unsigned char i=0; i < 10; i++)
-   {
-      printf(".");
-      if(uart_scanchar_nonblocking(&data) == UART_Received)
-      {
-         // Run setup:
-         printf("\n\rTime 0:00:00]");
-         
-         unsigned int hour;
-         unsigned int minute;
-         unsigned int second;
-         
-         if(scanf("%2u:%2u:%2u", &hour, &minute, &second) != 1)
-         {
-            uart_clear();
-         }
-         
-         // Color/Intensity setup
-         
-         
-         // Parameter übernehmen
-         hours.time = (unsigned char)hour;
-         minutes.time = (unsigned char)minute;
-         seconds.time = (unsigned char)second;
-         
-         break;
-      }
-      _delay_ms(1000);
-   }
-   
-   timer_init();           // Timer initialisieren
    port_init();            // Ports initialisieren
+   timer_init();           // Timer initialisieren
+   clock_init();
    sei();                  // Interrupt starten
-   
    
    while (1)
    {
-      clock_data(hours, minutes, seconds);   //Die Daten werden an die Uhr Gescickt
+      clock_data(&hours, &minutes, &seconds);
+      _delay_ms(1);
    }
 }
 
