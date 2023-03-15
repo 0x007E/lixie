@@ -9,6 +9,8 @@ Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "02_Lixie_Clock_ATtiny1606_1
 EndProject
 Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "03_Platinentest", "GccApplication1\03_Platinentest.cproj", "{CB0370AF-C395-48AA-BC74-A6EF661D9FAF}"
 EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "Attiny1606_UART_Test", "Attiny1606_UART_Test\Attiny1606_UART_Test.cproj", "{9E0EF7A1-9275-43A7-A988-D68F9D5F4804}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|AVR = Debug|AVR
@@ -27,6 +29,10 @@ Global
 		{CB0370AF-C395-48AA-BC74-A6EF661D9FAF}.Debug|AVR.Build.0 = Debug|AVR
 		{CB0370AF-C395-48AA-BC74-A6EF661D9FAF}.Release|AVR.ActiveCfg = Release|AVR
 		{CB0370AF-C395-48AA-BC74-A6EF661D9FAF}.Release|AVR.Build.0 = Release|AVR
+		{9E0EF7A1-9275-43A7-A988-D68F9D5F4804}.Debug|AVR.ActiveCfg = Debug|AVR
+		{9E0EF7A1-9275-43A7-A988-D68F9D5F4804}.Debug|AVR.Build.0 = Debug|AVR
+		{9E0EF7A1-9275-43A7-A988-D68F9D5F4804}.Release|AVR.ActiveCfg = Release|AVR
+		{9E0EF7A1-9275-43A7-A988-D68F9D5F4804}.Release|AVR.Build.0 = Release|AVR
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

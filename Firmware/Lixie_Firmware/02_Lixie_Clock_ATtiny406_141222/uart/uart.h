@@ -15,13 +15,12 @@
 #ifndef UART_H_
 #define UART_H_
 
-#ifndef F_CPU                       // System clock
+//#ifndef F_CPU                       // System clock
     #define F_CPU 20000000UL
-#endif
+//#endif
 
 #ifndef BAUD_RATE                   // Transmission frequency in bits/s
-    #define BAUD_RATE 9600UL
-    #define USART0_BAUD_RATE(BAUD_RATE) ((float)(F_CPU * 64 / (16 * (float)BAUD_RATE)) + 0.5)
+    #define USART0_BAUD_RATE(BAUD_RATE) ((float)(F_CPU * 64UL / (16UL * (float)BAUD_RATE)) + 0.5)
 #endif
 
 #ifndef UART_RXC_ECHO               // Setup that an echo occurs on data receiving

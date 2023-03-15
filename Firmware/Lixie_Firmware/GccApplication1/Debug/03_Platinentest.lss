@@ -200,14 +200,14 @@ ISR(TIMER1_COMPA_vect)
   f6:	85 bb       	out	0x15, r24	; 21
    
    if((++clk) > 9)
-  f8:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <_edata>
+  f8:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
   fc:	8f 5f       	subi	r24, 0xFF	; 255
-  fe:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <_edata>
+  fe:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
  102:	8a 30       	cpi	r24, 0x0A	; 10
  104:	10 f0       	brcs	.+4      	; 0x10a <__vector_6+0x28>
    {
       clk = 0;
- 106:	10 92 60 00 	sts	0x0060, r1	; 0x800060 <_edata>
+ 106:	10 92 60 00 	sts	0x0060, r1	; 0x800060 <__DATA_REGION_ORIGIN__>
    }
 }
  10a:	9f 91       	pop	r25
@@ -265,7 +265,7 @@ int main(void)
          for (unsigned char i=0; i < 10; i++)
          {
             if(clk == i)
- 140:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <_edata>
+ 140:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
  144:	c8 13       	cpse	r28, r24
  146:	0d c0       	rjmp	.+26     	; 0x162 <main+0x38>
             {

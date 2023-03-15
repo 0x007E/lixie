@@ -17,7 +17,7 @@
                               // t   Hell. R.   G.   B.
 volatile Clock_time_t hours   = {0, 8, 255, 0, 255};
 volatile Clock_time_t minutes = {1,  8, 0, 255, 255};
-volatile Clock_time_t seconds = {10, 8, 0, 0, 255};
+volatile Clock_time_t seconds = {10, 0x01, 255, 255, 255};
 
 volatile unsigned char miliseconds = 0;
 
@@ -76,45 +76,44 @@ void port_init()
 int main(void)
 {
    cpu_init();
-   //uart_init();
-   //sei();
-   //
-   //// Während Startup über UART Zeit einstellen
-   //// Gewünschte Farbe
-   //
-   //printf("Press key for setup\n\r");
-   //
-   //char data = 0;
-   //
-   //for(unsigned char i=0; i < 10; i++)
-   //{
-      //printf(".");
-      //if(uart_scanchar_nonblocking(&data) == UART_Received)
-      //{
-         //// Run setup:
-         //printf("\n\rTime 0:00:00]");
-         //
-         //unsigned int hour;
-         //unsigned int minute;
-         //unsigned int second;
-         //
-         //if(scanf("%2u:%2u:%2u", &hour, &minute, &second) != 1)
-         //{
-            //uart_clear();
-         //}
-         //
-         //// Color/Intensity setup
-         //
-         //
-         //// Parameter übernehmen
-         //hours.time = (unsigned char)hour;
-         //minutes.time = (unsigned char)minute;
-         //seconds.time = (unsigned char)second;
-         //
-         //break;
-      //}
-      //_delay_ms(1000);
-   //}
+   uart_init();
+   
+   // Während Startup über UART Zeit einstellen
+   // Gewünschte Farbe
+   
+   printf("Press key for setup\n\r");
+   
+   char data = 0;
+   
+   for(unsigned char i=0; i < 10; i++)
+   {
+      printf(".");
+      if(uart_scanchar_nonblocking(&data) == UART_Received)
+      {
+         // Run setup:
+         printf("\n\rTime 0:00:00]");
+         
+         unsigned int hour;
+         unsigned int minute;
+         unsigned int second;
+         
+         if(scanf("%2u:%2u:%2u", &hour, &minute, &second) != 1)
+         {
+            uart_clear();
+         }
+         
+         // Color/Intensity setup
+         
+         
+         // Parameter übernehmen
+         hours.time = (unsigned char)hour;
+         minutes.time = (unsigned char)minute;
+         seconds.time = (unsigned char)second;
+         
+         break;
+      }
+      _delay_ms(1000);
+   }
    
    port_init();            // Ports initialisieren
    timer_init();           // Timer initialisieren
