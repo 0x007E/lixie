@@ -13,7 +13,7 @@
     <OutputFileExtension>.elf</OutputFileExtension>
     <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
     <AssemblyName>02_Lixie_Clock_ATtiny406_141222</AssemblyName>
-    <Name>02_Lixie_Clock_ATtiny1606_141222</Name>
+    <Name>02_Lixie_Clock_ATtiny1606</Name>
     <RootNamespace>02_Lixie_Clock_ATtiny406_141222</RootNamespace>
     <ToolchainFlavour>Native</ToolchainFlavour>
     <KeepTimersRunning>true</KeepTimersRunning>

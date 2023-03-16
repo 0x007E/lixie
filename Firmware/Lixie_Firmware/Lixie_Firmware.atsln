@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Atmel Studio Solution File, Format Version 11.00
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "01_Lixie_Clock_ATmega16_141222", "01_Lixie_Clock_141222\01_Lixie_Clock_ATmega16_141222.cproj", "{DCE6C7E3-EE26-4D79-826B-08594B9AD897}"
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "01_Lixie_Clock_ATmega16", "01_Lixie_Clock_141222\01_Lixie_Clock_ATmega16.cproj", "{DCE6C7E3-EE26-4D79-826B-08594B9AD897}"
 EndProject
-Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "02_Lixie_Clock_ATtiny1606_141222", "02_Lixie_Clock_ATtiny406_141222\02_Lixie_Clock_ATtiny1606_141222.cproj", "{4C60CB97-68CF-4247-B7A7-281D60F8AD73}"
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "02_Lixie_Clock_ATtiny1606", "02_Lixie_Clock_ATtiny406_141222\02_Lixie_Clock_ATtiny1606.cproj", "{4C60CB97-68CF-4247-B7A7-281D60F8AD73}"
 EndProject
 Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "03_Platinentest", "GccApplication1\03_Platinentest.cproj", "{CB0370AF-C395-48AA-BC74-A6EF661D9FAF}"
 EndProject

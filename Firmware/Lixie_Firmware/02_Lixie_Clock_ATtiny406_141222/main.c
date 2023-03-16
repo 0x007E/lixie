@@ -46,7 +46,7 @@ ISR(TCA0_OVF_vect)
       }
    }
    
-   TCA0.SINGLE.INTFLAGS = TCA_SINGLE_OVF_bm;   
+   TCA0.SINGLE.INTFLAGS = TCA_SINGLE_OVF_bm;  //Das Interrupt Flag wird am ende jedes Interrupts gelöscht 
 }
 
 void cpu_init()
@@ -91,7 +91,7 @@ int main(void)
       if(uart_scanchar_nonblocking(&data) == UART_Received)
       {
          // Run setup:
-         printf("\n\rTime 0:00:00]");
+         printf("\n\rTime [00:00:00]");
          
          unsigned int hour;
          unsigned int minute;
