@@ -62,7 +62,7 @@ void cpu_init()
 
 void timer_init()
 {
-   TCA0.SINGLE.PER = 31250;                                                // Timer Setup:
+   TCA0.SINGLE.PER = 31249;                                                // Timer Setup:
    TCA0.SINGLE.INTCTRL = TCA_SINGLE_OVF_bm;                                // - Overflow Interrupt wird aktiviert
    TCA0.SINGLE.CTRLB = TCA_SINGLE_WGMODE_NORMAL_gc;                        // - Normal Mode
    TCA0.SINGLE.CTRLA = TCA_SINGLE_CLKSEL_DIV64_gc | TCA_SINGLE_ENABLE_bm;  // - sysclk / 64
@@ -90,7 +90,7 @@ int main(void)
       if(uart_scanchar_nonblocking(&data) == UART_Received)
       {
          // Run setup:
-         printf("\n\rTime [00:00:00]");
+         printf("\n\rTime [00:00:00]: ");
          
          unsigned int hour;
          unsigned int minute;
