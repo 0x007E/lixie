@@ -101,9 +101,6 @@ int main(void)
             uart_clear();
          }
          
-         // Color/Intensity setup
-         
-         
          // Parameter übernehmen
          hours.time = (unsigned char)hour;
          minutes.time = (unsigned char)minute;
