@@ -18,8 +18,8 @@ void USART1_sendString(char *str);
 
 void USART1_init(void)
 {
-   PORTA.DIR &= ~PIN2_bm;
-   PORTB.DIR |= PIN3_bm;
+   PORTA.DIR &= ~PIN3_bm;
+   PORTB.DIR |= PIN2_bm;
    
    USART0.BAUD = (uint16_t)USART1_BAUD_RATE(9600UL);
    USART0.CTRLB |= USART_TXEN_bm;

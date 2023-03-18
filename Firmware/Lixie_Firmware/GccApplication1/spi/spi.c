@@ -14,184 +14,26 @@
 
 #include "spi.h"
 
-//  +---------------------------------------------------------------+
-//  |                   SPI initialization                          |
-//  +---------------------------------------------------------------+
-//  | Parameter:    operation   ->  0x01 = Master mode              |
-//  |                               0x00 = Slave mode               |
-//  |                                                               |
-//  |               direction   ->  0x01 = LSB first                |
-//  |                               0x00 = MSB first                |
-//  |                                                               |
-//  |                               +------+----------+---------+   |
-//  |                               |      | Polarity | Phase   |   |
-//  |                               +------+----------+---------+   |
-//  |               transfer    ->  | 0x00 | Rising   | Rising  |   |
-//  |                               | 0x01 | Rising   | Falling |   |
-//  |                               | 0x02 | Falling  | Rising  |   |
-//  |                               | 0x03 | Falling  | Falling |   |
-//  |                               +------+----------+---------+   |
-//  |                                                               |
-//  |    Return:    0x00    ->  Init complete                       |
-//  |               0xFF    ->  Master abort                        |
-//  +---------------------------------------------------------------+
-unsigned char spi_init(SPI_Mode operation, SPI_Direction direction, SPI_Polarity polarity, SPI_Phase phase)
+void spi_init()
 {   
-    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    // !!!      SPECIAL FUNCTION        !!!
-    // !!! If during initialisation SS  !!!
-    // !!! pin is LOW, SPI controller   !!!
-    // !!! will be configured as slave. !!!
-    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    SPI_DDR  &= ~((1<<SPI_MISO) | (1<<SPI_SS)); // Setup MISO and SS as input
-    SPI_PORT |=   (1<<SPI_MISO) | (1<<SPI_SS);  // Activate pull up resistor at MISO and SS
-    
-    // Double speed setup
-    #ifdef SPI2X
-        SPSR = (1<<SPI2X);                      // Double speed mode activated
-    #else
-        SPSR = 0x00;                            // Double speed mode deactivated
-    #endif
-    
-    #if SPI_CLOCK > 0
-        SPCR = (0x03 & SPI_CLOCK);
-    #else
-        SPCR = 0x00;
-    #endif
-    
-    // Master/Slave setup (direction setup)
-    SPCR |= ((0x01 & operation)<<4);
-    
-    // MSB/LSB first
-    SPCR |= ((0x01 & direction)<<5);
-    
-    // Polarity and Phase of SCK and time
-    SPCR |= ((0x01 & polarity)<<3) | ((0x01 & phase)<<2);
-    
-    // SPI interrupt setup
-    #ifdef SPI_SPIE
-        SPCR  |= (1<<SPIE);
-        sei();
-    #endif
-    
-    SPCR |= (1<<SPE);   // Activate the SPI Controller
-    
-    // Setup SCK, MOSI and SS as output
-    // PORT configuration gets overwritten from SPI controller
-    SPI_DDR  |= (1<<SPI_SCK) | (1<<SPI_MISO) | (1<<SPI_MOSI) | (1<<SPI_SS);
-    
-    // Check if master abort has occurred
-    if(!(SPCR & (1<<MSTR)))
-        return 0xFF;    // Return master abort
-    return 0x00;        // Return no fault
+    PORTMUX.CTRLB |= PORTMUX_SPI0_ALTERNATE_gc;
+    PORTC.DIR |= PIN2_bm;        /* Set MOSI pin direction to output */
+    PORTC.DIR |= PIN0_bm;        /* Set SCK pin direction to output */
+    SPI0.CTRLA = SPI_CLK2X_bm    
+    | SPI_ENABLE_bm              /* Enable module */
+    // | SPI_DORD_bm
+    | SPI_MASTER_bm              /* SPI module in Master mode */
+    | SPI_PRESC_DIV64_gc;        /* System Clock divided by 16 */
 }
 
-//  +---------------------------------------------------------------+
-//  |                   SPI disable function                        |
-//  +---------------------------------------------------------------+
-void spi_disable(void)
+
+unsigned char spi_transfer(unsigned char data)
 {
-    // Disable SPI
-    SPCR &= ~(1<<SPE);
-    SPI_DDR  &= ~((1<<SPI_SCK) | (1<<SPI_MOSI) | (1<<SPI_MISO) | (1<<SPI_SS));
-    SPI_PORT &= ~((1<<SPI_SCK) | (1<<SPI_MOSI) | (1<<SPI_MISO) | (1<<SPI_SS));
+    SPI0.DATA = data;
+    while (!(SPI0.INTFLAGS & SPI_IF_bm)); /* waits until data is exchanged*/
     
-    #ifdef SPI_SPIE // Disable SPI interrupt
-        SPCR  &= ~(1<<SPIE);
-        sei();
-    #endif
-}
-
-//  +---------------------------------------------------------------+
-//  |               SPI Master Slave Select                         |
-//  +---------------------------------------------------------------+
-//  | Parameter:    mode    ->  0x01 = Slave Select Pin HIGH -> LOW |
-//  |                           0x00 = Slave Select Pin LOW -> HIGH |
-//  +---------------------------------------------------------------+
-void spi_select(SPI_Select mode)
-{
-    switch(mode)
-    {
-        case SPI_Enable : SPI_PORT &= ~(1<<SPI_SS);   break;  // Slave Select On
-        default         : SPI_PORT |=  (1<<SPI_SS);   break;  // Slave Select Off
-    }
-}
-
-//  +---------------------------------------------------------------+
-//  |               SPI Slave Slave Select                          |
-//  +---------------------------------------------------------------+
-//  |    Return:    0x00    ->  Slave disabled                      |
-//  |               0xFF    ->  Slave enabled                       |
-//  +---------------------------------------------------------------+
-SPI_Select spi_slave_select(void)
-{
-    if(!(SPI_PIN & (1<<SPI_SS)))
-        return SPI_Enable;
-    else
-        return SPI_Disable;
-}
-
-#ifndef SPI_SPIE
-
-    //  +---------------------------------------------------------------+
-    //  |           SPI master transfer / receive character             |
-    //  +---------------------------------------------------------------+
-    //  | Parameter:    time    ->  Transmit time byte                  |
-    //  |                                                               |
-    //  |    Return:    0x??    ->  Receive time byte                   |
-    //  +---------------------------------------------------------------+
-    unsigned char spi_transfer(unsigned char time)
-    {
-        SPDR = time;    // Write time into the SPI time Register and initiate a transmission
+    SPI0.INTFLAGS = SPI_IF_bm;
     
-        // Wait until transmission is Complete
-        while(!(SPSR & (1<<SPIF)))
-            asm volatile("NOP");
-        
-        #ifdef SPI_WCOL_PORT
-            #ifdef SPI_WCOL_PIN
-                // Write Collision to Collision Port (Sticky) 
-                if(SPSR & (1<<WCOL))
-                    SPI_WCOL_PORT |= (1<<SPI_WCOL_PIN);
-            #endif
-        #endif
-        
-        return SPDR;    // Return received time from the bus
-    }
+    return SPI0.DATA;
+}
 
-    //  +---------------------------------------------------------------+
-    //  |           SPI master transfer / receive character             |
-    //  +---------------------------------------------------------------+
-    //  | Parameter:    time    ->  Transmit/Receive time byte          |
-    //  |                                                               |
-    //  |    Return:    Received  ->  time received                     |
-    //  |               Collision ->  time collision                    |
-    //  |               None      ->  No time received                  |
-    //  +---------------------------------------------------------------+
-    SPI_Status spi_slave_transfer(unsigned char *time)
-    {   
-        if(SPSR & (1<<SPIF))
-        {
-            unsigned char temp = *time;  // Write time into a temporary buffer
-            
-            *time = SPDR;   // Write time form buffer into time variable
-            SPDR = temp;    // Setup new time for next transmission and reset WCOL and SPIF
-            
-            // Check if this is necessary
-            // Write Collision to Collision Port (Sticky)
-            if(SPSR & (1<<WCOL))
-            {
-                #ifdef SPI_WCOL_PORT
-                    #ifdef SPI_WCOL_PIN
-                        SPI_WCOL_PORT |= (1<<SPI_WCOL_PIN);
-                    #endif
-                #endif
-                
-                SPDR = temp;            // Write time again into the SPI time register and reset WCOL and SPIF
-                return SPI_Collision;   // Return that a collision happened
-            }
-            return SPI_Received;        // Return that new time received
-        }
-        return SPI_None;                // Return that no new time received
-    }
-#endif

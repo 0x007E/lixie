@@ -19,8 +19,10 @@ void spi_init()
     PORTMUX.CTRLB |= PORTMUX_SPI0_ALTERNATE_gc;
     PORTC.DIR |= PIN2_bm;        /* Set MOSI pin direction to output */
     PORTC.DIR |= PIN0_bm;        /* Set SCK pin direction to output */
+    
     SPI0.CTRLA = SPI_CLK2X_bm    
     | SPI_ENABLE_bm              /* Enable module */
+    // | SPI_DORD_bm
     | SPI_MASTER_bm              /* SPI module in Master mode */
     | SPI_PRESC_DIV64_gc;        /* System Clock divided by 16 */
 }

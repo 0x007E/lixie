@@ -15,31 +15,31 @@
 #include "clock/clock.h"
 
                               // t   Hell. R.   G.   B.
-volatile Clock_time_t hours   = {0, 8, 255, 0, 255};
-volatile Clock_time_t minutes = {1,  8, 0, 255, 255};
-volatile Clock_time_t seconds = {10, 0x01, 255, 255, 255};
+volatile Clock_time_t hours   = {12, 0xFF, 255, 0, 0};
+volatile Clock_time_t minutes = {0, 0xFF, 0, 255, 0};
+volatile Clock_time_t seconds = {0, 0xFF, 0, 0, 255};
 
 volatile unsigned char miliseconds = 0;
 
 ISR(TCA0_OVF_vect)
 {
-   if((++miliseconds) > 9)           // Wenn die Millisekunde größer als 9 ist:
-   {                             // Die Sekunde wird hochgezählt
-      seconds.time++;            // Die Millisekunde wird auf 0 gesetzt
+   if((++miliseconds) > 9)           // wenn die millisekunde größer als 9 ist:
+   {                             // die sekunde wird hochgezählt
+      seconds.time++;            // die millisekunde wird auf 0 gesetzt
       miliseconds = 0;           
       
-      if(seconds.time > 59)      // Wenn die Sekunde größer als 59 ist:
-      {                          // Die Minute wird hochgezählt
-         minutes.time++;         // Die Sekunde wird auf 0 gesetzt
+      if(seconds.time > 59)      // wenn die sekunde größer als 59 ist:
+      {                          // die minute wird hochgezählt
+         minutes.time++;         // die sekunde wird auf 0 gesetzt
          seconds.time = 0;
          
-         if(minutes.time > 59)   // Wenn die Minute größer als 59 ist:
-         {                       // Die Stunde wird hochgezählt
-            hours.time++;        // Die Minute wird auf 0 gesetzt
+         if(minutes.time > 59)   // wenn die minute größer als 59 ist:
+         {                       // die stunde wird hochgezählt
+            hours.time++;        // die minute wird auf 0 gesetzt
             minutes.time = 0;    
             
-            if(hours.time > 23); // Wenn die Stunde größer als 23 ist:
-            {                    // Die Stunde wird auf 0 gesetzt
+            if(hours.time > 23); // wenn die stunde größer als 23 ist:
+            {                    // die stunde wird auf 0 gesetzt
                hours.time=0;
             }
          }
@@ -62,7 +62,7 @@ void cpu_init()
 
 void timer_init()
 {
-   TCA0.SINGLE.PER = 31250;                                               // Timer Setup:
+   TCA0.SINGLE.PER = 31250;                                                // Timer Setup:
    TCA0.SINGLE.INTCTRL = TCA_SINGLE_OVF_bm;                                // - Overflow Interrupt wird aktiviert
    TCA0.SINGLE.CTRLB = TCA_SINGLE_WGMODE_NORMAL_gc;                        // - Normal Mode
    TCA0.SINGLE.CTRLA = TCA_SINGLE_CLKSEL_DIV64_gc | TCA_SINGLE_ENABLE_bm;  // - sysclk / 64
@@ -80,8 +80,7 @@ int main(void)
    
    // Während Startup über UART Zeit einstellen
    // Gewünschte Farbe
-   
-   printf("Press key for setup\n\r");
+   printf("\nPress key for setup\n\r");
    
    char data = 0;
    

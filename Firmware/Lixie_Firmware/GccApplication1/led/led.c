@@ -2,7 +2,7 @@
 
 void led_init()
 {
-   spi_init(SPI_Master, SPI_MSB, SPI_Falling, SPI_Rising);
+   spi_init();
 }
 
 void led_sof()

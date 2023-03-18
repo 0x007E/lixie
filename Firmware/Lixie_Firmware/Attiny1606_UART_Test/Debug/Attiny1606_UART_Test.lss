@@ -84,17 +84,17 @@ void USART1_sendString(char *str);
 
 void USART1_init(void)
 {
-   PORTA.DIR &= ~PIN2_bm;
+   PORTA.DIR &= ~PIN3_bm;
   94:	e0 e0       	ldi	r30, 0x00	; 0
   96:	f4 e0       	ldi	r31, 0x04	; 4
   98:	80 81       	ld	r24, Z
-  9a:	8b 7f       	andi	r24, 0xFB	; 251
+  9a:	87 7f       	andi	r24, 0xF7	; 247
   9c:	80 83       	st	Z, r24
-   PORTB.DIR |= PIN3_bm;
+   PORTB.DIR |= PIN2_bm;
   9e:	e0 e2       	ldi	r30, 0x20	; 32
   a0:	f4 e0       	ldi	r31, 0x04	; 4
   a2:	80 81       	ld	r24, Z
-  a4:	88 60       	ori	r24, 0x08	; 8
+  a4:	84 60       	ori	r24, 0x04	; 4
   a6:	80 83       	st	Z, r24
    
    USART0.BAUD = (uint16_t)USART1_BAUD_RATE(9600UL);

@@ -21,8 +21,8 @@ static FILE std_uart = FDEV_SETUP_STREAM(uart_printf, uart_scanf, _FDEV_SETUP_RW
 //  +---------------------------------------------------------------+
 void uart_init(void)
 {
-   PORTB.DIR &= ~PIN2_bm;
-   PORTB.DIR |= PIN3_bm;
+   PORTB.DIR &= ~PIN3_bm;
+   PORTB.DIR |= PIN2_bm;
    
    USART0.BAUD = (uint16_t)USART0_BAUD_RATE(9600);
    USART0.CTRLB |= USART_TXEN_bm | USART_RXEN_bm;
