@@ -70,7 +70,7 @@ void timer_init()
 
 void port_init()
 {
-   
+   PORTB.DIR |= 0x01;
 }
 
 int main(void)
@@ -80,6 +80,8 @@ int main(void)
    
    // Während Startup über UART Zeit einstellen
    // Gewünschte Farbe
+   
+   _delay_ms(5000);
    printf("\nPress key for setup\n\r");
    
    char data = 0;
