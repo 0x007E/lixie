@@ -91,16 +91,42 @@ int main(void)
       printf(".");
       if(uart_scanchar_nonblocking(&data) == UART_Received)
       {
+         
+         unsigned int mode = 0;
+         
+         unsigned int hour = 0;
+         unsigned int minute = 0;
+         unsigned int second = 0;
+         
+         unsigned int r = 0;
+         unsigned int g = 0;
+         unsigned int b = 0;
+         
          // Run setup:
-         printf("\n\rTime [00:00:00]: ");
-         
-         unsigned int hour;
-         unsigned int minute;
-         unsigned int second;
-         
-         if(scanf("%2u:%2u:%2u", &hour, &minute, &second) != 1)
+         printf("\n\n\r1. Set time     2. Set Color     3. Exit\n\rSelect Mode: ");
+         scanf("%2u", &mode);
+         switch(mode)
          {
-            uart_clear();
+            case 1:
+            do
+            {
+               printf("\n\nSet Time [Hours:Minutes:Seconds]: ");
+               scanf("%2u:%2u:%2u", &hour, &minute, &second);
+               printf("\r");
+            } while ((hour > 23) || (minute > 59) || (second > 59));
+            
+            break;
+
+            case 2:
+            printf("\n\nSet Color: ");
+            scanf("%2u:%2u:%2u\n",&r, &g, &b);
+            break;
+
+            case 3: break;
+
+            default: printf("\n\nError\nPress reset button\n\n");
+            return 0;
+            
          }
          
          // Parameter übernehmen
@@ -117,10 +143,11 @@ int main(void)
    timer_init();           // Timer initialisieren
    clock_init();
    sei();                  // Interrupt starten
-   
+   printf("\n");
    while (1)
    {
-      clock_data(&hours, &minutes, &seconds);
+      clock_data(&hours, &minutes, &seconds);  
+      printf("\rHours: %2u Minutes: %2u Seconds: %2u", hours.time, minutes.time, seconds.time);
       _delay_ms(1);
    }
 }

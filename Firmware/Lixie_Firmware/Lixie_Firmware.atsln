@@ -11,6 +11,8 @@ Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "03_Platinentest", "GccAppli
 EndProject
 Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "Attiny1606_UART_Test", "Attiny1606_UART_Test\Attiny1606_UART_Test.cproj", "{9E0EF7A1-9275-43A7-A988-D68F9D5F4804}"
 EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "ATmega16_DCF77", "ATmega16_DCF77\ATmega16_DCF77.cproj", "{A2F3208E-D311-449C-8F1B-5B567090C29C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|AVR = Debug|AVR
@@ -33,6 +35,10 @@ Global
 		{9E0EF7A1-9275-43A7-A988-D68F9D5F4804}.Debug|AVR.Build.0 = Debug|AVR
 		{9E0EF7A1-9275-43A7-A988-D68F9D5F4804}.Release|AVR.ActiveCfg = Release|AVR
 		{9E0EF7A1-9275-43A7-A988-D68F9D5F4804}.Release|AVR.Build.0 = Release|AVR
+		{A2F3208E-D311-449C-8F1B-5B567090C29C}.Debug|AVR.ActiveCfg = Debug|AVR
+		{A2F3208E-D311-449C-8F1B-5B567090C29C}.Debug|AVR.Build.0 = Debug|AVR
+		{A2F3208E-D311-449C-8F1B-5B567090C29C}.Release|AVR.ActiveCfg = Release|AVR
+		{A2F3208E-D311-449C-8F1B-5B567090C29C}.Release|AVR.Build.0 = Release|AVR
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
