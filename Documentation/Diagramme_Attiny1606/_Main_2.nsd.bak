@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root xmlns:nsd="https://structorizer.fisch.lu" version="3.32-11" preRepeat="until " postFor="to" preReturn="return" postForIn="in" preWhile="while " output="OUTPUT" input="INPUT" preFor="for" preExit="exit" preLeave="leave" ignoreCase="true" preThrow="throw" preForIn="foreach" stepFor="by" author="samir" created="2023-03-18" changedby="Samir El-Farfar" changed="2023-03-29" origin="Structorizer 3.32-11" text="&#34;Hauptprogramm / Main&#34;" comment="" color="ffffff" type="program" style="nice">
+	<children>
+		<call text="&#34;CPU Initialisierung&#34;" comment="" color="ffffff" disabled="0" ismethoddecl="0"></call>
+		<call text="&#34;UART Initialisierung&#34;" comment="" color="ffffff" disabled="0" ismethoddecl="0"></call>
+		<call text="&#34;5 Sekunden Verzögerung&#34;" comment="" color="ffffff" disabled="0" ismethoddecl="0"></call>
+		<call text="&#34;&#34;&#34;Press key for Setup&#34;&#34; wird angezeigt&#34;" comment="" color="ffffff" disabled="0" ismethoddecl="0"></call>
+		<for text="&#34;for i &#60;- 0 to 10&#34;" comment="" counterVar="i" startValue="0" endValue="10" stepConst="1" style="COUNTER" color="ffffff" disabled="0">
+			<qFor>
+				<instruction text="&#34;&#34;&#34;.&#34;&#34; wird angezeigt&#34;" comment="" color="ffffff" rotated="0" disabled="0"></instruction>
+				<alternative text="&#34;Wartet auf ein Zeichen (Tastendruck)&#34;" comment="" color="ffffff" disabled="0">
+					<qTrue>
+						<instruction text="&#34;Variablen werden definiert:&#34;,&#34;- Modus&#34;,&#34;- Segment&#34;,&#34;- Status Einstellung = 1&#34;,&#34;- Status Farbe = 1&#34;,&#34;- Helligkeit&#34;,&#34;- Stunde&#34;,&#34;- Minute&#34;,&#34;- Sekunde&#34;,&#34;&#34;,&#34;- Struct Farbe:&#34;,&#34;  Rot&#34;,&#34;  Grün&#34;,&#34;  Blau&#34;,&#34;&#34;,&#34;- Farbe Zeiteinstellung&#34;" comment="&#34;&#34;" color="ffffff" rotated="0" disabled="0"></instruction>
+						<repeat text="&#34;while (Status Einstellung)&#34;" comment="" color="ffffff" disabled="0">
+							<qRepeat>
+								<instruction text="&#34;1. Time 2. Color 3. Brightness&#34;,&#34;Any other Number&#34;,&#34;&#34;,&#34;BR: 31&#34;,&#34;Time: 12:0:0&#34;,&#34;&#34;,&#34;Select Mode: &#34;&#34;Zahl muss eingegeben werden&#34;&#34;&#34;" comment="" color="ffffff" rotated="0" disabled="0"></instruction>
+								<case text="&#34;(Modus)&#34;,&#34;Zeit&#34;,&#34;Farbe&#34;,&#34;Helligkeit&#34;,&#34;default&#34;" comment="" color="ffffff" disabled="0">
+									<qCase>
+										<instruction text="&#34;Uhrzeit eingeben&#34;" comment="&#34;&#34;" color="ffffff" rotated="0" disabled="0"></instruction>
+									</qCase>
+									<qCase>
+										<instruction text="&#34;Farbeinstellung für einzelne Segmente festlegen&#34;" comment="&#34;&#34;" color="ffffff" rotated="0" disabled="0"></instruction>
+									</qCase>
+									<qCase>
+										<instruction text="&#34;Helligkeitsstufe eingeben&#34;" comment="&#34;&#34;" color="ffffff" rotated="0" disabled="0"></instruction>
+									</qCase>
+									<qCase>
+										<instruction text="&#34;Status Einstellung wird auf 0 gesetzt&#34;" comment="&#34;&#34;" color="ffffff" rotated="0" disabled="0"></instruction>
+									</qCase>
+								</case>
+							</qRepeat>
+						</repeat>
+					</qTrue>
+					<qFalse color="ffffff">
+					</qFalse>
+				</alternative>
+				<instruction text="&#34;- Zeit wird übernommen&#34;,&#34;- Farbe wird übernommen&#34;,&#34;- Intensität wird übernommen&#34;" comment="" color="ffffff" rotated="0" disabled="0"></instruction>
+			</qFor>
+		</for>
+		<call text="&#34;Port Initialisierung&#34;" comment="&#34;&#34;" color="ffffff" disabled="0" ismethoddecl="0"></call>
+		<call text="&#34;Timer Initialisierung&#34;" comment="&#34;&#34;" color="ffffff" disabled="0" ismethoddecl="0"></call>
+		<call text="&#34;Takt Initialisierung&#34;" comment="&#34;&#34;" color="ffffff" disabled="0" ismethoddecl="0"></call>
+		<call text="&#34;Interrupt Starten&#34;" comment="&#34;&#34;" color="ffffff" disabled="0" ismethoddecl="0"></call>
+		<forever comment="&#34;&#34;" color="ffffff" disabled="0">
+			<qForever>
+				<call text="&#34;Uhrzeitdaten werden Übertragen&#34;" comment="&#34;&#34;" color="ffffff" disabled="0" ismethoddecl="0"></call>
+				<call text="&#34;Uhrzeit wird auf der Konsole angezeigt&#34;" comment="&#34;&#34;" color="ffffff" disabled="0" ismethoddecl="0"></call>
+			</qForever>
+		</forever>
+	</children>
+</root>

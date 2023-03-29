@@ -78,10 +78,8 @@ int main(void)
    cpu_init();
    uart_init();
    
-   // Während Startup über UART Zeit einstellen
-   // Gewünschte Farbe
-   
    _delay_ms(5000);
+   
    printf("\n\n\n\rPress key for setup\n\r");
    
    char data = 0;
